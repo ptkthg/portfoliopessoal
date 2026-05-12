@@ -1,100 +1,90 @@
-import { useState } from 'react';
-import SectionTitle from './SectionTitle';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
-export default function Projects({ projects }) {
-  const [flippedProjects, setFlippedProjects] = useState({});
+const STACK_TAGS = ['React', 'Vite', 'Tailwind', 'Vercel', 'Groq', 'OSINT APIs'];
 
-  const toggleProject = (title) => {
-    setFlippedProjects((prev) => ({
-      ...prev,
-      [title]: !prev[title],
-    }));
-  };
+export default function Projects({ iocEnricher }) {
+  const ref = useScrollReveal();
+
+  const liveUrl = iocEnricher?.liveUrl ?? 'https://iocenricher.vercel.app';
+  const githubUrl = iocEnricher?.githubUrl ?? 'https://github.com/ptkthg/iocenricher';
 
   return (
-    <section id="projetos" className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-      <SectionTitle title="Projetos técnicos" />
-      <p className="mb-8 max-w-3xl text-lightgray/90">
-        Projetos técnicos e estudos práticos voltados à investigação, detecção, resposta e melhoria de postura defensiva.
-      </p>
-      <div className="grid gap-5 lg:grid-cols-2">
-        {projects.map((project) => {
-          const isFlipped = Boolean(flippedProjects[project.title]);
+    <section id="projetos" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
+      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase">// projetos</p>
+      <h2 className="font-mono text-3xl font-bold text-textprimary mb-10">Lab & Ferramentas</h2>
 
-          return (
-            <article
-              key={project.title}
-              className={`rounded-xl border bg-white/5 p-5 transition duration-300 ${
-                project.isMain ? 'border-cyantech/70 ring-1 ring-electric/40' : 'border-white/10 hover:border-cyantech/60'
-              }`}
+      {/* Terminal card */}
+      <div className="border border-neon/60 bg-surface shadow-neon max-w-2xl">
+        {/* Terminal header bar */}
+        <div className="flex items-center justify-between px-4 py-2.5 bg-black/40 border-b border-neon/20">
+          <div className="flex items-center gap-1.5">
+            <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+            <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+            <span className="w-3 h-3 rounded-full bg-[#28c940]" />
+          </div>
+          <span className="font-mono text-textprimary/40 text-xs tracking-wide">
+            iocenricher.exe
+          </span>
+          <div className="w-16" />
+        </div>
+
+        {/* Terminal body */}
+        <div className="p-6 font-mono text-sm space-y-1">
+          <p className="text-textprimary/40 mb-3">$ ./iocenricher --start</p>
+
+          <p>
+            <span className="text-textprimary/40">[INIT]</span>{' '}
+            <span className="glitch-hover text-textprimary font-semibold">IOC Enricher v1.0.0</span>
+          </p>
+          <p>
+            <span className="text-textprimary/40">[SRC] &nbsp;</span>{' '}
+            <span className="text-textprimary/80">11 OSINT sources loaded</span>
+          </p>
+          <p>
+            <span className="text-textprimary/40">[AI] &nbsp;&nbsp;</span>{' '}
+            <span className="text-textprimary/80">Groq Llama 3.3 70B active</span>
+          </p>
+          <p className="pb-2">
+            <span className="text-textprimary/40">[STATUS]</span>{' '}
+            <span className="text-neon font-semibold">OPERATIONAL</span>
+          </p>
+
+          <p className="text-textprimary/40 text-xs pt-2 pb-1 border-t border-neon/10">
+            Enriquece IP, domínio, URL ou hash com fontes OSINT + análise por IA
+          </p>
+
+          {/* Stack tags */}
+          <div className="flex flex-wrap gap-2 pt-3">
+            {STACK_TAGS.map((tag) => (
+              <span
+                key={tag}
+                className="border border-neon/40 text-neon text-xs px-2 py-0.5 font-mono"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex gap-3 pt-5">
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="border border-neon text-neon text-xs px-4 py-2 hover:bg-neon hover:text-terminal transition-all duration-200 font-mono"
             >
-              {!isFlipped ? (
-                <div className="transition-opacity duration-300">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-xl font-semibold text-white">🧪 {project.title}</h3>
-                    {project.isMain && (
-                      <span className="rounded-full border border-softgreen/40 bg-softgreen/10 px-3 py-1 text-xs font-semibold text-softgreen">
-                        Projeto principal
-                      </span>
-                    )}
-                  </div>
-                  <p className="mt-3 text-lightgray/90">{project.description}</p>
-                  <h4 className="mt-5 text-sm font-semibold uppercase tracking-wide text-cyantech">Competências aplicadas</h4>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {project.skills.map((skill) => (
-                      <span key={skill} className="rounded-full border border-white/20 px-3 py-1 text-xs text-lightgray">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                  <h4 className="mt-5 text-sm font-semibold uppercase tracking-wide text-cyantech">Cenários abordados</h4>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-lightgray/90">
-                    {project.scenarios.map((scenario) => (
-                      <li key={scenario}>{scenario}</li>
-                    ))}
-                  </ul>
-                  <button
-                    onClick={() => toggleProject(project.title)}
-                    aria-label={`Ver detalhes do projeto ${project.title}`}
-                    className="mt-5 rounded-lg border border-cyantech/60 px-4 py-2 text-sm text-lightgray transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyantech"
-                  >
-                    Ver detalhes
-                  </button>
-                </div>
-              ) : (
-                <div className="max-h-[560px] space-y-3 overflow-y-auto pr-1 transition-opacity duration-300">
-                  <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                  <p className="text-sm font-medium text-cyantech">Detalhes da solução</p>
-
-                  <div>
-                    <h4 className="text-sm font-semibold text-cyantech">Onde / Quando</h4>
-                    <p className="text-sm text-lightgray/90">{project.details?.where}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-cyantech">Como</h4>
-                    <p className="text-sm text-lightgray/90">{project.details?.how}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-cyantech">Por quê</h4>
-                    <p className="text-sm text-lightgray/90">{project.details?.why}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-cyantech">Para quê</h4>
-                    <p className="text-sm text-lightgray/90">{project.details?.purpose}</p>
-                  </div>
-
-                  <button
-                    onClick={() => toggleProject(project.title)}
-                    aria-label={`Voltar para resumo do projeto ${project.title}`}
-                    className="mt-3 rounded-lg border border-cyantech/60 px-4 py-2 text-sm text-lightgray transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyantech"
-                  >
-                    Voltar
-                  </button>
-                </div>
-              )}
-            </article>
-          );
-        })}
+              $ ./launch
+            </a>
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="border border-textprimary/25 text-textprimary/60 text-xs px-4 py-2 hover:border-neon/50 hover:text-neon/80 transition-all duration-200 font-mono"
+            >
+              git clone
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

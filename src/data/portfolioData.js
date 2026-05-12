@@ -134,6 +134,13 @@ export const portfolioData = {
     institution: 'Universidade Estácio de Sá, UNESA',
     status: 'Cursando',
   },
+  // Atualize com suas certificações reais
+  certifications: [
+    { name: 'SC-900', full: 'Microsoft Security, Compliance and Identity Fundamentals', issuer: 'Microsoft', year: '2024' },
+    { name: 'AZ-900', full: 'Microsoft Azure Fundamentals', issuer: 'Microsoft', year: '2024' },
+    { name: 'BTL1', full: 'Blue Team Level 1', issuer: 'Security Blue Team', year: '2025' },
+    { name: 'SOC Analyst', full: 'SOC Analyst Certification', issuer: 'LetsDefend', year: '2025' },
+  ],
   // Para adicionar novo projeto, copie um objeto abaixo e altere title, description, skills e scenarios.
   projects: [
     {
@@ -227,8 +234,10 @@ export const portfolioData = {
       title: 'IOC Enricher',
       subtitle: 'Enriquecimento de indicadores para triagem Blue Team',
       category: 'Threat Intelligence / SOC',
-      status: 'Planejado',
-      maturity: 'Ideia em validação',
+      status: 'OPERATIONAL',
+      maturity: 'Em produção',
+      liveUrl: 'https://iocenricher.vercel.app',
+      githubUrl: 'https://github.com/ptkthg/iocenricher',
       problem:
         'Analistas de segurança precisam enriquecer indicadores rapidamente para decidir se devem bloquear, monitorar, investigar ou ignorar um artefato suspeito.',
       description:
@@ -312,11 +321,9 @@ export const portfolioData = {
 export const navItems = [
   { label: 'Início', id: 'hero' },
   { label: 'Sobre', id: 'sobre' },
-  { label: 'Áreas', id: 'areas' },
-  { label: 'Stack', id: 'stack' },
-  { label: 'Experiência', id: 'experiencia' },
-  { label: 'Estudo de Caso', id: 'estudo-caso' },
+  { label: 'Skills', id: 'skills' },
   { label: 'Projetos', id: 'projetos' },
-  { label: 'Blue Team Lab', id: 'blue-team-lab' },
+  { label: 'Experiência', id: 'experiencia' },
+  { label: 'Certs', id: 'certificacoes' },
   { label: 'Contato', id: 'contato' },
 ];

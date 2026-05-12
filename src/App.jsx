@@ -1,72 +1,53 @@
 import { useEffect, useState } from 'react';
 import About from './components/About';
-import Areas from './components/Areas';
-import BlueTeamLab from './components/BlueTeamLab';
-import CaseStudy from './components/CaseStudy';
+import Certifications from './components/Certifications';
 import Contact from './components/Contact';
-import Differentials from './components/Differentials';
-import Education from './components/Education';
 import Experience from './components/Experience';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Indicators from './components/Indicators';
-import Methodology from './components/Methodology';
 import Projects from './components/Projects';
-import TechStack from './components/TechStack';
+import Skills from './components/Skills';
 import { portfolioData } from './data/portfolioData';
 
 export default function App() {
-  const [showTopButton, setShowTopButton] = useState(false);
+  const [showTop, setShowTop] = useState(false);
   const [hasResume, setHasResume] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShowTopButton(window.scrollY > 400);
+    const onScroll = () => setShowTop(window.scrollY > 400);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
-    const checkResume = async () => {
-      try {
-        const response = await fetch(portfolioData.person.resumePath, { method: 'HEAD' });
-        setHasResume(response.ok);
-      } catch {
-        setHasResume(false);
-      }
-    };
-
-    checkResume();
+    fetch(portfolioData.person.resumePath, { method: 'HEAD' })
+      .then((r) => setHasResume(r.ok))
+      .catch(() => setHasResume(false));
   }, []);
 
   return (
-    <div className="app-bg min-h-screen bg-deep text-white">
+    <div className="min-h-screen bg-terminal text-textprimary">
       <Header />
       <main>
-        <Hero person={portfolioData.person} heroDescription={portfolioData.heroDescription} hasResume={hasResume} />
-        <About aboutText={portfolioData.aboutText} person={portfolioData.person} />
-        <Areas areas={portfolioData.areas} />
-        <TechStack techStack={portfolioData.techStack} />
+        <Hero person={portfolioData.person} hasResume={hasResume} />
+        <About />
+        <Skills />
+        <Projects iocEnricher={portfolioData.blueTeamLab[0]} />
         <Experience experiences={portfolioData.experiences} />
-        <CaseStudy caseStudy={portfolioData.caseStudy} />
-        <Education education={portfolioData.education} />
-        <Projects projects={portfolioData.projects} />
-        <BlueTeamLab blueTeamLab={portfolioData.blueTeamLab} />
-        <Methodology methodology={portfolioData.methodology} methodologyText={portfolioData.methodologyText} />
-        <Differentials differentials={portfolioData.differentials} />
-        <Indicators indicators={portfolioData.indicators} />
+        <Certifications certifications={portfolioData.certifications} />
         <Contact person={portfolioData.person} />
       </main>
       <Footer />
 
-      {showTopButton && (
+      {showTop && (
         <button
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-5 right-5 rounded-full border border-cyantech/70 bg-deep/90 p-3 text-cyantech transition hover:bg-blueteam"
           aria-label="Voltar ao topo"
+          className="fixed bottom-6 right-6 font-mono text-xs border border-neon/40 text-neon/70 px-3 py-2 bg-terminal hover:border-neon hover:text-neon transition-all duration-200"
         >
-          ↑
+          ↑ top
         </button>
       )}
     </div>

@@ -1,19 +1,46 @@
-import ProfileAvatar from './ProfileAvatar';
-import SectionTitle from './SectionTitle';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
-export default function About({ aboutText, person }) {
+const METRICS = [
+  { value: '2+', label: 'Anos de experiência' },
+  { value: '30+', label: 'Ferramentas dominadas' },
+  { value: '5', label: 'Projetos documentados' },
+  { value: '4', label: 'Certificações' },
+];
+
+export default function About() {
+  const ref = useScrollReveal();
+
   return (
-    <section id="sobre" className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-      <SectionTitle title="Sobre mim" />
-      <div className="grid gap-8 rounded-2xl border border-white/10 bg-white/5 p-6 md:grid-cols-[1fr_auto] md:p-8">
-        <div className="space-y-5 text-lightgray/95">
-          {aboutText.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-        <div className="hidden md:block">
-          <ProfileAvatar src={person.profileImagePath} alt={person.profileImageAlt || person.fullName} sizeClass="h-40 w-40" textClass="text-4xl" imagePosition={person.profileImagePosition} />
-        </div>
+    <section id="sobre" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
+      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase">// sobre</p>
+      <h2 className="font-mono text-3xl font-bold text-textprimary mb-8">Quem sou</h2>
+
+      <div className="space-y-3 mb-10 border-l-2 border-neon/30 pl-5">
+        <p className="text-textprimary text-base leading-relaxed">
+          Profissional de Blue Team com 2+ anos em SOC, detecção de ameaças e resposta a incidentes.
+        </p>
+        <p className="text-textprimary/70 text-base leading-relaxed">
+          Especializado em Microsoft Defender XDR, KQL, MITRE ATT&CK e governança de identidades no
+          Active Directory e Entra ID.
+        </p>
+        <p className="text-textprimary/70 text-base leading-relaxed">
+          Busco um time onde eu possa contribuir com detecção precoce de ameaças e redução contínua
+          da superfície de ataque.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {METRICS.map((m) => (
+          <div
+            key={m.label}
+            className="border border-neon/20 bg-surface p-4 text-center hover:border-neon/50 transition-colors duration-200"
+          >
+            <div className="font-mono text-neon text-3xl font-bold">{m.value}</div>
+            <div className="text-textprimary/50 text-xs mt-1.5 uppercase tracking-wider leading-snug">
+              {m.label}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

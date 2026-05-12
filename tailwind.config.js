@@ -4,7 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        deep: '#020617',
+        terminal: '#0a0a0f',
+        surface: '#111118',
+        neon: '#00ff88',
+        textprimary: '#e2e8f0',
+        // legacy
+        deep: '#0a0a0f',
         blueteam: '#0F3D91',
         cyantech: '#38BDF8',
         electric: '#2563EB',
@@ -13,8 +18,12 @@ export default {
         softgreen: '#22C55E',
         alertred: '#EF4444',
       },
+      fontFamily: {
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
+      },
       boxShadow: {
-        card: '0 15px 35px rgba(2, 6, 23, 0.45)',
+        neon: '0 0 20px rgba(0, 255, 136, 0.25)',
+        card: '0 15px 35px rgba(0, 0, 0, 0.5)',
       },
     },
   },
