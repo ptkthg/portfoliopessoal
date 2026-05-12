@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import About from './components/About';
-import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Experience from './components/Experience';
 import Footer from './components/Footer';
@@ -35,7 +34,6 @@ export default function App() {
         <Skills />
         <Projects iocEnricher={portfolioData.blueTeamLab[0]} />
         <Experience experiences={portfolioData.experiences} />
-        <Certifications certifications={portfolioData.certifications} />
         <Contact person={portfolioData.person} />
       </main>
       <Footer />

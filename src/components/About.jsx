@@ -4,7 +4,6 @@ const METRICS = [
   { value: '2+', label: 'Anos de experiência' },
   { value: '30+', label: 'Ferramentas dominadas' },
   { value: '5', label: 'Projetos documentados' },
-  { value: '4', label: 'Certificações' },
 ];
 
 export default function About() {

@@ -134,13 +134,6 @@ export const portfolioData = {
     institution: 'Universidade Estácio de Sá, UNESA',
     status: 'Cursando',
   },
-  // Atualize com suas certificações reais
-  certifications: [
-    { name: 'SC-900', full: 'Microsoft Security, Compliance and Identity Fundamentals', issuer: 'Microsoft', year: '2024' },
-    { name: 'AZ-900', full: 'Microsoft Azure Fundamentals', issuer: 'Microsoft', year: '2024' },
-    { name: 'BTL1', full: 'Blue Team Level 1', issuer: 'Security Blue Team', year: '2025' },
-    { name: 'SOC Analyst', full: 'SOC Analyst Certification', issuer: 'LetsDefend', year: '2025' },
-  ],
   // Para adicionar novo projeto, copie um objeto abaixo e altere title, description, skills e scenarios.
   projects: [
     {
@@ -324,6 +317,5 @@ export const navItems = [
   { label: 'Skills', id: 'skills' },
   { label: 'Projetos', id: 'projetos' },
   { label: 'Experiência', id: 'experiencia' },
-  { label: 'Certs', id: 'certificacoes' },
   { label: 'Contato', id: 'contato' },
 ];
