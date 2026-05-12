@@ -97,7 +97,7 @@ export const portfolioData = {
     {
       company: 'Oceânica',
       role: 'Assistente de Segurança da Informação Pleno',
-      period: 'out/2025 – atual',
+      period: 'out/2025 – abr/2026',
       activities: [
         'Monitoramento e investigação de alertas em endpoint, e-mail, identidade e aplicações.',
         'Gestão de vulnerabilidades e aplicação de patches para correção de falhas.',
