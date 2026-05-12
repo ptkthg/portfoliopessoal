@@ -54,8 +54,8 @@ export default function Contact({ person }) {
 
   return (
     <section id="contato" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
-      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase">// contato</p>
-      <h2 className="font-mono text-3xl font-bold text-textprimary mb-3">Fale comigo</h2>
+      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// contato</p>
+      <h2 className="font-mono text-3xl font-bold text-white mb-3">Fale comigo</h2>
       <p className="text-textprimary/50 text-sm font-mono mb-10">
         {person.city} &nbsp;·&nbsp; Open to opportunities
       </p>

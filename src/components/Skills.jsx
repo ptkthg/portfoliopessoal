@@ -49,8 +49,8 @@ export default function Skills() {
 
   return (
     <section id="skills" ref={ref} className="fade-in-section py-20 px-6 max-w-5xl mx-auto">
-      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase">// skills</p>
-      <h2 className="font-mono text-3xl font-bold text-textprimary mb-10">Stack & Ferramentas</h2>
+      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// skills</p>
+      <h2 className="font-mono text-3xl font-bold text-white mb-10">Stack & Ferramentas</h2>
 
       <div className="grid md:grid-cols-2 gap-5">
         {SKILL_GROUPS.map((group) => (
@@ -62,7 +62,7 @@ export default function Skills() {
               {group.skills.map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between items-center mb-1.5">
-                    <span className="font-mono text-textprimary/80 text-sm">{skill.name}</span>
+                    <span className="font-mono text-textprimary/90 text-sm">{skill.name}</span>
                     <span className="font-mono text-neon/50 text-xs">{skill.level}%</span>
                   </div>
                   <div className="h-px bg-textprimary/10 relative overflow-hidden">

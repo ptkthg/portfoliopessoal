@@ -5,8 +5,8 @@ export default function Experience({ experiences }) {
 
   return (
     <section id="experiencia" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
-      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase">// experiência</p>
-      <h2 className="font-mono text-3xl font-bold text-textprimary mb-10">Trajetória Profissional</h2>
+      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// experiência</p>
+      <h2 className="font-mono text-3xl font-bold text-white mb-10">Trajetória Profissional</h2>
 
       <div className="relative">
         {/* Vertical timeline line */}
@@ -25,12 +25,12 @@ export default function Experience({ experiences }) {
               />
 
               <p className="font-mono text-neon/70 text-xs tracking-wide mb-1">{exp.period}</p>
-              <h3 className="font-mono text-textprimary text-lg font-semibold">{exp.role}</h3>
-              <p className="font-mono text-textprimary/50 text-sm mb-4">{exp.company}</p>
+              <h3 className="font-mono text-white text-lg font-semibold">{exp.role}</h3>
+              <p className="font-mono text-textprimary/60 text-sm mb-4">{exp.company}</p>
 
               <ul className="space-y-1.5">
                 {exp.activities.slice(0, 3).map((activity) => (
-                  <li key={activity} className="flex gap-2 text-sm text-textprimary/70">
+                  <li key={activity} className="flex gap-2 text-sm text-textprimary/80">
                     <span className="text-neon/60 shrink-0 font-mono">›</span>
                     <span>{activity}</span>
                   </li>

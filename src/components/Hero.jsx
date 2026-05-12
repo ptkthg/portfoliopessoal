@@ -42,18 +42,18 @@ export default function Hero({ person, hasResume }) {
         </p>
 
         {/* Name — typewriter effect */}
-        <h1 className="font-mono text-5xl md:text-7xl font-bold text-textprimary mb-5 leading-none">
+        <h1 className="font-mono text-5xl md:text-7xl font-bold text-white mb-5 leading-none" style={{ textShadow: '0 0 40px rgba(255,255,255,0.08)' }}>
           <span className={!done ? 'cursor-blink' : ''}>{typed}</span>
-          {done && <span className="text-neon">_</span>}
+          {done && <span className="text-neon text-glow">_</span>}
         </h1>
 
         {/* Role */}
-        <p className="font-mono text-neon text-sm md:text-base mb-4 tracking-wide">
+        <p className="font-mono text-neon text-sm md:text-base mb-4 tracking-wide text-glow">
           {ROLE}
         </p>
 
         {/* Location */}
-        <p className="font-mono text-textprimary/40 text-xs md:text-sm mb-10 tracking-wide">
+        <p className="font-mono text-textprimary/55 text-xs md:text-sm mb-10 tracking-wide">
           {person.city} &nbsp;·&nbsp; Open to opportunities
         </p>
 

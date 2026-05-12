@@ -57,6 +57,11 @@ body {
   transform: translateY(0);
 }
 
+/* Neon glow utility */
+.text-glow {
+  text-shadow: 0 0 18px rgba(0, 255, 136, 0.55);
+}
+
 /* Glitch on hover — CSS keyframes only */
 .glitch-hover {
   display: inline-block;

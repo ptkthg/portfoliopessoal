@@ -3,7 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 const METRICS = [
   { value: '2+', label: 'Anos de experiência' },
   { value: '30+', label: 'Ferramentas dominadas' },
-  { value: '5', label: 'Projetos documentados' },
+  { value: '5', label: 'Análises técnicas' },
 ];
 
 export default function About() {
@@ -11,18 +11,18 @@ export default function About() {
 
   return (
     <section id="sobre" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
-      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase">// sobre</p>
-      <h2 className="font-mono text-3xl font-bold text-textprimary mb-8">Quem sou</h2>
+      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// sobre</p>
+      <h2 className="font-mono text-3xl font-bold text-white mb-8">Quem sou</h2>
 
       <div className="space-y-3 mb-10 border-l-2 border-neon/30 pl-5">
-        <p className="text-textprimary text-base leading-relaxed">
+        <p className="text-white/90 text-base leading-relaxed">
           Profissional de Blue Team com 2+ anos em SOC, detecção de ameaças e resposta a incidentes.
         </p>
-        <p className="text-textprimary/70 text-base leading-relaxed">
+        <p className="text-textprimary/80 text-base leading-relaxed">
           Especializado em Microsoft Defender XDR, KQL, MITRE ATT&CK e governança de identidades no
           Active Directory e Entra ID.
         </p>
-        <p className="text-textprimary/70 text-base leading-relaxed">
+        <p className="text-textprimary/80 text-base leading-relaxed">
           Busco um time onde eu possa contribuir com detecção precoce de ameaças e redução contínua
           da superfície de ataque.
         </p>
