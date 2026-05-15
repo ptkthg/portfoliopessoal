@@ -182,7 +182,7 @@ export default function Projects({ iocEnricher }) {
               </div>
               <div className="flex gap-3 pt-5">
                 <a
-                  href="https://statecraft.vercel.app"
+                  href="https://statecraftcyber.vercel.app"
                   target="_blank"
                   rel="noreferrer"
                   className="border border-neon text-neon text-xs px-4 py-2 hover:bg-neon hover:text-terminal transition-all duration-200"
