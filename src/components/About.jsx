@@ -1,34 +1,57 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { portfolioData } from '../data/portfolioData';
 
 const METRICS = [
   { value: '2+', label: 'Anos de experiência' },
   { value: '30+', label: 'Ferramentas dominadas' },
-  { value: '5', label: 'Análises técnicas' },
+  { value: '5+', label: 'Análises técnicas' },
+  { value: '3', label: 'Empresas atendidas' },
+];
+
+const PILLARS = [
+  {
+    index: '01',
+    label: 'Detectar',
+    desc: 'Identifico ameaças antes que se tornem incidentes com hipóteses, KQL e MITRE ATT&CK.',
+  },
+  {
+    index: '02',
+    label: 'Investigar',
+    desc: 'Correlaciono evidências técnicas com contexto operacional para chegar à causa raiz.',
+  },
+  {
+    index: '03',
+    label: 'Responder',
+    desc: 'Contenho, erradico e recupero com decisões rápidas e documentação clara.',
+  },
+  {
+    index: '04',
+    label: 'Melhorar',
+    desc: 'Transformo lições aprendidas em controles preventivos e playbooks reutilizáveis.',
+  },
 ];
 
 export default function About() {
   const ref = useScrollReveal();
+  const { aboutText } = portfolioData;
 
   return (
     <section id="sobre" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// sobre</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-8">Quem sou</h2>
 
-      <div className="space-y-3 mb-10 border-l-2 border-neon/30 pl-5">
-        <p className="text-white/90 text-base leading-relaxed">
-          Profissional de Blue Team com 2+ anos em SOC, detecção de ameaças e resposta a incidentes.
-        </p>
-        <p className="text-textprimary/80 text-base leading-relaxed">
-          Especializado em Microsoft Defender XDR, KQL, MITRE ATT&CK e governança de identidades no
-          Active Directory e Entra ID.
-        </p>
-        <p className="text-textprimary/80 text-base leading-relaxed">
-          Busco um time onde eu possa contribuir com detecção precoce de ameaças e redução contínua
-          da superfície de ataque.
-        </p>
+      <div className="space-y-4 mb-10 border-l-2 border-neon/30 pl-5">
+        {aboutText.map((paragraph, i) => (
+          <p
+            key={i}
+            className={`text-base leading-relaxed ${i === 0 ? 'text-white/90' : 'text-textprimary/80'}`}
+          >
+            {paragraph}
+          </p>
+        ))}
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
         {METRICS.map((m) => (
           <div
             key={m.label}
@@ -38,6 +61,20 @@ export default function About() {
             <div className="text-textprimary/50 text-xs mt-1.5 uppercase tracking-wider leading-snug">
               {m.label}
             </div>
+          </div>
+        ))}
+      </div>
+
+      <p className="font-mono text-neon text-xs mb-4 tracking-widest uppercase">// ciclo defensivo</p>
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+        {PILLARS.map((p) => (
+          <div
+            key={p.label}
+            className="border border-neon/15 bg-surface p-4 hover:border-neon/40 transition-colors duration-200"
+          >
+            <div className="font-mono text-neon/40 text-xs mb-1">{p.index}</div>
+            <div className="font-mono text-neon text-sm font-bold mb-2">{p.label}</div>
+            <p className="text-textprimary/60 text-xs leading-snug">{p.desc}</p>
           </div>
         ))}
       </div>

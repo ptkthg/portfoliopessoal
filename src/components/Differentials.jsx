@@ -1,15 +1,23 @@
-import SectionTitle from './SectionTitle';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Differentials({ differentials }) {
+  const ref = useScrollReveal();
+
   return (
-    <section id="diferenciais" className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-      <SectionTitle title="Diferenciais" />
-      <div className="grid gap-5 md:grid-cols-2">
-        {differentials.map((item) => (
-          <article key={item.title} className="rounded-xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-            <p className="mt-2 text-lightgray/90">{item.description}</p>
-          </article>
+    <section id="diferenciais" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
+      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase">// diferenciais</p>
+      <h2 className="font-mono text-3xl font-bold text-textprimary mb-10">O que me distingue</h2>
+
+      <div className="grid sm:grid-cols-2 gap-3">
+        {differentials.map((item, i) => (
+          <div
+            key={item.title}
+            className="border border-neon/15 bg-surface p-5 hover:border-neon/40 transition-colors duration-200"
+          >
+            <div className="font-mono text-neon/40 text-xs mb-1">0{i + 1}</div>
+            <h3 className="font-mono text-neon text-sm font-bold mb-2">{item.title}</h3>
+            <p className="text-textprimary/70 text-sm leading-relaxed">{item.description}</p>
+          </div>
         ))}
       </div>
     </section>

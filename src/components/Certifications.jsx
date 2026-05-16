@@ -5,6 +5,8 @@ const ISSUER_COLORS = {
   'Security Blue Team': 'text-[#4a90e2]',
   LetsDefend: 'text-[#e87722]',
   CompTIA: 'text-[#c8202f]',
+  Aviatrix: 'text-[#0080ff]',
+  Axur: 'text-[#00c4a0]',
 };
 
 export default function Certifications({ certifications }) {

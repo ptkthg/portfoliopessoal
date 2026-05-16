@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import About from './components/About';
+import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+import Differentials from './components/Differentials';
 import Experience from './components/Experience';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -32,8 +34,10 @@ export default function App() {
         <Hero person={portfolioData.person} hasResume={hasResume} />
         <About />
         <Skills />
+        <Differentials differentials={portfolioData.differentials} />
         <Projects iocEnricher={portfolioData.blueTeamLab[0]} />
         <Experience experiences={portfolioData.experiences} />
+        <Certifications certifications={portfolioData.certifications} />
         <Contact person={portfolioData.person} />
       </main>
       <Footer />

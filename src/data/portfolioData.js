@@ -1,7 +1,7 @@
 export const portfolioData = {
   person: {
-    fullName: 'Patrick Thiago Rezende dos Santos',
-    firstName: 'Patrick Thiago',
+    fullName: 'Patrick Santos',
+    firstName: 'Patrick Santos',
     role: 'Segurança da Informação | Blue Team | SOC | Threat Hunting | GRC | IAM',
     city: 'Rio de Janeiro, RJ',
     email: 'ptkamp1@gmail.com',
@@ -10,16 +10,17 @@ export const portfolioData = {
     // Expor link direto de WhatsApp em site público é uma decisão consciente.
     whatsappUrl: 'https://wa.me/5521998031285',
     profileImagePath: '/assets/patrickseg.png',
-    profileImageAlt: 'Patrick Thiago Rezende dos Santos',
+    profileImageAlt: 'Patrick Santos',
     profileImagePosition: 'center 28%',
     resumePath: '/assets/patrickcv0426.pdf',
   },
   heroDescription:
     'Profissional de Segurança da Informação com atuação prática em monitoramento de ameaças, resposta a incidentes, gestão de vulnerabilidades, governança de acessos e sustentação de controles de segurança.',
   aboutText: [
-    'Profissional de Segurança da Informação com atuação focada em Blue Team, combinando experiência prática em monitoramento de ameaças, resposta a incidentes e gestão de vulnerabilidades com uma base sólida em governança de identidades e acessos.',
-    'Minha motivação está em proteger ativos e garantir a resiliência operacional por meio de controles efetivos e processos bem definidos. Valorizo a aplicação de frameworks como NIST CSF e MITRE ATT&CK para orientar a defesa de forma estruturada, sempre alinhado às necessidades do negócio e às exigências de conformidade.',
-    'Busco oportunidades onde eu possa contribuir ativamente para a detecção precoce de ameaças e a redução contínua da superfície de ataque, ajudando organizações a operar com segurança em um cenário de riscos cada vez mais complexo.',
+    'Sou Patrick Santos, profissional de Blue Team com 2+ anos atuando em SOC, detecção de ameaças e resposta a incidentes em ambientes corporativos reais — de alertas em madrugada a análises forenses pós-incidente.',
+    'Minha trajetória passou por três empresas diferentes, o que me deu visão ampla de como ambientes distintos lidam com risco: desde suporte de identidade no Active Directory até criação de regras personalizadas no Microsoft Defender XDR e investigação de comportamentos com KQL e MITRE ATT&CK.',
+    'Acredito que segurança eficaz não começa no alerta — começa na hipótese. Por isso construo detecções orientadas a comportamento, não apenas a assinatura. Aplico frameworks como NIST CSF e CIS Controls para estruturar a defesa de forma contínua e alinhada ao negócio.',
+    'Busco um time onde eu possa contribuir com detecção precoce, redução da superfície de ataque e uma cultura de segurança orientada a dados — onde cada análise gere aprendizado e cada incidente fortaleça os controles.',
   ],
   areas: [
     {
@@ -309,6 +310,20 @@ export const portfolioData = {
     'Sustentação de controles de backup, inventário e hardening.',
     'Ajuste de regras para redução de falsos positivos.',
   ],
+  certifications: [
+    {
+      name: 'MNA',
+      full: 'Multicloud Network Associate',
+      issuer: 'Aviatrix',
+      year: '',
+    },
+    {
+      name: 'CPOP',
+      full: 'Certified Professional Operational Partner',
+      issuer: 'Axur',
+      year: '',
+    },
+  ],
 };
 
 export const navItems = [
@@ -317,5 +332,6 @@ export const navItems = [
   { label: 'Skills', id: 'skills' },
   { label: 'Projetos', id: 'projetos' },
   { label: 'Experiência', id: 'experiencia' },
+  { label: 'Certificações', id: 'certificacoes' },
   { label: 'Contato', id: 'contato' },
 ];
