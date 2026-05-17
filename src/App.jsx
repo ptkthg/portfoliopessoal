@@ -3,12 +3,12 @@ import About from './components/About';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Differentials from './components/Differentials';
-import Experience from './components/Experience';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
+import Timeline from './components/Timeline';
 import { portfolioData } from './data/portfolioData';
 
 export default function App() {
@@ -33,10 +33,10 @@ export default function App() {
       <main>
         <Hero person={portfolioData.person} hasResume={hasResume} />
         <About />
+        <Timeline experiences={portfolioData.experiences} />
         <Skills />
         <Differentials differentials={portfolioData.differentials} />
         <Projects iocEnricher={portfolioData.blueTeamLab[0]} />
-        <Experience experiences={portfolioData.experiences} />
         <Certifications certifications={portfolioData.certifications} />
         <Contact person={portfolioData.person} />
       </main>

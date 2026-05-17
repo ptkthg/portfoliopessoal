@@ -329,9 +329,9 @@ export const portfolioData = {
 export const navItems = [
   { label: 'Início', id: 'hero' },
   { label: 'Sobre', id: 'sobre' },
+  { label: 'Trajetória', id: 'trajetoria' },
   { label: 'Skills', id: 'skills' },
   { label: 'Projetos', id: 'projetos' },
-  { label: 'Experiência', id: 'experiencia' },
   { label: 'Certificações', id: 'certificacoes' },
   { label: 'Contato', id: 'contato' },
 ];
