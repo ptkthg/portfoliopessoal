@@ -20,7 +20,7 @@ export default function Timeline({ experiences }) {
             <button
               key={e.company}
               onClick={() => setActive(i)}
-              className="relative flex flex-col items-center group"
+              className="relative flex flex-col items-center group flex-1"
             >
               <div
                 className={`w-5 h-5 border-2 flex items-center justify-center mb-3 z-10 transition-all duration-200 ${
@@ -32,14 +32,14 @@ export default function Timeline({ experiences }) {
                 {i === active && <div className="w-2 h-2 bg-neon" />}
               </div>
               <p
-                className={`font-mono text-xs text-center max-w-[100px] leading-snug transition-colors duration-200 ${
+                className={`font-mono text-[10px] sm:text-xs text-center px-1 leading-snug transition-colors duration-200 ${
                   i === active ? 'text-neon' : 'text-textprimary/40 group-hover:text-textprimary/60'
                 }`}
               >
                 {e.period.split(' –')[0]}
               </p>
               <p
-                className={`font-mono text-[10px] mt-0.5 text-center max-w-[100px] transition-colors duration-200 ${
+                className={`font-mono text-[9px] sm:text-[10px] mt-0.5 text-center px-1 transition-colors duration-200 hidden sm:block ${
                   i === active ? 'text-neon/70' : 'text-textprimary/25'
                 }`}
               >

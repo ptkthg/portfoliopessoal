@@ -64,12 +64,12 @@ export default function Projects({ iocEnricher }) {
       <h2 className="font-mono text-3xl font-bold text-white mb-4">Lab & Ferramentas</h2>
 
       {/* Tab navigation */}
-      <div className="flex items-center gap-6 mb-8 border-b border-neon/10 pb-3">
+      <div className="flex items-center gap-3 sm:gap-6 mb-8 border-b border-neon/10 pb-3 overflow-x-auto scrollbar-none">
         {PROJECTS.map((p, i) => (
           <button
             key={p.title}
             onClick={() => setCurrent(i)}
-            className={`font-mono text-xs pb-3 -mb-3 border-b-2 transition-all duration-200 ${
+            className={`font-mono text-xs pb-3 -mb-3 border-b-2 whitespace-nowrap transition-all duration-200 shrink-0 ${
               i === current
                 ? 'text-neon border-neon'
                 : 'text-textprimary/35 border-transparent hover:text-textprimary/60'

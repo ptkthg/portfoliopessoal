@@ -48,7 +48,7 @@ export default function Hero({ person, hasResume }) {
         </h1>
 
         {/* Role */}
-        <p className="font-mono text-neon text-sm md:text-base mb-4 tracking-wide text-glow">
+        <p className="font-mono text-neon text-xs sm:text-sm md:text-base mb-4 tracking-wide text-glow leading-relaxed">
           {ROLE}
         </p>
 
