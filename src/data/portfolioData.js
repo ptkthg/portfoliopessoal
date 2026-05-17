@@ -17,10 +17,10 @@ export const portfolioData = {
   heroDescription:
     'Profissional de Segurança da Informação com atuação prática em monitoramento de ameaças, resposta a incidentes, gestão de vulnerabilidades, governança de acessos e sustentação de controles de segurança.',
   aboutText: [
-    'Sou Patrick Santos, profissional de Blue Team com 2+ anos atuando em SOC, detecção de ameaças e resposta a incidentes em ambientes corporativos reais — de alertas em madrugada a análises forenses pós-incidente.',
-    'Minha trajetória passou por três empresas diferentes, o que me deu visão ampla de como ambientes distintos lidam com risco: desde suporte de identidade no Active Directory até criação de regras personalizadas no Microsoft Defender XDR e investigação de comportamentos com KQL e MITRE ATT&CK.',
-    'Acredito que segurança eficaz não começa no alerta — começa na hipótese. Por isso construo detecções orientadas a comportamento, não apenas a assinatura. Aplico frameworks como NIST CSF e CIS Controls para estruturar a defesa de forma contínua e alinhada ao negócio.',
-    'Busco um time onde eu possa contribuir com detecção precoce, redução da superfície de ataque e uma cultura de segurança orientada a dados — onde cada análise gere aprendizado e cada incidente fortaleça os controles.',
+    'Sou Patrick Santos, profissional de Blue Team com mais de dois anos de atuação em SOC, detecção de ameaças e resposta a incidentes em ambientes corporativos reais.',
+    'Ao longo da minha trajetória, passei por três organizações com contextos distintos, o que me proporcionou uma visão abrangente de como diferentes ambientes gerenciam risco: do suporte de identidade no Active Directory à criação de regras personalizadas no Microsoft Defender XDR e à investigação de comportamentos suspeitos com KQL e MITRE ATT&CK.',
+    'Acredito que segurança eficaz não começa no alerta, mas na hipótese. Por isso, construo detecções orientadas a comportamento, indo além da assinatura. Aplico frameworks como NIST CSF e CIS Controls para estruturar a defesa de forma contínua e alinhada às necessidades do negócio.',
+    'Busco uma equipe onde eu possa contribuir com detecção precoce, redução contínua da superfície de ataque e uma cultura de segurança orientada a dados, em que cada análise gere aprendizado e cada incidente fortaleça os controles.',
   ],
   areas: [
     {
