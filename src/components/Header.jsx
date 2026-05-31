@@ -23,7 +23,7 @@ export default function Header() {
     >
       <nav className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
         <span className="font-mono text-neon text-sm font-semibold tracking-wider">
-          pt<span className="text-textprimary/40">@</span>blueteam
+          pt<span className="text-textprimary/40">@</span>security
         </span>
 
         {/* Desktop */}

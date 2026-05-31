@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import About from './components/About';
+import Areas from './components/Areas';
+import Arsenal from './components/Arsenal';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Differentials from './components/Differentials';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Methodology from './components/Methodology';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Timeline from './components/Timeline';
@@ -33,6 +36,13 @@ export default function App() {
       <main>
         <Hero person={portfolioData.person} hasResume={hasResume} />
         <About />
+        <Areas areas={portfolioData.areas} />
+        <Methodology
+          methodology={portfolioData.methodology}
+          methodologyText={portfolioData.methodologyText}
+          frameworks={portfolioData.frameworks}
+        />
+        <Arsenal arsenal={portfolioData.arsenal} />
         <Timeline experiences={portfolioData.experiences} />
         <Skills />
         <Differentials differentials={portfolioData.differentials} />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
-const ROLE = 'Blue Team Engineer · SOC Analyst · Detection Engineering';
+const ROLE = 'Blue Team · SOC · Purple Team em formação';
+const SUBROLE = 'Bug Bounty na HackerOne · segurança ofensiva com Kali Linux';
 
 export default function Hero({ person, hasResume }) {
   const [typed, setTyped] = useState('');
@@ -48,8 +49,13 @@ export default function Hero({ person, hasResume }) {
         </h1>
 
         {/* Role */}
-        <p className="font-mono text-neon text-xs sm:text-sm md:text-base mb-4 tracking-wide text-glow leading-relaxed">
+        <p className="font-mono text-neon text-xs sm:text-sm md:text-base mb-2 tracking-wide text-glow leading-relaxed">
           {ROLE}
+        </p>
+
+        {/* Subrole — offensive (study/practice) */}
+        <p className="font-mono text-textprimary/55 text-[11px] sm:text-xs md:text-sm mb-4 tracking-wide leading-relaxed">
+          {SUBROLE}
         </p>
 
         {/* Location */}

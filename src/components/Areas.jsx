@@ -1,4 +1,4 @@
-import SectionTitle from './SectionTitle';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const iconMap = {
   shield: '🛡️',
@@ -7,22 +7,51 @@ const iconMap = {
   bug: '🔎',
   key: '🔐',
   server: '🖥️',
+  globe: '🌐',
+  crosshair: '⌖',
 };
 
 export default function Areas({ areas }) {
+  const ref = useScrollReveal();
+
+  if (!areas?.length) return null;
+
   return (
-    <section id="areas" className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-      <SectionTitle title="Áreas de atuação" />
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {areas.map((area) => (
-          <article key={area.title} className="rounded-xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-cyantech/60">
-            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg border border-cyantech/40 bg-deep text-lg">
-              {iconMap[area.icon] ?? '•'}
-            </div>
-            <h3 className="text-xl font-semibold text-white">{area.title}</h3>
-            <p className="mt-3 text-lightgray/90">{area.description}</p>
-          </article>
-        ))}
+    <section id="areas" ref={ref} className="fade-in-section py-20 px-6 max-w-5xl mx-auto">
+      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// áreas de atuação</p>
+      <h2 className="font-mono text-3xl font-bold text-white mb-3">Domínios</h2>
+      <p className="text-textprimary/50 text-sm mb-10 max-w-2xl">
+        Base sólida em defesa, expandindo para o ofensivo. Os cards marcados como{' '}
+        <span className="text-neon/80 font-mono">ofensivo</span> refletem estudo e prática (bug bounty / laboratório).
+      </p>
+
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {areas.map((area) => {
+          const offensive = area.side === 'offensive';
+          return (
+            <article
+              key={area.title}
+              className={`border bg-surface p-5 transition-colors duration-200 ${
+                offensive
+                  ? 'border-neon/30 hover:border-neon/70'
+                  : 'border-neon/15 hover:border-neon/40'
+              }`}
+            >
+              <div className="mb-3 flex items-center justify-between">
+                <div className="flex h-9 w-9 items-center justify-center border border-neon/30 bg-terminal text-base">
+                  {iconMap[area.icon] ?? '•'}
+                </div>
+                {offensive && (
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-neon/70 border border-neon/30 px-2 py-0.5">
+                    ofensivo
+                  </span>
+                )}
+              </div>
+              <h3 className="font-mono text-white text-base font-bold mb-2">{area.title}</h3>
+              <p className="text-textprimary/65 text-sm leading-relaxed">{area.description}</p>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

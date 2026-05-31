@@ -2,7 +2,7 @@ export const portfolioData = {
   person: {
     fullName: 'Patrick Santos',
     firstName: 'Patrick Santos',
-    role: 'Segurança da Informação | Blue Team | SOC | Threat Hunting | GRC | IAM',
+    role: 'Segurança da Informação | Blue Team & SOC | Purple Team em formação | Bug Bounty na HackerOne',
     city: 'Rio de Janeiro, RJ',
     email: 'ptkamp1@gmail.com',
     linkedin: 'https://www.linkedin.com/in/ptkthg/',
@@ -20,6 +20,7 @@ export const portfolioData = {
     'Sou Patrick Santos, profissional de Blue Team com mais de dois anos de atuação em SOC, detecção de ameaças e resposta a incidentes em ambientes corporativos reais.',
     'Ao longo da minha trajetória, passei por três organizações com contextos distintos, o que me proporcionou uma visão abrangente de como diferentes ambientes gerenciam risco: do suporte de identidade no Active Directory à criação de regras personalizadas no Microsoft Defender XDR e à investigação de comportamentos suspeitos com KQL e MITRE ATT&CK.',
     'Acredito que segurança eficaz não começa no alerta, mas na hipótese. Por isso, construo detecções orientadas a comportamento, indo além da assinatura. Aplico frameworks como NIST CSF e CIS Controls para estruturar a defesa de forma contínua e alinhada às necessidades do negócio.',
+    'Para defender melhor, estudo o lado ofensivo: pratico testes de intrusão com o Kali Linux e participo de programas de bug bounty na HackerOne. Esse caminho de Purple Team me ajuda a pensar como atacante e transformar cada técnica em uma defesa mais robusta.',
     'Busco uma equipe onde eu possa contribuir com detecção precoce, redução contínua da superfície de ataque e uma cultura de segurança orientada a dados, em que cada análise gere aprendizado e cada incidente fortaleça os controles.',
   ],
   areas: [
@@ -58,6 +59,20 @@ export const portfolioData = {
       icon: 'server',
       description:
         'Sustentação de controles de segurança, inventário, backup, políticas, GPO e fortalecimento da postura defensiva.',
+    },
+    {
+      title: 'Web AppSec & Bug Bounty',
+      icon: 'globe',
+      side: 'offensive',
+      description:
+        'Caça a vulnerabilidades em aplicações web (XSS, IDOR, SSRF, SQLi) em programas de bug bounty na HackerOne, com foco em recon e validação manual.',
+    },
+    {
+      title: 'Pentest de Rede',
+      icon: 'crosshair',
+      side: 'offensive',
+      description:
+        'Estudo e prática de testes de intrusão em rede: enumeração de serviços, exploração controlada e pós-exploração em ambientes de laboratório.',
     },
   ],
   techStack: {
@@ -277,9 +292,29 @@ export const portfolioData = {
       'Blue Team',
     ],
   },
-  methodology: ['Coleta de evidências', 'Análise técnica', 'Classificação de risco', 'Priorização', 'Recomendação', 'Documentação', 'Acompanhamento'],
+  methodology: [
+    { step: 'Reconhecimento', desc: 'Mapeamento da superfície de ataque, OSINT, enumeração de subdomínios e descoberta de ativos.' },
+    { step: 'Enumeração', desc: 'Varredura de portas e serviços, fingerprinting e identificação de versões e tecnologias.' },
+    { step: 'Exploração', desc: 'Validação manual de vulnerabilidades e provas de conceito controladas, sem impacto.' },
+    { step: 'Pós-exploração', desc: 'Avaliação de impacto, movimentação lateral simulada e validação do potencial de dano.' },
+    { step: 'Relatório & Defesa', desc: 'Documentação clara, severidade, passos de reprodução e recomendações de detecção e correção.' },
+  ],
   methodologyText:
-    'Minha abordagem combina investigação técnica, visão de risco e comunicação objetiva. O objetivo não é apenas identificar alertas ou vulnerabilidades, mas transformar achados em decisões práticas de segurança.',
+    'Aplico o ciclo ofensivo para fortalecer a defesa: cada vulnerabilidade encontrada vira uma lição de detecção, não apenas um achado isolado. É a integração entre ataque (Red) e defesa (Blue) na prática.',
+  frameworks: ['OWASP Top 10', 'OWASP WSTG', 'PTES', 'MITRE ATT&CK', 'NIST SP 800-115'],
+  arsenal: {
+    'Recon & OSINT': ['nmap', 'amass', 'subfinder', 'theHarvester', 'recon-ng', 'dnsrecon'],
+    'Scanning & Enumeração': ['nikto', 'gobuster', 'ffuf', 'wpscan', 'whatweb', 'enum4linux'],
+    'Web AppSec': ['Burp Suite', 'OWASP ZAP', 'sqlmap', 'XSStrike', 'commix'],
+    'Exploração': ['Metasploit', 'searchsploit', 'netcat', 'impacket'],
+    'Senhas & Cracking': ['hydra', 'john', 'hashcat', 'crackmapexec'],
+    'Pós-exploração & AD': ['mimikatz', 'BloodHound', 'evil-winrm'],
+    'Análise de tráfego': ['Wireshark', 'tcpdump'],
+  },
+  offensiveSkills: {
+    'Pentest & Web AppSec': ['Web Pentest', 'Recon', 'XSS', 'IDOR', 'SSRF', 'SQL Injection', 'Auth Bypass', 'Privilege Escalation'],
+    'Bug Bounty (HackerOne)': ['Caça a vulnerabilidades', 'Análise de superfície', 'Relatórios de impacto', 'Validação manual'],
+  },
   differentials: [
     {
       title: 'Visão técnica',
@@ -329,9 +364,11 @@ export const portfolioData = {
 export const navItems = [
   { label: 'Início', id: 'hero' },
   { label: 'Sobre', id: 'sobre' },
+  { label: 'Áreas', id: 'areas' },
+  { label: 'Metodologia', id: 'metodologia' },
+  { label: 'Arsenal', id: 'arsenal' },
   { label: 'Trajetória', id: 'trajetoria' },
   { label: 'Skills', id: 'skills' },
   { label: 'Projetos', id: 'projetos' },
-  { label: 'Certificações', id: 'certificacoes' },
   { label: 'Contato', id: 'contato' },
 ];
