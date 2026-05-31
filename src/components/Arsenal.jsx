@@ -2,12 +2,11 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 // Mapeia o nome da categoria para um "comando" estilo terminal.
 const CMD = {
-  'Recon & OSINT': 'ls recon/',
-  'Scanning & Enumeração': 'ls scanning/',
+  'Recon & Scanning': 'ls recon/',
   'Web AppSec': 'ls webapp/',
   'Exploração': 'ls exploit/',
   'Senhas & Cracking': 'ls passwords/',
-  'Pós-exploração & AD': 'ls post-exploit/',
+  'Wireless': 'ls wireless/',
   'Análise de tráfego': 'ls traffic/',
 };
 
