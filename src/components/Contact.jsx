@@ -28,7 +28,7 @@ function GitHubIcon() {
   );
 }
 
-export default function Contact({ person }) {
+export default function Contact({ person, whatISeek }) {
   const ref = useScrollReveal();
 
   const links = [
@@ -55,9 +55,14 @@ export default function Contact({ person }) {
   return (
     <section id="contato" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// contato</p>
-      <h2 className="font-mono text-3xl font-bold text-white mb-3">Fale comigo</h2>
-      <p className="text-textprimary/70 text-sm font-mono mb-10">
-        {person.city} &nbsp;·&nbsp; Segurança da Informação / SOC / Blue Team / Vulnerabilidades &nbsp;·&nbsp; Aberto a oportunidades
+      <h2 className="font-mono text-3xl font-bold text-white mb-3">O que eu busco</h2>
+      {whatISeek && (
+        <p className="text-textprimary/80 text-sm md:text-base leading-relaxed mb-3 max-w-2xl">
+          {whatISeek}
+        </p>
+      )}
+      <p className="font-mono text-textprimary/55 text-xs mb-10">
+        {person.city} &nbsp;·&nbsp; aberto a oportunidades
       </p>
 
       <div className="flex flex-col sm:flex-row gap-3">

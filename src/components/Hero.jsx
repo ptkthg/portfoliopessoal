@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function Hero({ person, hasResume, description, subrole }) {
+export default function Hero({ person, hasResume, description, subrole, whoami }) {
   const [typed, setTyped] = useState('');
   const [done, setDone] = useState(false);
 
@@ -45,6 +45,13 @@ export default function Hero({ person, hasResume, description, subrole }) {
           {done && <span className="text-neon text-glow">_</span>}
         </h1>
 
+        {/* whoami — resposta humana, aparece após digitar o nome */}
+        {whoami && (
+          <p className={`font-mono text-textprimary/60 text-sm md:text-base mb-5 transition-opacity duration-700 ${done ? 'opacity-100' : 'opacity-0'}`}>
+            <span className="text-neon/50">&gt;</span> {whoami}
+          </p>
+        )}
+
         {/* Role */}
         <p className="font-mono text-neon text-xs sm:text-sm md:text-base mb-2 tracking-wide text-glow leading-relaxed">
           {person.role}
@@ -72,18 +79,18 @@ export default function Hero({ person, hasResume, description, subrole }) {
             href="#projetos"
             className="font-mono text-sm border border-neon text-neon px-7 py-3 hover:bg-neon hover:text-terminal transition-all duration-200 tracking-wide"
           >
-            [Ver Projetos]
+            ver o que eu construí
           </a>
           <a
             href={person.resumePath}
             download
             className={`font-mono text-sm border px-7 py-3 transition-all duration-200 tracking-wide ${
               hasResume
-                ? 'border-textprimary/30 text-textprimary/60 hover:border-neon hover:text-neon'
+                ? 'border-textprimary/30 text-textprimary/70 hover:border-neon hover:text-neon'
                 : 'border-textprimary/10 text-textprimary/20 cursor-not-allowed pointer-events-none'
             }`}
           >
-            [Download CV]
+            baixar currículo
           </a>
         </div>
       </div>

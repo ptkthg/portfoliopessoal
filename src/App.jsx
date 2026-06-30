@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import About from './components/About';
 import Areas from './components/Areas';
-import Arsenal from './components/Arsenal';
 import CaseStudy from './components/CaseStudy';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
@@ -9,11 +8,14 @@ import Differentials from './components/Differentials';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Methodology from './components/Methodology';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Timeline from './components/Timeline';
 import { portfolioData } from './data/portfolioData';
+
+// Nota: Methodology e Arsenal (lado ofensivo/Kali) foram retirados do fluxo
+// principal para enxugar a navegação. Os componentes e dados continuam no
+// repo — basta reimportar e renderizar para reativá-los.
 
 export default function App() {
   const [showTop, setShowTop] = useState(false);
@@ -38,24 +40,22 @@ export default function App() {
         <Hero
           person={portfolioData.person}
           hasResume={hasResume}
+          whoami={portfolioData.heroWhoami}
           subrole={portfolioData.heroSubrole}
           description={portfolioData.heroDescription}
         />
         <About />
+        <Areas areas={portfolioData.areas} />
         <Skills />
+        <Differentials
+          differentials={portfolioData.differentials}
+          developing={portfolioData.developing}
+        />
         <Projects projects={portfolioData.projects} />
         <CaseStudy caseStudy={portfolioData.caseStudy} />
         <Timeline experiences={portfolioData.experiences} />
-        <Differentials differentials={portfolioData.differentials} />
-        <Areas areas={portfolioData.areas} />
-        <Methodology
-          methodology={portfolioData.methodology}
-          methodologyText={portfolioData.methodologyText}
-          frameworks={portfolioData.frameworks}
-        />
-        <Arsenal arsenal={portfolioData.arsenal} />
         <Certifications certifications={portfolioData.certifications} />
-        <Contact person={portfolioData.person} />
+        <Contact person={portfolioData.person} whatISeek={portfolioData.whatISeek} />
       </main>
       <Footer />
 

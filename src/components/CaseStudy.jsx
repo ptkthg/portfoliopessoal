@@ -20,7 +20,7 @@ export default function CaseStudy({ caseStudy }) {
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// estudo de caso</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-3">{caseStudy.subtitle}</h2>
       <p className="text-textprimary/70 text-sm mb-8 max-w-2xl">
-        Um incidente real conduzido do alerta à correção da causa raiz — detecção, resposta e melhoria do controle.
+        Um caso real, do alerta inicial até achar a causa e corrigir.
       </p>
 
       <div className="border border-neon/25 bg-surface divide-y divide-neon/10">

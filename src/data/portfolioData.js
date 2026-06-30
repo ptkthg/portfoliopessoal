@@ -14,14 +14,19 @@ export const portfolioData = {
     profileImagePosition: 'center 28%',
     resumePath: '/assets/patrickcv0426.pdf',
   },
+  // Resposta humana do "whoami" — aparece após o nome terminar de digitar.
+  heroWhoami: 'um cara que gosta de quebrar e consertar coisas',
   heroSubrole:
-    'Monitoramento, análise de alertas e resposta inicial a incidentes — em evolução para Purple Team, Cloud Security e IA generativa.',
+    'Eu monitoro, analiso alertas e respondo a incidentes. Agora estudando Cloud Security, Purple Team e IA generativa.',
   heroDescription:
-    'Analista de SI com atuação prática em SOC, Blue Team e gestão de vulnerabilidades. Monitoro, investigo e respondo — e automatizo o que dá, inclusive com IA, para o time decidir mais rápido.',
+    'Trabalho no dia a dia de um SOC: recebo os alertas, separo o ruído do que é risco de verdade e ajo rápido. Quando dá, automatizo parte do trabalho (às vezes com IA) pra equipe ganhar tempo.',
+  // Texto de "o que busco" (seção de contato).
+  whatISeek:
+    'Procuro uma vaga de analista de segurança ou SOC onde eu pegue incidentes de verdade e continue crescendo rumo a Pleno. Me interessa especialmente quem trabalha com Microsoft Security, nuvem ou automação. Se fizer sentido, me manda uma mensagem — respondo rápido.',
   aboutText: [
-    'Comecei no suporte N1/N2 e migrei para segurança por uma razão simples: gosto de entender como as coisas quebram e como defendê-las. Hoje atuo no eixo SOC/Blue Team, monitorando alertas em endpoint, identidade, e-mail e aplicações, e conduzindo a triagem do falso positivo ao encaminhamento com evidência.',
-    'Minha base é Microsoft Security (Defender XDR, Intune, Entra ID, Purview), somada a Wazuh, Graylog e SIEM, governança de acessos no Active Directory e gestão de vulnerabilidades priorizada por exposição e impacto. Não paro no alerta: documento, correlaciono e proponho o ajuste de controle.',
-    'Estou crescendo em três frentes — Purple Team (uso ataque para fortalecer defesa), Cloud Security e IA generativa, onde estudo engenharia de prompt e LLMs para automatizar análise e abrir um novo leque na carreira. Para mim, aprender é construir: os projetos abaixo nasceram de problemas reais que enfrentei na operação.',
+    'Sou o Patrick, analista de segurança no Rio de Janeiro. Entrei na área pelo suporte, mexendo com Active Directory, usuários e acessos, e fui puxando pro lado que mais me prende: entender como um ataque acontece e como barrar ele antes de virar problema.',
+    'Hoje meu trabalho é vigiar o ambiente e agir quando algo foge do normal. Um alerta dispara e eu investigo: o que é, de onde veio, se é risco real ou só barulho. Quando é sério, ajudo a conter e registro tudo pra empresa entender o que houve e não repetir. Trabalho principalmente com o ecossistema Microsoft (Defender, Intune, Entra ID) e com Wazuh, Graylog e SIEM.',
+    'O que eu gosto mesmo é pegar um problema técnico e explicar de um jeito que a pessoa entende o risco, seja o time de segurança ou a diretoria. Estou abrindo duas frentes novas: segurança em nuvem e IA generativa, construindo pequenas ferramentas que poupam tempo de quem trabalha no SOC.',
   ],
   // Métricas e pilares do "Sobre" — centralizados aqui (antes hardcoded no componente).
   aboutMetrics: [
@@ -92,39 +97,55 @@ export const portfolioData = {
   skillGroups: [
     {
       label: 'SOC & Detecção',
-      level: 'Sólido na prática',
+      level: 'uso no trabalho',
       skills: ['Microsoft Defender XDR', 'SIEM', 'Wazuh', 'Graylog', 'KQL', 'Triagem de alertas', 'Análise de logs', 'Redução de falsos positivos'],
     },
     {
       label: 'Resposta a Incidentes',
-      level: 'Em uso no dia a dia',
+      level: 'uso no dia a dia',
       skills: ['Investigação', 'Cadeia de processos', 'Contenção inicial', 'Coleta de evidências', 'Documentação executiva'],
     },
     {
       label: 'Vulnerabilidades & Hardening',
-      level: 'Sólido na prática',
+      level: 'uso no trabalho',
       skills: ['Priorização por risco', 'ASM', 'Patch management', 'Secure Score', 'GPO', 'CIS Controls', 'NIST CSF'],
     },
     {
       label: 'IAM & Governança',
-      level: 'Sólido na prática',
+      level: 'uso no trabalho',
       skills: ['Active Directory', 'Microsoft Entra ID', 'Ciclo de vida de usuário', 'Menor privilégio', 'Trilhas de auditoria'],
     },
     {
       label: 'Cloud & GRC',
-      level: 'Em desenvolvimento',
+      level: 'estudando agora',
       skills: ['Fundamentos de Azure Security', 'Microsoft Purview', 'Privacidade & conformidade', 'Análise de risco'],
     },
     {
       label: 'IA aplicada à segurança',
-      level: 'Em uso nos projetos',
+      level: 'uso nos projetos',
       skills: ['Enriquecimento de IOC com LLM', 'Briefings de ameaça (PT-BR)', 'Automação de triagem', 'Groq · Llama 3.3'],
     },
     {
       label: 'IA Generativa & Eng. de Prompt',
-      level: 'Em estudo · novo foco',
+      level: 'estudando agora · novo foco',
       skills: ['IA generativa', 'Engenharia de prompt', 'LLMs', 'RAG', 'Embeddings', 'Automação com IA', 'APIs de IA (Groq / OpenAI / Anthropic)'],
     },
+  ],
+  // Habilidades interpessoais — frases concretas, não buzzwords.
+  softSkills: [
+    'Explico problema técnico sem enrolar, pra quem é da área e pra quem não é',
+    'Mantenho a calma quando o alerta é real',
+    'Documento de um jeito que a próxima pessoa entende',
+    'Aprendo rápido e por conta própria',
+    'Trabalho junto com outros times e com SOC terceirizado',
+  ],
+  // O que ainda estou desenvolvendo — honesto, sem prometer demais.
+  developing: [
+    { area: 'Cloud Security (Azure)', note: 'saindo dos fundamentos pra prática' },
+    { area: 'GRC e privacidade', note: 'Purview, LGPD, análise de risco' },
+    { area: 'IA generativa e engenharia de prompt', note: 'meu foco novo de estudo' },
+    { area: 'Lado ofensivo / Purple Team', note: 'pentest e bug bounty em laboratório' },
+    { area: 'Certificações', note: 'em andamento (AZ-500 / SC-200 no radar)' },
   ],
   experiences: [
     {
@@ -272,24 +293,24 @@ export const portfolioData = {
   },
   differentials: [
     {
-      title: 'Autonomia com critério',
+      title: 'Investigo com autonomia',
       description:
-        'Consigo conduzir triagens, investigações e documentação com autonomia, validando evidências e escalando pontos de maior impacto quando necessário.',
+        'Conduzo a triagem sozinho, valido a evidência e só escalo o que realmente precisa de outra mão.',
     },
     {
-      title: 'Visão de risco',
+      title: 'Penso em risco, não em lista de tarefas',
       description:
-        'Priorizo vulnerabilidades, controles e recomendações por impacto, criticidade, exposição, ativos afetados e esforço de implementação.',
+        'Priorizo o que corrigir pelo impacto e pela exposição, não pela ordem que apareceu.',
     },
     {
-      title: 'Base técnica ampla',
+      title: 'Conecto os pontos',
       description:
-        'Tenho vivência prática em suporte N1/N2, SOC, Defender, Intune, Wazuh, Graylog, IAM, Active Directory, hardening, patch management, ASM e WAF.',
+        'Junto suporte, SOC, Defender, IAM e hardening. Já vi o problema dos dois lados.',
     },
     {
-      title: 'Comunicação e documentação',
+      title: 'Escrevo pra ser entendido',
       description:
-        'Transformo achados técnicos em relatórios, evidências, contexto de risco e recomendações compreensíveis para operação, gestão e áreas responsáveis.',
+        'Transformo um achado técnico em relatório que a gestão lê e age.',
     },
   ],
   certifications: [
@@ -311,9 +332,10 @@ export const portfolioData = {
 export const navItems = [
   { label: 'Início', id: 'hero' },
   { label: 'Sobre', id: 'sobre' },
+  { label: 'O que faço', id: 'areas' },
   { label: 'Competências', id: 'skills' },
+  { label: 'Pontos fortes', id: 'pontos-fortes' },
   { label: 'Projetos', id: 'projetos' },
-  { label: 'Estudo de caso', id: 'estudo-caso' },
   { label: 'Trajetória', id: 'trajetoria' },
   { label: 'Contato', id: 'contato' },
 ];

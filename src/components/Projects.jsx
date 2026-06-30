@@ -12,9 +12,9 @@ export default function Projects({ projects }) {
   return (
     <section id="projetos" ref={ref} className="fade-in-section py-20 px-6 max-w-5xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// projetos</p>
-      <h2 className="font-mono text-3xl font-bold text-white mb-4">Lab & Ferramentas</h2>
+      <h2 className="font-mono text-3xl font-bold text-white mb-4">Projetos</h2>
       <p className="text-textprimary/70 text-sm mb-8 max-w-2xl">
-        Projetos que conectam operação defensiva, inteligência de ameaças, automação leve e documentação técnica.
+        Ferramentas que eu mesmo construí pra resolver chatices reais do dia a dia de segurança. Duas estão no ar, é só abrir e testar.
       </p>
 
       {/* Tab navigation */}
@@ -120,7 +120,7 @@ export default function Projects({ projects }) {
                 rel="noreferrer"
                 className="border border-neon bg-neon/10 text-neon text-xs px-4 py-2 hover:bg-neon hover:text-terminal transition-all duration-200"
               >
-                $ ./abrir ↗
+                abrir app ↗
               </a>
             )}
             {project.githubUrl && (
@@ -130,7 +130,7 @@ export default function Projects({ projects }) {
                 rel="noreferrer"
                 className="border border-textprimary/25 text-textprimary/60 text-xs px-4 py-2 hover:border-neon/50 hover:text-neon/80 transition-all duration-200"
               >
-                git clone
+                ver código
               </a>
             )}
             {!project.liveUrl && !project.githubUrl && (
