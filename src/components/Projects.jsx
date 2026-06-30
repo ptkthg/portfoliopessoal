@@ -1,60 +1,11 @@
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const buildProjects = (iocEnricher) => [
-  {
-    filename: 'iocenricher.exe',
-    title: 'IOC Enricher',
-    version: 'v1.0.0',
-    status: 'OPERATIONAL',
-    statusColor: 'text-neon text-glow',
-    description: 'Enriquece IP, domínio, URL ou hash com 11 fontes OSINT e análise por IA (Groq Llama 3.3 70B). Gera recomendação operacional e exporta relatório.',
-    logs: [
-      { prefix: '[SRC]', value: '11 OSINT sources loaded' },
-      { prefix: '[AI] ', value: 'Groq Llama 3.3 70B active' },
-    ],
-    tags: ['React', 'Vite', 'Tailwind', 'Vercel', 'Groq', 'OSINT APIs'],
-    liveUrl: iocEnricher?.liveUrl ?? 'https://iocenricher.vercel.app',
-    githubUrl: iocEnricher?.githubUrl ?? 'https://github.com/ptkthg/iocenricher',
-  },
-  {
-    filename: 'statecraft.next',
-    title: 'Statecraft',
-    version: 'v1.0.0',
-    status: 'OPERATIONAL',
-    statusColor: 'text-neon text-glow',
-    description: 'Plataforma de threat intelligence em PT-BR: CVEs das últimas 72h com CVSS e EPSS, briefings gerados por IA a cada hora e IOC Search com fontes OSINT.',
-    logs: [
-      { prefix: '[FEEDS]', value: '19 RSS sources + NVD API' },
-      { prefix: '[AI]   ', value: 'Groq Llama 3.3 70B · PT-BR' },
-      { prefix: '[KEV]  ', value: 'CISA KEV + EPSS enrichment' },
-    ],
-    tags: ['Next.js 15', 'TypeScript', 'Tailwind', 'PostgreSQL', 'Prisma', 'Groq AI'],
-    liveUrl: 'https://statecraftcyber.vercel.app',
-    githubUrl: null,
-  },
-  {
-    filename: 'hunting_pack.kql',
-    title: 'XDR Hunting Pack',
-    version: null,
-    status: 'INTERNAL',
-    statusColor: 'text-yellow-400/90',
-    description: 'Coleção de queries KQL para threat hunting no Microsoft Defender XDR, cobrindo password spray, LOLBins, PowerShell suspeito e Outlook criando processos anômalos.',
-    logs: [
-      { prefix: '[ENV]  ', value: 'Microsoft Defender XDR' },
-      { prefix: '[MAP]  ', value: 'MITRE ATT&CK aligned' },
-    ],
-    tags: ['KQL', 'Defender XDR', 'MITRE ATT&CK', 'Threat Hunting'],
-    liveUrl: null,
-    githubUrl: null,
-  },
-];
-
-export default function Projects({ iocEnricher }) {
+export default function Projects({ projects }) {
   const ref = useScrollReveal();
   const [current, setCurrent] = useState(0);
 
-  const PROJECTS = buildProjects(iocEnricher);
+  const PROJECTS = projects ?? [];
   const project = PROJECTS[current];
   const isOperational = project.status === 'OPERATIONAL';
 
@@ -62,6 +13,9 @@ export default function Projects({ iocEnricher }) {
     <section id="projetos" ref={ref} className="fade-in-section py-20 px-6 max-w-5xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// projetos</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-4">Lab & Ferramentas</h2>
+      <p className="text-textprimary/50 text-sm mb-8 max-w-2xl">
+        Projetos que conectam operação defensiva, inteligência de ameaças, automação leve e documentação técnica.
+      </p>
 
       {/* Tab navigation */}
       <div className="flex items-center gap-3 sm:gap-6 mb-8 border-b border-neon/10 pb-3 overflow-x-auto scrollbar-none">
@@ -100,7 +54,14 @@ export default function Projects({ iocEnricher }) {
           <span className={`font-mono text-xs tracking-wide ${isOperational ? 'text-textprimary/40' : 'text-textprimary/30'}`}>
             {project.filename}
           </span>
-          <div className="w-16" />
+          {project.liveUrl ? (
+            <span className="flex items-center gap-1.5 font-mono text-[10px] text-neon tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
+              live
+            </span>
+          ) : (
+            <div className="w-16" />
+          )}
         </div>
 
         {/* Content */}
@@ -157,9 +118,9 @@ export default function Projects({ iocEnricher }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-neon text-neon text-xs px-4 py-2 hover:bg-neon hover:text-terminal transition-all duration-200"
+                className="border border-neon bg-neon/10 text-neon text-xs px-4 py-2 hover:bg-neon hover:text-terminal transition-all duration-200"
               >
-                $ ./launch
+                $ ./abrir ↗
               </a>
             )}
             {project.githubUrl && (

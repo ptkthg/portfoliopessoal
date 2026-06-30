@@ -1,39 +1,9 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { portfolioData } from '../data/portfolioData';
 
-const METRICS = [
-  { value: '2+', label: 'Anos de experiência' },
-  { value: '30+', label: 'Ferramentas dominadas' },
-  { value: '5+', label: 'Análises técnicas' },
-  { value: '3', label: 'Empresas atendidas' },
-];
-
-const PILLARS = [
-  {
-    index: '01',
-    label: 'Detectar',
-    desc: 'Identifico ameaças antes que se tornem incidentes com hipóteses, KQL e MITRE ATT&CK.',
-  },
-  {
-    index: '02',
-    label: 'Investigar',
-    desc: 'Correlaciono evidências técnicas com contexto operacional para chegar à causa raiz.',
-  },
-  {
-    index: '03',
-    label: 'Responder',
-    desc: 'Contenho, erradico e recupero com decisões rápidas e documentação clara.',
-  },
-  {
-    index: '04',
-    label: 'Melhorar',
-    desc: 'Transformo lições aprendidas em controles preventivos e playbooks reutilizáveis.',
-  },
-];
-
 export default function About() {
   const ref = useScrollReveal();
-  const { aboutText } = portfolioData;
+  const { aboutText, aboutMetrics: METRICS, aboutPillars: PILLARS } = portfolioData;
 
   return (
     <section id="sobre" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">

@@ -21,8 +21,8 @@ export default function Areas({ areas }) {
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// áreas de atuação</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-3">Domínios</h2>
       <p className="text-textprimary/50 text-sm mb-10 max-w-2xl">
-        Base sólida em defesa, expandindo para o ofensivo. Os cards marcados como{' '}
-        <span className="text-neon/80 font-mono">ofensivo</span> refletem estudo e prática (bug bounty / laboratório).
+        Eixo principal em Segurança da Informação, SOC, Blue Team, IAM e gestão de vulnerabilidades. Os cards marcados como{' '}
+        <span className="text-neon/80 font-mono">ofensivo</span> refletem estudo aplicado à evolução para Purple Team.
       </p>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
