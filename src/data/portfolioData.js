@@ -14,12 +14,8 @@ export const portfolioData = {
     profileImagePosition: 'center 28%',
     resumePath: '/assets/patrickcv0426.pdf',
   },
-  // Resposta humana do "whoami" — aparece após o nome terminar de digitar.
-  heroWhoami: 'um cara que gosta de quebrar e consertar coisas',
-  heroSubrole:
-    'Eu monitoro, analiso alertas e respondo a incidentes. Agora estudando Cloud Security, Purple Team e IA generativa.',
-  heroDescription:
-    'Trabalho no dia a dia de um SOC: recebo os alertas, separo o ruído do que é risco de verdade e ajo rápido. Quando dá, automatizo parte do trabalho (às vezes com IA) pra equipe ganhar tempo.',
+  // Hero minimalista: só nome + estas áreas de interesse.
+  heroAreas: ['Blue Team', 'GRC', 'IAM', 'Purple Team', 'Engenharia de Prompt', 'Automação com IA'],
   // Texto de "o que busco" (seção de contato).
   whatISeek:
     'Procuro uma vaga de analista de segurança ou SOC onde eu pegue incidentes de verdade e continue crescendo rumo a Pleno. Me interessa especialmente quem trabalha com Microsoft Security, nuvem ou automação. Se fizer sentido, me manda uma mensagem — respondo rápido.',

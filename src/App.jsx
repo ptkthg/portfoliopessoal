@@ -19,7 +19,6 @@ import { portfolioData } from './data/portfolioData';
 
 export default function App() {
   const [showTop, setShowTop] = useState(false);
-  const [hasResume, setHasResume] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 400);
@@ -27,23 +26,11 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    fetch(portfolioData.person.resumePath, { method: 'HEAD' })
-      .then((r) => setHasResume(r.ok))
-      .catch(() => setHasResume(false));
-  }, []);
-
   return (
     <div className="min-h-screen bg-terminal text-textprimary">
       <Header />
       <main>
-        <Hero
-          person={portfolioData.person}
-          hasResume={hasResume}
-          whoami={portfolioData.heroWhoami}
-          subrole={portfolioData.heroSubrole}
-          description={portfolioData.heroDescription}
-        />
+        <Hero name={portfolioData.person.firstName} areas={portfolioData.heroAreas} />
         <About />
         <Areas areas={portfolioData.areas} />
         <Skills />
