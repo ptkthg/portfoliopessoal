@@ -14,16 +14,14 @@ export const portfolioData = {
     profileImagePosition: 'center 28%',
     resumePath: '/assets/patrickcv0426.pdf',
   },
-  // Frase forte do Hero — comunica valor em uma linha, sem siglas.
-  heroHeadline: 'Eu transformo alertas em decisões.',
   heroSubrole:
-    'Monitoramento, análise de alertas e resposta inicial a incidentes — evoluindo para Purple Team e Cloud Security.',
+    'Monitoramento, análise de alertas e resposta inicial a incidentes — em evolução para Purple Team, Cloud Security e IA generativa.',
   heroDescription:
     'Analista de SI com atuação prática em SOC, Blue Team e gestão de vulnerabilidades. Monitoro, investigo e respondo — e automatizo o que dá, inclusive com IA, para o time decidir mais rápido.',
   aboutText: [
     'Comecei no suporte N1/N2 e migrei para segurança por uma razão simples: gosto de entender como as coisas quebram e como defendê-las. Hoje atuo no eixo SOC/Blue Team, monitorando alertas em endpoint, identidade, e-mail e aplicações, e conduzindo a triagem do falso positivo ao encaminhamento com evidência.',
     'Minha base é Microsoft Security (Defender XDR, Intune, Entra ID, Purview), somada a Wazuh, Graylog e SIEM, governança de acessos no Active Directory e gestão de vulnerabilidades priorizada por exposição e impacto. Não paro no alerta: documento, correlaciono e proponho o ajuste de controle.',
-    'Estou crescendo em três frentes — Purple Team (uso ataque para fortalecer defesa), Cloud Security e automação com IA. Para mim, aprender é construir: os projetos abaixo nasceram de problemas reais que enfrentei na operação.',
+    'Estou crescendo em três frentes — Purple Team (uso ataque para fortalecer defesa), Cloud Security e IA generativa, onde estudo engenharia de prompt e LLMs para automatizar análise e abrir um novo leque na carreira. Para mim, aprender é construir: os projetos abaixo nasceram de problemas reais que enfrentei na operação.',
   ],
   // Métricas e pilares do "Sobre" — centralizados aqui (antes hardcoded no componente).
   aboutMetrics: [
@@ -121,6 +119,11 @@ export const portfolioData = {
       label: 'IA aplicada à segurança',
       level: 'Em uso nos projetos',
       skills: ['Enriquecimento de IOC com LLM', 'Briefings de ameaça (PT-BR)', 'Automação de triagem', 'Groq · Llama 3.3'],
+    },
+    {
+      label: 'IA Generativa & Eng. de Prompt',
+      level: 'Em estudo · novo foco',
+      skills: ['IA generativa', 'Engenharia de prompt', 'LLMs', 'RAG', 'Embeddings', 'Automação com IA', 'APIs de IA (Groq / OpenAI / Anthropic)'],
     },
   ],
   experiences: [

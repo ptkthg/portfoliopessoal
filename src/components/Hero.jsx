@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function Hero({ person, hasResume, description, headline, subrole }) {
+export default function Hero({ person, hasResume, description, subrole }) {
   const [typed, setTyped] = useState('');
   const [done, setDone] = useState(false);
 
@@ -40,14 +40,9 @@ export default function Hero({ person, hasResume, description, headline, subrole
         </p>
 
         {/* Name — typewriter effect */}
-        <p className="font-mono text-textprimary/70 text-base md:text-xl mb-4 leading-none">
+        <h1 className="font-mono text-5xl md:text-7xl font-bold text-white mb-5 leading-none" style={{ textShadow: '0 0 40px rgba(255,255,255,0.08)' }}>
           <span className={!done ? 'cursor-blink' : ''}>{typed}</span>
           {done && <span className="text-neon text-glow">_</span>}
-        </p>
-
-        {/* Headline — frase forte */}
-        <h1 className="font-mono text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-5 leading-tight" style={{ textShadow: '0 0 40px rgba(255,255,255,0.08)' }}>
-          {headline}
         </h1>
 
         {/* Role */}

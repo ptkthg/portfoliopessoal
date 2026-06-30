@@ -38,7 +38,6 @@ export default function App() {
         <Hero
           person={portfolioData.person}
           hasResume={hasResume}
-          headline={portfolioData.heroHeadline}
           subrole={portfolioData.heroSubrole}
           description={portfolioData.heroDescription}
         />
