@@ -8,15 +8,6 @@ export default {
         surface: '#111118',
         neon: '#00ff88',
         textprimary: '#e2e8f0',
-        // legacy
-        deep: '#0a0a0f',
-        blueteam: '#0F3D91',
-        cyantech: '#38BDF8',
-        electric: '#2563EB',
-        graydark: '#111827',
-        lightgray: '#E5E7EB',
-        softgreen: '#22C55E',
-        alertred: '#EF4444',
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],

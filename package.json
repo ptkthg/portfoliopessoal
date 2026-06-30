@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "recruiters": "node scripts/linkedin-recruiters.mjs"
   },
   "dependencies": {
     "lucide-react": "latest",

@@ -20,7 +20,7 @@ export default function Arsenal({ arsenal }) {
     <section id="arsenal" ref={ref} className="fade-in-section py-20 px-6 max-w-5xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// arsenal — kali linux</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-3">Ferramentas por categoria</h2>
-      <p className="text-textprimary/50 text-sm mb-10 max-w-2xl">
+      <p className="text-textprimary/70 text-sm mb-10 max-w-2xl">
         Ferramentas que uso em estudos de pentest e na prática de bug bounty.
       </p>
 

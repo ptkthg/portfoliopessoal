@@ -2,7 +2,7 @@ export const portfolioData = {
   person: {
     fullName: 'Patrick Santos',
     firstName: 'Patrick Santos',
-    role: 'Segurança da Informação | Blue Team & SOC | Purple Team em formação | Bug Bounty na HackerOne',
+    role: 'Analista de Segurança da Informação · Blue Team & SOC',
     city: 'Rio de Janeiro, RJ',
     email: 'ptkamp1@gmail.com',
     linkedin: 'https://www.linkedin.com/in/ptkthg/',
@@ -14,51 +14,66 @@ export const portfolioData = {
     profileImagePosition: 'center 28%',
     resumePath: '/assets/patrickcv0426.pdf',
   },
+  // Frase forte do Hero — comunica valor em uma linha, sem siglas.
+  heroHeadline: 'Eu transformo alertas em decisões.',
+  heroSubrole:
+    'Monitoramento, análise de alertas e resposta inicial a incidentes — evoluindo para Purple Team e Cloud Security.',
   heroDescription:
-    'Profissional de Segurança da Informação com atuação prática em monitoramento de ameaças, resposta a incidentes, gestão de vulnerabilidades, governança de acessos e sustentação de controles de segurança.',
+    'Analista de SI com atuação prática em SOC, Blue Team e gestão de vulnerabilidades. Monitoro, investigo e respondo — e automatizo o que dá, inclusive com IA, para o time decidir mais rápido.',
   aboutText: [
-    'Sou Patrick Santos, profissional de Blue Team com mais de dois anos de atuação em SOC, detecção de ameaças e resposta a incidentes em ambientes corporativos reais.',
-    'Ao longo da minha trajetória, passei por três organizações com contextos distintos, o que me proporcionou uma visão abrangente de como diferentes ambientes gerenciam risco: do suporte de identidade no Active Directory à criação de regras personalizadas no Microsoft Defender XDR e à investigação de comportamentos suspeitos com KQL e MITRE ATT&CK.',
-    'Acredito que segurança eficaz não começa no alerta, mas na hipótese. Por isso, construo detecções orientadas a comportamento, indo além da assinatura. Aplico frameworks como NIST CSF e CIS Controls para estruturar a defesa de forma contínua e alinhada às necessidades do negócio.',
-    'Para defender melhor, estudo o lado ofensivo: pratico testes de intrusão com o Kali Linux e participo de programas de bug bounty na HackerOne. Esse caminho de Purple Team me ajuda a pensar como atacante e transformar cada técnica em uma defesa mais robusta.',
-    'Busco uma equipe onde eu possa contribuir com detecção precoce, redução contínua da superfície de ataque e uma cultura de segurança orientada a dados, em que cada análise gere aprendizado e cada incidente fortaleça os controles.',
+    'Comecei no suporte N1/N2 e migrei para segurança por uma razão simples: gosto de entender como as coisas quebram e como defendê-las. Hoje atuo no eixo SOC/Blue Team, monitorando alertas em endpoint, identidade, e-mail e aplicações, e conduzindo a triagem do falso positivo ao encaminhamento com evidência.',
+    'Minha base é Microsoft Security (Defender XDR, Intune, Entra ID, Purview), somada a Wazuh, Graylog e SIEM, governança de acessos no Active Directory e gestão de vulnerabilidades priorizada por exposição e impacto. Não paro no alerta: documento, correlaciono e proponho o ajuste de controle.',
+    'Estou crescendo em três frentes — Purple Team (uso ataque para fortalecer defesa), Cloud Security e automação com IA. Para mim, aprender é construir: os projetos abaixo nasceram de problemas reais que enfrentei na operação.',
+  ],
+  // Métricas e pilares do "Sobre" — centralizados aqui (antes hardcoded no componente).
+  aboutMetrics: [
+    { value: '2+', label: 'Anos em Segurança' },
+    { value: '3', label: 'Contextos corporativos' },
+    { value: '5+', label: 'Projetos técnicos' },
+    { value: 'Jr+', label: 'Pronto para Pleno inicial' },
+  ],
+  aboutPillars: [
+    { index: '01', label: 'Detectar', desc: 'Crio hipóteses e investigo sinais em endpoint, identidade, e-mail e aplicação.' },
+    { index: '02', label: 'Investigar', desc: 'Correlaciono logs, alertas, IOC, IOA, KQL e contexto operacional.' },
+    { index: '03', label: 'Responder', desc: 'Apoio contenção, erradicação, registro de evidências e encaminhamento técnico.' },
+    { index: '04', label: 'Melhorar', desc: 'Transformo aprendizados em ajustes de regra, hardening, governança e documentação.' },
   ],
   areas: [
     {
       title: 'Blue Team',
       icon: 'shield',
       description:
-        'Monitoramento, investigação e resposta inicial a eventos de segurança, com foco em proteção de ativos e redução da superfície de ataque.',
+        'Monitoramento, investigação e resposta inicial a eventos de segurança, com foco em proteção de ativos, evidências técnicas e redução da superfície de ataque.',
     },
     {
       title: 'SOC',
       icon: 'radar',
       description:
-        'Análise de alertas, correlação de eventos, classificação de incidentes, triagem operacional e redução de falsos positivos.',
+        'Monitoramento de SIEM, análise de logs, triagem de alertas, classificação inicial de incidentes, documentação e redução de falsos positivos.',
     },
     {
       title: 'Threat Hunting',
       icon: 'target',
       description:
-        'Criação de hipóteses de caça, análise de comportamento suspeito, investigação baseada em IOC, IOA e padrões anômalos.',
+        'Criação de hipóteses de caça, análise de comportamento suspeito, investigação baseada em IOC, IOA, KQL, MITRE ATT&CK, Wazuh, Graylog e padrões anômalos.',
     },
     {
       title: 'Gestão de Vulnerabilidades',
       icon: 'bug',
       description:
-        'Identificação, priorização e acompanhamento de correções de falhas em ativos corporativos, incluindo patch management e melhoria contínua.',
+        'Identificação, priorização e acompanhamento de correções com base em criticidade, exposição, ASM, ativos afetados, patches, evidências e esforço de implementação.',
     },
     {
       title: 'IAM e Governança de Acessos',
       icon: 'key',
       description:
-        'Revisão de permissões, trilhas de auditoria, princípio do menor privilégio, Active Directory e Microsoft Entra ID.',
+        'Criação, manutenção e exclusão de usuários, revisão de permissões, trilhas de auditoria, menor privilégio, Active Directory e Microsoft Entra ID.',
     },
     {
       title: 'Hardening e Controles',
       icon: 'server',
       description:
-        'Sustentação de controles de segurança, inventário, backup, políticas, GPO e fortalecimento da postura defensiva.',
+        'Sustentação de controles de segurança, inventário, monitoramento de ativos, softwares não permitidos, políticas, GPO, Intune e hardening.',
     },
     {
       title: 'Web AppSec & Bug Bounty',
@@ -75,51 +90,51 @@ export const portfolioData = {
         'Estudo e prática de testes de intrusão em rede: enumeração de serviços, exploração controlada e pós-exploração em ambientes de laboratório.',
     },
   ],
-  techStack: {
-    'Microsoft Security': [
-      'Microsoft Defender',
-      'Microsoft Defender XDR',
-      'Microsoft Defender for Endpoint',
-      'Microsoft Entra ID',
-      'Microsoft Intune',
-      'Microsoft Purview',
-    ],
-    'SOC e Detecção': [
-      'SIEM',
-      'KQL',
-      'Windows Event Logs',
-      'IOC',
-      'IOA',
-      'Análise de alertas de endpoint',
-      'Análise de alertas de e-mail',
-      'Análise de alertas em aplicações web',
-    ],
-    'Governança e Hardening': [
-      'Active Directory',
-      'Governança de acessos',
-      'Menor privilégio',
-      'Patch management',
-      'Gestão de vulnerabilidades',
-      'Backup',
-      'Inventário de ativos',
-      'GPO',
-      'Trilhas de auditoria',
-    ],
-    Ferramentas: ['Harmony Email', 'Imperva WAF', 'Lansweeper', 'Patch Manager Plus', 'PowerShell'],
-    Frameworks: ['MITRE ATT&CK', 'NIST CSF', 'CIS Controls', 'OWASP Top 10'],
-    Cloud: ['Fundamentos de Azure Security'],
-  },
+  // Competências exibidas como tags + nível textual (sem percentual autoatribuído).
+  skillGroups: [
+    {
+      label: 'SOC & Detecção',
+      level: 'Sólido na prática',
+      skills: ['Microsoft Defender XDR', 'SIEM', 'Wazuh', 'Graylog', 'KQL', 'Triagem de alertas', 'Análise de logs', 'Redução de falsos positivos'],
+    },
+    {
+      label: 'Resposta a Incidentes',
+      level: 'Em uso no dia a dia',
+      skills: ['Investigação', 'Cadeia de processos', 'Contenção inicial', 'Coleta de evidências', 'Documentação executiva'],
+    },
+    {
+      label: 'Vulnerabilidades & Hardening',
+      level: 'Sólido na prática',
+      skills: ['Priorização por risco', 'ASM', 'Patch management', 'Secure Score', 'GPO', 'CIS Controls', 'NIST CSF'],
+    },
+    {
+      label: 'IAM & Governança',
+      level: 'Sólido na prática',
+      skills: ['Active Directory', 'Microsoft Entra ID', 'Ciclo de vida de usuário', 'Menor privilégio', 'Trilhas de auditoria'],
+    },
+    {
+      label: 'Cloud & GRC',
+      level: 'Em desenvolvimento',
+      skills: ['Fundamentos de Azure Security', 'Microsoft Purview', 'Privacidade & conformidade', 'Análise de risco'],
+    },
+    {
+      label: 'IA aplicada à segurança',
+      level: 'Em uso nos projetos',
+      skills: ['Enriquecimento de IOC com LLM', 'Briefings de ameaça (PT-BR)', 'Automação de triagem', 'Groq · Llama 3.3'],
+    },
+  ],
   experiences: [
     {
       company: 'Oceânica',
       role: 'Assistente de Segurança da Informação Pleno',
       period: 'out/2025 – abr/2026',
       activities: [
-        'Monitoramento e investigação de alertas em endpoint, e-mail, identidade e aplicações.',
-        'Gestão de vulnerabilidades e aplicação de patches para correção de falhas.',
-        'Governança de acessos com revisão de permissões e trilhas de auditoria.',
-        'Sustentação de controles de backup, inventário de ativos e hardening.',
-        'Criação de regras personalizadas em plataformas de defesa XDR.',
+        'Monitoramento e investigação de alertas em endpoint, e-mail, identidade e aplicações, correlacionando sinais técnicos para apoiar resposta.',
+        'Uso de Microsoft Defender, Intune, Wazuh, Graylog e SIEM para triagem de alertas, análise de logs, classificação inicial e redução de falsos positivos.',
+        'Gestão de vulnerabilidades com priorização por severidade, exposição, ASM, ativos afetados, patches e viabilidade de correção.',
+        'Governança de acessos com criação/manutenção/exclusão de usuários, revisão de permissões, trilhas de auditoria e menor privilégio.',
+        'Sustentação de controles de inventário, monitoramento de ativos, softwares não permitidos, hardening, GPO, Intune e documentação de evidências.',
+        'Interface com SOC terceirizado para acompanhamento de alertas, encaminhamentos, validações e melhoria contínua da operação defensiva.',
       ],
     },
     {
@@ -127,10 +142,10 @@ export const portfolioData = {
       role: 'Analista de SOC N1',
       period: 'jul/2025 – set/2025',
       activities: [
-        'Monitoramento contínuo via SIEM.',
-        'Correlação de eventos e classificação de incidentes.',
-        'Análise de logs, IOC e IOA para apoio a investigações.',
-        'Ajuste de regras para redução de falsos positivos e melhoria da eficiência operacional.',
+        'Monitoramento contínuo via SIEM com triagem de alertas, análise de logs e classificação inicial de incidentes.',
+        'Correlação de eventos, logs, IOC e IOA para apoiar investigação, tomada de decisão e escalonamento.',
+        'Ajuste de regras e refinamento de alertas para reduzir falsos positivos e melhorar eficiência operacional.',
+        'Registro de evidências, contexto do alerta e encaminhamentos para times responsáveis.',
       ],
     },
     {
@@ -138,10 +153,11 @@ export const portfolioData = {
       role: 'Analista de Segurança Jr',
       period: 'jan/2024 – jun/2025',
       activities: [
-        'Administração de identidades e acessos no Active Directory.',
-        'Suporte a VPN, proxy, antivírus e ambiente Windows.',
-        'Apoio a políticas de segurança e manutenção de ativos críticos.',
-        'Aplicação do princípio do menor privilégio em revisões de acesso.',
+        'Suporte N1/N2 com administração de identidades, grupos e acessos no Active Directory.',
+        'Criação, manutenção e exclusão de usuários, apoio em permissões e rotinas de controle de acesso.',
+        'Suporte a VPN, proxy, antivírus, ambiente Windows e troubleshooting de segurança operacional.',
+        'Apoio a políticas de segurança, manutenção de ativos críticos e organização de evidências.',
+        'Aplicação do princípio do menor privilégio em revisões de acesso e rotinas de controle.',
       ],
     },
   ],
@@ -150,120 +166,57 @@ export const portfolioData = {
     institution: 'Universidade Estácio de Sá, UNESA',
     status: 'Cursando',
   },
-  // Para adicionar novo projeto, copie um objeto abaixo e altere title, description, skills e scenarios.
+  // Projetos em destaque — FONTE ÚNICA consumida por Projects.jsx.
+  // Para adicionar: copie um objeto e ajuste title, status, description, tags e URLs.
   projects: [
     {
-      title: 'Microsoft Defender XDR Hunting Pack',
-      isMain: true,
-      description:
-        'Coleção de consultas e cenários de threat hunting voltados para identificação de comportamentos suspeitos em endpoint, identidade e e-mail.',
-      skills: ['KQL', 'Microsoft Defender XDR', 'Threat Hunting', 'MITRE ATT&CK', 'Análise de comportamento', 'Resposta a incidentes'],
-      scenarios: ['Password spray', 'Sucesso após múltiplas falhas de login', 'PowerShell suspeito', 'Outlook criando processos anômalos', 'LOLBins', 'Transferência incomum de arquivos'],
-      details: {
-        where:
-          'Principalmente na Oceânica, dentro da rotina de Segurança da Informação e Blue Team, usando o Microsoft Defender XDR como base para investigação, análise de alertas e criação de consultas.',
-        how:
-          'Desenvolvi e adaptei consultas KQL para investigar comportamentos suspeitos em endpoints, identidades e e-mails, cobrindo cenários como PowerShell suspeito, LOLBins, password spray, Outlook criando processos anômalos e transferências incomuns.',
-        why: 'Foi criado para reduzir o tempo de triagem e evitar que cada investigação começasse do zero.',
-        purpose:
-          'Serviu para transformar hipóteses de ataque em consultas práticas, reutilizáveis e voltadas para investigação no Defender XDR.',
-      },
-    },
-    {
-      title: 'Priorização de Hardening com Secure Score',
-      description:
-        'Modelo de priorização de recomendações de segurança com base em severidade, impacto, esforço de implementação, ativos afetados e evidências necessárias.',
-      skills: ['Microsoft Defender', 'Secure Score', 'Hardening', 'Gestão de risco', 'Controles de segurança', 'Relatórios executivos'],
-      scenarios: ['LSA Protection', 'Network Protection', 'AutoRun/AutoPlay', 'NLA em RDP', 'LDAP Signing', 'ASR Rules'],
-      details: {
-        where:
-          'Na Oceânica, durante o acompanhamento de recomendações do Microsoft Defender, Secure Score, postura de segurança e controles de hardening.',
-        how:
-          'Organizei recomendações por severidade, impacto, esforço de implementação, ativos afetados, status e evidências, envolvendo controles como LSA Protection, Network Protection, AutoRun/AutoPlay, NLA em RDP, LDAP Signing, ASR Rules, GPO e Intune.',
-        why: 'Foi feito porque as recomendações precisavam sair de uma lista técnica e virar um plano de ação priorizado.',
-        purpose:
-          'Serviu para separar quick wins, mudanças estruturais, exceções justificadas e evidências de implementação, facilitando comunicação técnica e executiva.',
-      },
-    },
-    {
-      title: 'Correlação entre WAF, ASM e Risco Web',
-      description:
-        'Análise de exposição externa combinando achados de Attack Surface Management com eventos de WAF e riscos de segurança em aplicações web.',
-      skills: ['WAF', 'ASM', 'OWASP Top 10', 'Segurança web', 'Análise de risco', 'Recomendação técnica'],
-      scenarios: ['Ausência de HSTS', 'Ausência de CSP', 'HTTP sem redirecionamento para HTTPS', 'Ausência de X-Frame-Options', 'Ausência de X-Content-Type-Options', 'Tentativas de SQL Injection e XSS'],
-      details: {
-        where:
-          'Na Oceânica, em análises envolvendo exposição externa, Attack Surface Management, eventos de WAF Imperva e riscos em aplicações web.',
-        how:
-          'Correlacionei achados de ASM com eventos do WAF, avaliando ausência de headers de segurança, HTTP sem redirecionamento para HTTPS, ausência de HSTS, CSP, X-Frame-Options, X-Content-Type-Options e tentativas de SQL Injection, XSS e fuzzing.',
-        why:
-          'Foi feito para mostrar que achados de exposição externa e ataques observados no WAF tinham impacto real no risco das aplicações.',
-        purpose:
-          'Serviu para apoiar priorização de correções, comunicação com áreas responsáveis e redução da superfície de ataque web.',
-      },
-    },
-    {
-      title: 'Relatório Pós-Incidente de Endpoint',
-      description:
-        'Modelo de relatório pós-incidente com linha do tempo, evidências técnicas, hipótese de ataque, impacto, contenção, erradicação e lições aprendidas.',
-      skills: ['Resposta a incidentes', 'Análise de logs', 'Processo pai-filho', 'Coleta de evidências', 'Comunicação executiva', 'Documentação técnica'],
-      scenarios: ['Alerta de endpoint', 'Execução suspeita', 'Análise de cadeia de processos', 'Contenção', 'Recomendações pós-incidente'],
-      details: {
-        where:
-          'Na Oceânica, a partir de investigações de alertas de endpoint, eventos suspeitos e necessidade de documentar incidentes com evidências.',
-        how:
-          'Criei um modelo com resumo executivo, escopo, linha do tempo, evidências técnicas, hipótese de ataque, impacto, contenção, erradicação, recuperação, causa raiz e recomendações.',
-        why:
-          'Foi feito para evitar relatórios soltos, subjetivos ou técnicos demais, criando uma estrutura clara para gestão e operação.',
-        purpose:
-          'Serviu para registrar decisões, evidências, aprendizado pós-incidente e ações preventivas para reduzir recorrência.',
-      },
-    },
-    {
-      title: 'Modelo de Governança de Acessos',
-      description:
-        'Modelo de revisão de acessos com foco em menor privilégio, contas inativas, permissões excessivas, trilhas de auditoria e conformidade.',
-      skills: ['IAM', 'Active Directory', 'Entra ID', 'Governança de acessos', 'Menor privilégio', 'Auditoria'],
-      scenarios: ['Usuários inativos', 'Contas órfãs', 'Acessos privilegiados', 'Permissões excessivas', 'Revisão periódica', 'Evidência de aprovação'],
-      details: {
-        where:
-          'Principalmente na Oceânica, com base em rotinas de revisão de permissões, Active Directory, Microsoft Entra ID, grupos sensíveis e evidências. Vortex e Rio Quality contribuíram como base operacional em suporte, acessos e troubleshooting.',
-        how:
-          'Organizei um modelo para identificar usuários inativos, contas órfãs, permissões excessivas, acessos privilegiados, grupos sensíveis, exceções e evidências de aprovação.',
-        why:
-          'Foi feito para reduzir excesso de privilégio e dar mais rastreabilidade ao processo de concessão e revisão de acessos.',
-        purpose:
-          'Serviu para conectar governança, segurança e operação, fortalecendo auditoria, menor privilégio e controle de permissões.',
-      },
-    },
-  ],
-  // Para adicionar novo app, copie um objeto abaixo e altere title, category, status, maturity, problem, description, stack, value e nextStep.
-  blueTeamLab: [
-    {
+      filename: 'iocenricher.exe',
       title: 'IOC Enricher',
-      subtitle: 'Enriquecimento de indicadores para triagem Blue Team',
-      category: 'Threat Intelligence / SOC',
+      version: 'v1.0.0',
       status: 'OPERATIONAL',
-      maturity: 'Em produção',
+      statusColor: 'text-neon text-glow',
+      description:
+        'Enriquece IP, domínio, URL ou hash com 11 fontes OSINT e análise por IA (Groq Llama 3.3 70B). Gera recomendação operacional, classificação de risco e relatório para triagem Blue Team.',
+      logs: [
+        { prefix: '[SRC]', value: '11 OSINT sources loaded' },
+        { prefix: '[AI] ', value: 'Groq Llama 3.3 70B active' },
+      ],
+      tags: ['React', 'Vite', 'Tailwind', 'Vercel', 'Groq', 'OSINT APIs'],
       liveUrl: 'https://iocenricher.vercel.app',
       githubUrl: 'https://github.com/ptkthg/iocenricher',
-      problem:
-        'Analistas de segurança precisam enriquecer indicadores rapidamente para decidir se devem bloquear, monitorar, investigar ou ignorar um artefato suspeito.',
+    },
+    {
+      filename: 'statecraft.next',
+      title: 'Statecraft',
+      version: 'v1.0.0',
+      status: 'OPERATIONAL',
+      statusColor: 'text-neon text-glow',
       description:
-        'Mini app que recebe IP, domínio, URL ou hash e retorna um painel de enriquecimento com informações de reputação, contexto técnico, classificação de risco e recomendação operacional.',
-      stack: ['React', 'APIs OSINT', 'Threat Intelligence', 'CSV/PDF Export'],
-      value:
-        'Reduz o tempo de triagem de indicadores e ajuda o Blue Team a transformar IoCs soltos em decisão operacional.',
-      nextStep:
-        'Construir um MVP com entrada de indicador, painel de reputação, classificação de risco e exportação de relatório.',
-      features: [
-        'Receber IP, domínio, URL ou hash como entrada.',
-        'Consultar reputação em fontes abertas.',
-        'Classificar risco como baixo, médio, alto ou crítico.',
-        'Exibir ASN, país, categoria, data de criação do domínio e histórico básico.',
-        'Gerar recomendação operacional: bloquear, monitorar, investigar ou ignorar.',
-        'Exportar relatório em PDF ou CSV.',
+        'Plataforma de threat intelligence em PT-BR: CVEs recentes com CVSS e EPSS, briefings gerados por IA e IOC Search com fontes OSINT para apoiar priorização e contexto defensivo.',
+      logs: [
+        { prefix: '[FEEDS]', value: '19 RSS sources + NVD API' },
+        { prefix: '[AI]   ', value: 'Groq Llama 3.3 70B · PT-BR' },
+        { prefix: '[KEV]  ', value: 'CISA KEV + EPSS enrichment' },
       ],
+      tags: ['Next.js 15', 'TypeScript', 'Tailwind', 'PostgreSQL', 'Prisma', 'Groq AI'],
+      liveUrl: 'https://statecraftcyber.vercel.app',
+      githubUrl: null,
+    },
+    {
+      filename: 'hunting_pack.kql',
+      title: 'XDR Hunting Pack',
+      version: null,
+      status: 'INTERNAL',
+      statusColor: 'text-yellow-400/90',
+      description:
+        'Coleção de queries KQL para threat hunting no Microsoft Defender XDR, com lógica reaplicável a SIEM/Wazuh/Graylog. Cobre password spray, LOLBins, PowerShell suspeito e Outlook criando processos anômalos.',
+      logs: [
+        { prefix: '[ENV]  ', value: 'Microsoft Defender XDR' },
+        { prefix: '[MAP]  ', value: 'MITRE ATT&CK aligned' },
+      ],
+      tags: ['KQL', 'Defender XDR', 'Wazuh', 'Graylog', 'MITRE ATT&CK', 'Threat Hunting'],
+      liveUrl: null,
+      githubUrl: null,
     },
   ],
   caseStudy: {
@@ -316,33 +269,25 @@ export const portfolioData = {
   },
   differentials: [
     {
-      title: 'Visão técnica',
+      title: 'Autonomia com critério',
       description:
-        'Experiência prática com análise de alertas, logs, endpoints, identidade, e-mail, SIEM e ferramentas Microsoft Security.',
+        'Consigo conduzir triagens, investigações e documentação com autonomia, validando evidências e escalando pontos de maior impacto quando necessário.',
     },
     {
       title: 'Visão de risco',
       description:
-        'Capacidade de priorizar vulnerabilidades, controles e recomendações com base em impacto, criticidade e esforço.',
+        'Priorizo vulnerabilidades, controles e recomendações por impacto, criticidade, exposição, ativos afetados e esforço de implementação.',
     },
     {
-      title: 'Visão de governança',
+      title: 'Base técnica ampla',
       description:
-        'Experiência com revisão de acessos, menor privilégio, trilhas de auditoria e sustentação de controles.',
+        'Tenho vivência prática em suporte N1/N2, SOC, Defender, Intune, Wazuh, Graylog, IAM, Active Directory, hardening, patch management, ASM e WAF.',
     },
     {
-      title: 'Visão executiva',
+      title: 'Comunicação e documentação',
       description:
-        'Capacidade de transformar achados técnicos em relatórios claros para gestão e áreas responsáveis.',
+        'Transformo achados técnicos em relatórios, evidências, contexto de risco e recomendações compreensíveis para operação, gestão e áreas responsáveis.',
     },
-  ],
-  indicators: [
-    'Monitoramento de alertas em endpoint, e-mail, identidade e aplicações.',
-    'Correlação de eventos em SIEM.',
-    'Gestão de vulnerabilidades e patch management.',
-    'Revisão de acessos e trilhas de auditoria.',
-    'Sustentação de controles de backup, inventário e hardening.',
-    'Ajuste de regras para redução de falsos positivos.',
   ],
   certifications: [
     {
@@ -363,11 +308,9 @@ export const portfolioData = {
 export const navItems = [
   { label: 'Início', id: 'hero' },
   { label: 'Sobre', id: 'sobre' },
-  { label: 'Áreas', id: 'areas' },
-  { label: 'Metodologia', id: 'metodologia' },
-  { label: 'Arsenal', id: 'arsenal' },
-  { label: 'Trajetória', id: 'trajetoria' },
-  { label: 'Skills', id: 'skills' },
+  { label: 'Competências', id: 'skills' },
   { label: 'Projetos', id: 'projetos' },
+  { label: 'Estudo de caso', id: 'estudo-caso' },
+  { label: 'Trajetória', id: 'trajetoria' },
   { label: 'Contato', id: 'contato' },
 ];

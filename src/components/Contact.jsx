@@ -56,8 +56,8 @@ export default function Contact({ person }) {
     <section id="contato" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// contato</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-3">Fale comigo</h2>
-      <p className="text-textprimary/50 text-sm font-mono mb-10">
-        {person.city} &nbsp;·&nbsp; Segurança ofensiva e defensiva (Purple Team) &nbsp;·&nbsp; Open to opportunities
+      <p className="text-textprimary/70 text-sm font-mono mb-10">
+        {person.city} &nbsp;·&nbsp; Segurança da Informação / SOC / Blue Team / Vulnerabilidades &nbsp;·&nbsp; Aberto a oportunidades
       </p>
 
       <div className="flex flex-col sm:flex-row gap-3">

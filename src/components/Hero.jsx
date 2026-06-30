@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const ROLE = 'Blue Team · SOC · Purple Team em formação';
-const SUBROLE = 'Bug Bounty na HackerOne · segurança ofensiva com Kali Linux';
-
-export default function Hero({ person, hasResume }) {
+export default function Hero({ person, hasResume, description, headline, subrole }) {
   const [typed, setTyped] = useState('');
   const [done, setDone] = useState(false);
 
@@ -43,24 +40,35 @@ export default function Hero({ person, hasResume }) {
         </p>
 
         {/* Name — typewriter effect */}
-        <h1 className="font-mono text-5xl md:text-7xl font-bold text-white mb-5 leading-none" style={{ textShadow: '0 0 40px rgba(255,255,255,0.08)' }}>
+        <p className="font-mono text-textprimary/70 text-base md:text-xl mb-4 leading-none">
           <span className={!done ? 'cursor-blink' : ''}>{typed}</span>
           {done && <span className="text-neon text-glow">_</span>}
+        </p>
+
+        {/* Headline — frase forte */}
+        <h1 className="font-mono text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-5 leading-tight" style={{ textShadow: '0 0 40px rgba(255,255,255,0.08)' }}>
+          {headline}
         </h1>
 
         {/* Role */}
         <p className="font-mono text-neon text-xs sm:text-sm md:text-base mb-2 tracking-wide text-glow leading-relaxed">
-          {ROLE}
+          {person.role}
         </p>
 
-        {/* Subrole — offensive (study/practice) */}
-        <p className="font-mono text-textprimary/55 text-[11px] sm:text-xs md:text-sm mb-4 tracking-wide leading-relaxed">
-          {SUBROLE}
+        {/* Subrole */}
+        <p className="font-mono text-textprimary/60 text-[11px] sm:text-xs md:text-sm mb-4 tracking-wide leading-relaxed">
+          {subrole}
         </p>
+
+        {description && (
+          <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-textprimary/70 md:text-base">
+            {description}
+          </p>
+        )}
 
         {/* Location */}
-        <p className="font-mono text-textprimary/55 text-xs md:text-sm mb-10 tracking-wide">
-          {person.city} &nbsp;·&nbsp; Open to opportunities
+        <p className="font-mono text-textprimary/70 text-xs md:text-sm mb-10 tracking-wide">
+          {person.city} &nbsp;·&nbsp; Aberto a oportunidades em Segurança da Informação
         </p>
 
         {/* CTA buttons */}

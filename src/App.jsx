@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import About from './components/About';
 import Areas from './components/Areas';
 import Arsenal from './components/Arsenal';
+import CaseStudy from './components/CaseStudy';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Differentials from './components/Differentials';
@@ -34,8 +35,19 @@ export default function App() {
     <div className="min-h-screen bg-terminal text-textprimary">
       <Header />
       <main>
-        <Hero person={portfolioData.person} hasResume={hasResume} />
+        <Hero
+          person={portfolioData.person}
+          hasResume={hasResume}
+          headline={portfolioData.heroHeadline}
+          subrole={portfolioData.heroSubrole}
+          description={portfolioData.heroDescription}
+        />
         <About />
+        <Skills />
+        <Projects projects={portfolioData.projects} />
+        <CaseStudy caseStudy={portfolioData.caseStudy} />
+        <Timeline experiences={portfolioData.experiences} />
+        <Differentials differentials={portfolioData.differentials} />
         <Areas areas={portfolioData.areas} />
         <Methodology
           methodology={portfolioData.methodology}
@@ -43,10 +55,6 @@ export default function App() {
           frameworks={portfolioData.frameworks}
         />
         <Arsenal arsenal={portfolioData.arsenal} />
-        <Timeline experiences={portfolioData.experiences} />
-        <Skills />
-        <Differentials differentials={portfolioData.differentials} />
-        <Projects iocEnricher={portfolioData.blueTeamLab[0]} />
         <Certifications certifications={portfolioData.certifications} />
         <Contact person={portfolioData.person} />
       </main>
