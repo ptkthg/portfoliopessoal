@@ -20,7 +20,7 @@ export default function Areas({ areas }) {
     <section id="areas" ref={ref} className="fade-in-section py-20 px-6 max-w-5xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// áreas de atuação</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-3">Domínios</h2>
-      <p className="text-textprimary/50 text-sm mb-10 max-w-2xl">
+      <p className="text-textprimary/70 text-sm mb-10 max-w-2xl">
         Eixo principal em Segurança da Informação, SOC, Blue Team, IAM e gestão de vulnerabilidades. Os cards marcados como{' '}
         <span className="text-neon/80 font-mono">ofensivo</span> refletem estudo aplicado à evolução para Purple Team.
       </p>

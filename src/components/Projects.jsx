@@ -13,7 +13,7 @@ export default function Projects({ projects }) {
     <section id="projetos" ref={ref} className="fade-in-section py-20 px-6 max-w-5xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// projetos</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-4">Lab & Ferramentas</h2>
-      <p className="text-textprimary/50 text-sm mb-8 max-w-2xl">
+      <p className="text-textprimary/70 text-sm mb-8 max-w-2xl">
         Projetos que conectam operação defensiva, inteligência de ameaças, automação leve e documentação técnica.
       </p>
 

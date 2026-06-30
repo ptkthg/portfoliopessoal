@@ -19,7 +19,7 @@ export default function CaseStudy({ caseStudy }) {
     <section id="estudo-caso" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// estudo de caso</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-3">{caseStudy.subtitle}</h2>
-      <p className="text-textprimary/60 text-sm mb-8 max-w-2xl">
+      <p className="text-textprimary/70 text-sm mb-8 max-w-2xl">
         Um incidente real conduzido do alerta à correção da causa raiz — detecção, resposta e melhoria do controle.
       </p>
 

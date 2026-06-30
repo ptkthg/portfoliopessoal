@@ -11,7 +11,7 @@ export default function Skills() {
     <section id="skills" ref={ref} className="fade-in-section py-20 px-6 max-w-5xl mx-auto">
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// competências</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-3">Competências & Stack</h2>
-      <p className="text-textprimary/60 text-sm mb-10 max-w-2xl">
+      <p className="text-textprimary/70 text-sm mb-10 max-w-2xl">
         Da operação de SOC à governança de acessos e à automação com IA — com o lado ofensivo aplicado como estudo para fortalecer a defesa.
       </p>
 

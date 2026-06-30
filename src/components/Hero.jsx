@@ -67,7 +67,7 @@ export default function Hero({ person, hasResume, description, headline, subrole
         )}
 
         {/* Location */}
-        <p className="font-mono text-textprimary/55 text-xs md:text-sm mb-10 tracking-wide">
+        <p className="font-mono text-textprimary/70 text-xs md:text-sm mb-10 tracking-wide">
           {person.city} &nbsp;·&nbsp; Aberto a oportunidades em Segurança da Informação
         </p>
 

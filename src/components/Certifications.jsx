@@ -34,7 +34,7 @@ export default function Certifications({ certifications }) {
             >
               {cert.issuer}
             </p>
-            <p className="font-mono text-textprimary/35 text-xs mt-0.5">{cert.year}</p>
+            <p className="font-mono text-textprimary/55 text-xs mt-0.5">{cert.year}</p>
           </div>
         ))}
       </div>

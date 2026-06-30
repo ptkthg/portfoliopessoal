@@ -10,7 +10,7 @@ export default function Methodology({ methodology, methodologyText, frameworks }
       <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// metodologia de pentest</p>
       <h2 className="font-mono text-3xl font-bold text-white mb-3">Do recon ao relatório</h2>
       {methodologyText && (
-        <p className="text-textprimary/55 text-sm mb-10 max-w-2xl leading-relaxed">{methodologyText}</p>
+        <p className="text-textprimary/70 text-sm mb-10 max-w-2xl leading-relaxed">{methodologyText}</p>
       )}
 
       <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">

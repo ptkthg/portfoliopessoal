@@ -28,7 +28,7 @@ export default function About() {
             className="border border-neon/20 bg-surface p-4 text-center hover:border-neon/50 transition-colors duration-200"
           >
             <div className="font-mono text-neon text-3xl font-bold">{m.value}</div>
-            <div className="text-textprimary/50 text-xs mt-1.5 uppercase tracking-wider leading-snug">
+            <div className="text-textprimary/70 text-xs mt-1.5 uppercase tracking-wider leading-snug">
               {m.label}
             </div>
           </div>
