@@ -433,8 +433,8 @@ Estrutura:
 ```js
 export const portfolioData = {
   person: {
-    fullName: 'Patrick Thiago Rezende dos Santos',
-    shortName: 'Patrick Rezende',
+    fullName: 'Patrick Santos',
+    shortName: 'Patrick Santos',
     role: 'Analista de Segurança da Informação',
     tag: 'SEC.ANALYST',
     specialties: 'Blue Team · SOC · SIEM · IAM/PAM · Resposta a incidentes · Gestão de vulnerabilidades',
@@ -776,7 +776,7 @@ describe('Hero', () => {
 
   it('usa o nome completo como título da página', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'Patrick Thiago Rezende dos Santos',
+      'Patrick Santos',
     );
   });
 
@@ -1865,7 +1865,7 @@ describe('Footer', () => {
   beforeEach(() => render(<Footer />));
 
   it('identifica o profissional e a localização', () => {
-    expect(screen.getByText(/Patrick Thiago Rezende dos Santos/)).toBeInTheDocument();
+    expect(screen.getByText(/Patrick Santos/)).toBeInTheDocument();
   });
 
   it('repete os links externos com rel seguro', () => {
@@ -2295,13 +2295,13 @@ git rm src/components/Areas.jsx src/components/Differentials.jsx src/components/
 Substituir o bloco de `<title>` e metatags por:
 
 ```html
-    <title>Patrick Thiago Rezende dos Santos | Analista de Segurança da Informação</title>
+    <title>Patrick Santos | Analista de Segurança da Informação</title>
     <meta
       name="description"
       content="Analista de Segurança da Informação no Rio de Janeiro. Blue Team, SOC, SIEM, IAM/PAM, resposta a incidentes e gestão de vulnerabilidades. Splunk, Microsoft Defender XDR, Entra ID, BeyondTrust e Wazuh. Currículo, experiência profissional e projetos."
     />
 
-    <meta property="og:title" content="Patrick Thiago Rezende dos Santos | Analista de Segurança da Informação" />
+    <meta property="og:title" content="Patrick Santos | Analista de Segurança da Informação" />
     <meta
       property="og:description"
       content="Blue Team, SOC, SIEM, IAM/PAM e gestão de vulnerabilidades. Experiência profissional, competências técnicas, projetos e currículo."
@@ -2310,7 +2310,7 @@ Substituir o bloco de `<title>` e metatags por:
     <meta property="og:url" content="https://portfolioptk.vercel.app" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Patrick Thiago Rezende dos Santos | Analista de Segurança da Informação" />
+    <meta name="twitter:title" content="Patrick Santos | Analista de Segurança da Informação" />
     <meta name="twitter:description" content="Blue Team, SOC, SIEM, IAM/PAM e gestão de vulnerabilidades." />
 ```
 
