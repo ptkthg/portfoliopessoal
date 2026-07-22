@@ -4,8 +4,8 @@
 
 export const portfolioData = {
   person: {
-    fullName: 'Patrick Thiago Rezende dos Santos',
-    shortName: 'Patrick Rezende',
+    fullName: 'Patrick Santos',
+    shortName: 'Patrick Santos',
     role: 'Analista de Segurança da Informação',
     tag: 'SEC.ANALYST',
     specialties:
@@ -323,7 +323,7 @@ export const portfolioData = {
           },
           {
             title: 'Problema tratado',
-            body: 'O acompanhamento de ameaças e vulnerabilidades exige consultar fontes separadas, sem uma visão única em português.',
+            body: 'O acompanhamento público de ameaças e vulnerabilidades está distribuído em fontes separadas, sem uma visão única em português.',
           },
           {
             title: 'Funcionalidades',
@@ -361,10 +361,6 @@ export const portfolioData = {
           {
             title: 'Objetivo',
             body: 'Padronizar consultas de caça a ameaças no Microsoft Defender XDR.',
-          },
-          {
-            title: 'Problema tratado',
-            body: 'As consultas de caça a ameaças eram escritas caso a caso, sem um conjunto padronizado e reaproveitável.',
           },
           {
             title: 'Funcionalidades',
