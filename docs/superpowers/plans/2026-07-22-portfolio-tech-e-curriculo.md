@@ -1357,12 +1357,26 @@ describe('Projects', () => {
     expect(screen.getAllByText('Participação:').length).toBe(portfolioData.projects.length);
   });
 
-  it('leva para a página do projeto', () => {
+  it('leva para a página do projeto com um único link nomeado por projeto', () => {
     renderProjects();
-    expect(screen.getAllByRole('link', { name: /Detalhes do IOC Enricher/ })[0]).toHaveAttribute(
-      'href',
-      '/projetos/ioc-enricher',
-    );
+    // A prévia é aria-hidden, então só o link do card conta como nome acessível.
+    const links = screen.getAllByRole('link', { name: /Detalhes do IOC Enricher/ });
+    expect(links).toHaveLength(1);
+    expect(links[0]).toHaveAttribute('href', '/projetos/ioc-enricher');
+  });
+
+  it('renderiza o projeto sem endereço nem repositório sem links quebrados', () => {
+    renderProjects();
+    const semLinks = portfolioData.projects.find((p) => !p.liveUrl && !p.githubUrl);
+    const bloco = screen
+      .getByRole('heading', { name: new RegExp(semLinks.title) })
+      .closest('.pcard-info');
+    expect(within(bloco).queryByText('Repositório')).not.toBeInTheDocument();
+    expect(within(bloco).queryByText('Acessar site')).not.toBeInTheDocument();
+    expect(within(bloco).queryByText('Problema tratado:')).not.toBeInTheDocument();
+    // O link interno de detalhes continua presente.
+    expect(within(bloco).getByRole('link', { name: new RegExp(`Detalhes do ${semLinks.title}`) }))
+      .toHaveAttribute('href', `/projetos/${semLinks.slug}`);
   });
 
   it('aponta os links externos para as URLs reais', () => {
@@ -1455,7 +1469,10 @@ export default function Projects() {
 
         {featured && (
           <div className="featured">
-            <Link className="pcard" to={`/projetos/${featured.slug}`} aria-label={`Detalhes do ${featured.title}`}>
+            {/* A prévia leva ao mesmo destino que o "Detalhes" do card ao lado.
+                Escondo-a da árvore de acessibilidade para o leitor de tela não
+                ouvir dois links idênticos por projeto; o card mantém o link nomeado. */}
+            <Link className="pcard" to={`/projetos/${featured.slug}`} tabIndex={-1} aria-hidden="true">
               <BrowserFrame url={featured.displayUrl} title={featured.title} screenshot={featured.screenshot} />
             </Link>
             <ProjectCard project={featured} />
@@ -1465,7 +1482,7 @@ export default function Projects() {
         <div className="grid2">
           {rest.map((p) => (
             <div key={p.slug}>
-              <Link className="pcard" to={`/projetos/${p.slug}`} aria-label={`Detalhes do ${p.title}`}>
+              <Link className="pcard" to={`/projetos/${p.slug}`} tabIndex={-1} aria-hidden="true">
                 <BrowserFrame url={p.displayUrl} title={p.title} screenshot={p.screenshot} />
               </Link>
               <ProjectCard project={p} />
