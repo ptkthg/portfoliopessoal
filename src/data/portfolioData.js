@@ -385,27 +385,27 @@ export const portfolioData = {
       'Alerta de execução suspeita de PowerShell em endpoint do setor financeiro, com comportamento associado a reconhecimento de ambiente.',
     steps: [
       {
-        label: '01 · detecção',
+        label: 'detecção',
         desc: 'Alerta do Microsoft Defender em endpoint do setor financeiro.',
       },
       {
-        label: '02 · investigação',
+        label: 'investigação',
         desc: 'Análise em SIEM, validação no Active Directory e cruzamento com telemetria do endpoint.',
       },
       {
-        label: '03 · contenção',
+        label: 'contenção',
         desc: 'Isolamento do dispositivo durante a apuração.',
       },
       {
-        label: '04 · causa raiz',
+        label: 'causa raiz',
         desc: 'E-mail de phishing que passou pelo filtro inicial; execução bloqueada pelo Defender.',
       },
       {
-        label: '05 · correção',
+        label: 'correção',
         desc: 'Revisão de privilégios locais e aplicação do menor privilégio.',
       },
       {
-        label: '06 · resultado',
+        label: 'resultado',
         desc: 'Incidente contido, causa raiz tratada e ajuste da política de execução de scripts via GPO.',
       },
     ],
