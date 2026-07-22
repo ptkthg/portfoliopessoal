@@ -1972,6 +1972,7 @@ npm install react-router-dom@^6.28.0
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import ProjectPage from '../ProjectPage';
+import { portfolioData } from '../../data/portfolioData';
 
 const renderAt = (path) =>
   render(
@@ -2010,6 +2011,16 @@ describe('ProjectPage', () => {
   it('redireciona slug inexistente para a home', () => {
     renderAt('/projetos/nao-existe');
     expect(screen.getByText('home')).toBeInTheDocument();
+  });
+
+  it('omite a célula de período quando o dado não foi confirmado', () => {
+    renderAt('/projetos/statecraft-cyber');
+    expect(screen.queryByText('período')).not.toBeInTheDocument();
+  });
+
+  it('não tem slug duplicado, que colidiria de rota', () => {
+    const slugs = portfolioData.projects.map((p) => p.slug);
+    expect(new Set(slugs).size).toBe(slugs.length);
   });
 });
 ```
@@ -2066,7 +2077,9 @@ export default function ProjectPage() {
 
       <div className="pp-meta">
         <div><div className="k">participação</div><div className="v">{project.role}</div></div>
-        <div><div className="k">período</div><div className="v">{project.period}</div></div>
+        {project.period && (
+          <div><div className="k">período</div><div className="v">{project.period}</div></div>
+        )}
         <div><div className="k">tecnologias</div><div className="v">{project.tags.slice(0, 3).join(' · ')}</div></div>
         <div><div className="k">estado atual</div><div className="v v-state">{project.state}</div></div>
       </div>
