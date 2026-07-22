@@ -62,7 +62,6 @@
 
   .drawer{display:none;position:absolute;left:0;right:0;top:100%;background:rgba(10,10,15,.97);backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);padding:16px var(--pad) 24px;flex-direction:column;gap:2px}
-  .drawer.open{display:flex}
   .drawer a{display:flex;gap:12px;align-items:baseline;padding:12px 0;text-decoration:none;
     font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer}
   .drawer a i{font-style:normal;color:#3a3a46}
@@ -272,6 +271,7 @@
     .tabs{display:none}
     .burger{display:block}
     .top-cta{display:none}
+    .drawer.open{display:flex}
     .topbar-in{height:60px;gap:12px}
     .hero{padding:64px 0 12px}
     .about{grid-template-columns:1fr;gap:38px}

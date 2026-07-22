@@ -1,11 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from './Icon';
 import { navItems, portfolioData } from '../data/portfolioData';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const burgerRef = useRef(null);
   const { shortName, tag, resumePath, linkedin, github } = portfolioData.person;
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        burgerRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open]);
 
   return (
     <header className="topbar">
@@ -32,9 +45,11 @@ export default function Header() {
         </a>
 
         <button
+          ref={burgerRef}
           type="button"
           className="burger"
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
           <Icon name={open ? 'close' : 'menu'} />

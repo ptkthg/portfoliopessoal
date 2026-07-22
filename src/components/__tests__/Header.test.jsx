@@ -40,4 +40,13 @@ describe('Header', () => {
     await user.click(within(drawer).getByText('Projetos'));
     expect(screen.queryByRole('navigation', { name: 'Menu' })).not.toBeInTheDocument();
   });
+
+  it('fecha a gaveta ao pressionar Escape', async () => {
+    const user = userEvent.setup();
+    renderHeader();
+    await user.click(screen.getByRole('button', { name: 'Abrir menu' }));
+    expect(screen.getByRole('navigation', { name: 'Menu' })).toBeInTheDocument();
+    await user.keyboard('{Escape}');
+    expect(screen.queryByRole('navigation', { name: 'Menu' })).not.toBeInTheDocument();
+  });
 });
