@@ -306,7 +306,8 @@ export const portfolioData = {
       features:
         'CVEs recentes com CVSS e EPSS; enriquecimento com CISA KEV; busca de IOC em fontes OSINT; briefings gerados por LLM; agregação de 19 fontes RSS e da API do NVD.',
       role: 'Concepção, desenvolvimento e publicação',
-      period: '2026',
+      // período não confirmado: lacuna a preencher, não esquecimento
+      period: null,
       tags: ['Next.js 15', 'TypeScript', 'Tailwind', 'PostgreSQL', 'Prisma', 'Groq'],
       displayUrl: 'statecraftcyber.vercel.app',
       liveUrl: 'https://statecraftcyber.vercel.app',
@@ -347,7 +348,8 @@ export const portfolioData = {
       features:
         'Conjunto de queries KQL para password spray, LOLBins, execução suspeita de PowerShell e processos anômalos originados no Outlook, com lógica reaplicável a SIEM, Wazuh e Graylog.',
       role: 'Criação e manutenção das queries',
-      period: '2026',
+      // período não confirmado: lacuna a preencher, não esquecimento
+      period: null,
       tags: ['KQL', 'Defender XDR', 'MITRE ATT&CK', 'Wazuh', 'Graylog'],
       displayUrl: null,
       liveUrl: null,
