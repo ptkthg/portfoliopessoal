@@ -6,9 +6,9 @@ export default function About() {
   const { about, facts, responsibilities } = portfolioData;
 
   return (
-    <section id="sobre" className="wrap">
+    <section id="sobre" className="wrap" aria-labelledby="sobre-titulo">
       <div className="sec reveal" ref={ref}>
-        <p className="eyebrow"><s /> 02 — Sobre</p>
+        <h2 className="eyebrow" id="sobre-titulo"><s /> 02 — Sobre</h2>
 
         <div className="about">
           <div>

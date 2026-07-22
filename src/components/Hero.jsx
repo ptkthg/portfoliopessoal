@@ -8,11 +8,11 @@ export default function Hero() {
   const { person, highlights } = portfolioData;
 
   return (
-    <section id="inicio" className="wrap">
+    <section id="inicio" className="wrap" aria-labelledby="inicio-titulo">
       <div className="hero reveal" ref={ref}>
         <div>
           <p className="avail"><span className="pulse" /> Disponibilidade imediata</p>
-          <h1 className="h-lead">{person.fullName}</h1>
+          <h1 className="h-lead" id="inicio-titulo">{person.fullName}</h1>
           <p className="role">{person.role}</p>
           <p className="spec">{person.specialties}</p>
           <p className="loc"><Icon name="pin" /> {person.city}</p>

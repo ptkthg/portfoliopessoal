@@ -71,8 +71,8 @@
 
   .wrap{max-width:1120px;margin:0 auto;padding:0 var(--pad)}
   .sec{padding:104px 0;border-bottom:1px solid var(--line-soft)}
-  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--neon);margin-bottom:26px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--neon);margin:0 0 26px}
   .eyebrow s{text-decoration:none;width:18px;height:1px;background:linear-gradient(90deg,var(--neon),transparent);display:block}
   .h-lead{font-size:clamp(28px,3.4vw,44px);font-weight:600;line-height:1.16;letter-spacing:-.028em;margin:0;max-width:19ch}
   .h-lead b{font-weight:600;color:var(--neon);text-shadow:0 0 26px rgba(0,255,136,.35)}

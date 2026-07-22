@@ -5,9 +5,9 @@ export default function Timeline() {
   const ref = useScrollReveal();
 
   return (
-    <section id="experiencia" className="wrap">
+    <section id="experiencia" className="wrap" aria-labelledby="experiencia-titulo">
       <div className="sec reveal" ref={ref}>
-        <p className="eyebrow"><s /> 03 — Experiência profissional</p>
+        <h2 className="eyebrow" id="experiencia-titulo"><s /> 03 — Experiência profissional</h2>
 
         <div className="tl">
           {portfolioData.experiences.map((exp, i) => (

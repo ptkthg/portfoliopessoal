@@ -7,6 +7,11 @@ export function useScrollReveal(threshold = 0.1) {
     const el = ref.current;
     if (!el) return;
 
+    if (typeof IntersectionObserver === 'undefined') {
+      el.classList.add('in');
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
