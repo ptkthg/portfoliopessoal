@@ -1100,9 +1100,12 @@ describe('Skills', () => {
     );
   });
 
+  // Dois grupos compartilham o mesmo `where`, então a asserção percorre a lista
+  // inteira em vez de procurar um texto único.
   it('indica onde cada competência foi exercida', () => {
     render(<Skills />);
-    expect(screen.getByText('Oceânica · Vortex')).toBeInTheDocument();
+    const rotulos = [...document.querySelectorAll('.skillrow .lvl')].map((e) => e.textContent);
+    expect(rotulos).toEqual(portfolioData.skillGroups.map((g) => g.where));
   });
 
   it('filtra as categorias ao escolher um filtro', async () => {
