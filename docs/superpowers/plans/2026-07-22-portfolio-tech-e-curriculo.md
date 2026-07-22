@@ -822,11 +822,11 @@ export default function Hero() {
   const { person, highlights } = portfolioData;
 
   return (
-    <section id="inicio" className="wrap">
+    <section id="inicio" className="wrap" aria-labelledby="inicio-titulo">
       <div className="hero reveal" ref={ref}>
         <div>
           <p className="avail"><span className="pulse" /> Disponibilidade imediata</p>
-          <h1 className="h-lead">{person.fullName}</h1>
+          <h1 className="h-lead" id="inicio-titulo">{person.fullName}</h1>
           <p className="role">{person.role}</p>
           <p className="spec">{person.specialties}</p>
           <p className="loc"><Icon name="pin" /> {person.city}</p>
@@ -1154,9 +1154,9 @@ export default function Skills() {
     active === 'todas' ? skillGroups : skillGroups.filter((g) => g.category === active);
 
   return (
-    <section id="competencias" className="wrap">
+    <section id="competencias" className="wrap" aria-labelledby="competencias-titulo">
       <div className="sec reveal" ref={ref}>
-        <p className="eyebrow"><s /> 04 — Competências técnicas</p>
+        <h2 className="eyebrow" id="competencias-titulo"><s /> 04 — Competências técnicas</h2>
 
         <div className="filters">
           {skillFilters.map((f) => (
@@ -1446,9 +1446,9 @@ export default function Projects() {
   const rest = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projetos" className="wrap">
+    <section id="projetos" className="wrap" aria-labelledby="projetos-titulo">
       <div className="sec reveal" ref={ref}>
-        <p className="eyebrow"><s /> 05 — Projetos</p>
+        <h2 className="eyebrow" id="projetos-titulo"><s /> 05 — Projetos</h2>
 
         {featured && (
           <div className="featured">
@@ -1538,10 +1538,10 @@ export default function CaseStudy() {
   const { title, summary, steps, tools } = portfolioData.caseStudy;
 
   return (
-    <section id="caso" className="wrap">
+    <section id="caso" className="wrap" aria-labelledby="caso-titulo">
       <div className="sec reveal" ref={ref}>
         <p className="eyebrow"><s /> 06 — Estudo de caso</p>
-        <h2 className="h-sec">{title}</h2>
+        <h2 className="h-sec" id="caso-titulo">{title}</h2>
 
         <div className="case">
           <p className="sub">{summary}</p>
@@ -1636,10 +1636,10 @@ export default function Resume() {
   const { resume, person, education, certifications } = portfolioData;
 
   return (
-    <section id="curriculo" className="wrap">
+    <section id="curriculo" className="wrap" aria-labelledby="curriculo-titulo">
       <div className="sec reveal" ref={ref}>
         <p className="eyebrow"><s /> 07 — Currículo</p>
-        <h2 className="h-sec">Currículo</h2>
+        <h2 className="h-sec" id="curriculo-titulo">Currículo</h2>
 
         <div className="cv">
           <div>
@@ -1791,10 +1791,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contato" className="wrap">
+    <section id="contato" className="wrap" aria-labelledby="contato-titulo">
       <div className="sec contact reveal" ref={ref}>
         <p className="eyebrow"><s /> 08 — Contato</p>
-        <h2>Contato profissional</h2>
+        <h2 id="contato-titulo">Contato profissional</h2>
 
         <div className="clinks">
           <a className="clink" href={person.linkedin} target="_blank" rel="noreferrer">
