@@ -1,73 +1,81 @@
-import { useState, useEffect } from 'react';
-import { navItems } from '../data/portfolioData';
+import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import Icon from './Icon';
+import { navItems, portfolioData } from '../data/portfolioData';
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const burgerRef = useRef(null);
+  const { shortName, tag, resumePath, linkedin, github } = portfolioData.person;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const close = () => setOpen(false);
+    if (!open) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        burgerRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || open
-          ? 'bg-terminal/95 border-b border-neon/10 backdrop-blur-sm'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-        <span className="font-mono text-neon text-sm font-semibold tracking-wider">
-          pt<span className="text-textprimary/40">@</span>security
-        </span>
+    <header className="topbar">
+      <div className="topbar-in">
+        <Link to="/" className="mark">
+          <span className="glyph"><Icon name="shield" /></span>
+          <span>
+            <span className="nm">{shortName}</span>
+            <span className="rl">{tag}</span>
+          </span>
+        </Link>
 
-        {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-6">
+        <nav className="tabs" aria-label="Seções">
           {navItems.map((item) => (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                className="font-mono text-xs text-textprimary/50 hover:text-neon transition-colors duration-200 tracking-wide uppercase"
-              >
-                {item.label}
-              </a>
-            </li>
+            <a key={item.id} href={`/#${item.id}`}>
+              <i>{item.index}</i>
+              {item.label}
+            </a>
           ))}
-        </ul>
+        </nav>
 
-        {/* Hamburger */}
+        <a className="top-cta" href={resumePath} download>
+          <Icon name="download" /> Currículo
+        </a>
+
         <button
-          className="md:hidden font-mono text-lg text-textprimary/60 hover:text-neon transition-colors duration-200 leading-none"
-          onClick={() => setOpen((v) => !v)}
+          ref={burgerRef}
+          type="button"
+          className="burger"
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
         >
-          {open ? '✕' : '☰'}
+          <Icon name={open ? 'close' : 'menu'} />
         </button>
-      </nav>
+      </div>
 
-      {/* Mobile dropdown */}
       {open && (
-        <div className="md:hidden border-t border-neon/10 bg-terminal/98">
-          <ul className="max-w-5xl mx-auto px-6 py-5 space-y-4">
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  onClick={close}
-                  className="font-mono text-sm text-textprimary/60 hover:text-neon transition-colors duration-200 tracking-widest uppercase flex items-center gap-2"
-                >
-                  <span className="text-neon/40">›</span>
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <nav className="drawer open" aria-label="Menu">
+          {navItems.map((item) => (
+            <a key={item.id} href={`/#${item.id}`} onClick={() => setOpen(false)}>
+              <i>{item.index}</i>
+              {item.label}
+            </a>
+          ))}
+          <div className="dfoot">
+            <a className="btn btn-fill" href={resumePath} download>
+              <Icon name="download" /> Currículo
+            </a>
+            <a className="btn btn-ghost" href={linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <Icon name="linkedin" brand />
+            </a>
+            <a className="btn btn-ghost" href={github} target="_blank" rel="noreferrer" aria-label="GitHub">
+              <Icon name="github" brand />
+            </a>
+          </div>
+        </nav>
       )}
     </header>
   );

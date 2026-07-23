@@ -10,3 +10,6 @@ dist/
 
 dev-server.out
 dev-server.err
+
+.superpowers/
+.review/

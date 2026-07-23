@@ -1,53 +1,46 @@
-import { useState, useEffect } from 'react';
+import Icon from './Icon';
+import { mailtoHref } from '../lib/contact';
+import { portfolioData } from '../data/portfolioData';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
-export default function Hero({ name, areas }) {
-  const [typed, setTyped] = useState('');
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      i++;
-      setTyped(name.slice(0, i));
-      if (i >= name.length) {
-        clearInterval(timer);
-        setDone(true);
-      }
-    }, 90);
-    return () => clearInterval(timer);
-  }, [name]);
+export default function Hero() {
+  const ref = useScrollReveal();
+  const { person, highlights } = portfolioData;
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle dot grid — mantém a estética cyber sem poluir */}
-      <div className="hero-dots absolute inset-0 pointer-events-none opacity-50" aria-hidden />
+    <section id="inicio" className="wrap" aria-labelledby="inicio-titulo">
+      <div className="hero reveal" ref={ref}>
+        <div>
+          <p className="avail"><span className="pulse" /> Disponibilidade imediata</p>
+          <h1 className="h-lead" id="inicio-titulo">{person.fullName}</h1>
+          <p className="role">{person.role}</p>
+          <p className="spec">{person.specialties}</p>
+          <p className="loc"><Icon name="pin" /> {person.city}</p>
 
-      {/* Vignette overlay — foca o olhar no centro */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, transparent 35%, #0a0a0f 100%)' }}
-        aria-hidden
-      />
+          <div className="btns">
+            <a className="btn btn-fill" href={mailtoHref(person.email, person.shortName)}>
+              <Icon name="mail" /> Contato
+            </a>
+            <a className="btn btn-ghost" href={person.resumePath} download>
+              <Icon name="download" /> Currículo em PDF
+            </a>
+            <a className="btn btn-ghost" href={person.linkedin} target="_blank" rel="noreferrer">
+              <Icon name="linkedin" brand /> LinkedIn
+            </a>
+            <a className="btn btn-ghost" href={person.github} target="_blank" rel="noreferrer">
+              <Icon name="github" brand /> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
 
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Nome em destaque */}
-        <h1
-          className="font-mono text-5xl sm:text-6xl md:text-8xl font-bold text-white tracking-tight mb-8 leading-none"
-          style={{ textShadow: '0 0 50px rgba(255,255,255,0.08)' }}
-        >
-          <span className={!done ? 'cursor-blink' : ''}>{typed}</span>
-          {done && <span className="text-neon text-glow">_</span>}
-        </h1>
-
-        {/* Áreas de interesse profissional */}
-        <p className="font-mono text-xs sm:text-sm md:text-base text-textprimary/70 tracking-wide leading-relaxed max-w-2xl mx-auto">
-          {areas.map((area, i) => (
-            <span key={area} className="whitespace-nowrap">
-              {i > 0 && <span className="text-neon/50 mx-2.5" aria-hidden>·</span>}
-              {area}
-            </span>
-          ))}
-        </p>
+      <div className="hero-stats">
+        {highlights.map((h) => (
+          <div key={h.label}>
+            <p className="v">{h.value}</p>
+            <p className="l">{h.label}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
