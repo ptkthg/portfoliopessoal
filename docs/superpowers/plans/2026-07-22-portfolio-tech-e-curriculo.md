@@ -1785,6 +1785,23 @@ describe('Contact', () => {
     expect(await navigator.clipboard.readText()).toBe('ptkamp1@gmail.com');
     expect(await screen.findByText('E-mail copiado')).toBeInTheDocument();
   });
+
+  it('não quebra nem mostra falso sucesso quando o clipboard falha', async () => {
+    const original = navigator.clipboard;
+    Object.defineProperty(navigator, 'clipboard', {
+      value: { writeText: () => Promise.reject(new Error('sem permissão')) },
+      configurable: true,
+    });
+    try {
+      render(<Contact />);
+      const botao = screen.getByRole('button', { name: 'Copiar e-mail' });
+      botao.click();
+      await Promise.resolve();
+      expect(screen.queryByText('E-mail copiado')).not.toBeInTheDocument();
+    } finally {
+      Object.defineProperty(navigator, 'clipboard', { value: original, configurable: true });
+    }
+  });
 });
 ```
 
@@ -1798,7 +1815,7 @@ Expected: FAIL, o componente atual ainda tem o bloco de WhatsApp.
 O botão de copiar existe porque `mailto:` não faz nada visível em quem usa webmail sem cliente configurado.
 
 ```jsx
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Icon from './Icon';
 import { mailtoHref } from '../lib/contact';
 import { portfolioData } from '../data/portfolioData';
@@ -1807,12 +1824,22 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 export default function Contact() {
   const ref = useScrollReveal();
   const [copied, setCopied] = useState(false);
+  const timer = useRef();
   const { person } = portfolioData;
 
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  // Só marca "copiado" se a escrita deu certo. Sem clipboard (contexto inseguro
+  // ou navegador antigo) o rótulo não muda, evitando falso sucesso — e o e-mail
+  // continua visível no cartão ao lado.
   const copy = async () => {
-    await navigator.clipboard.writeText(person.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(person.email);
+      setCopied(true);
+      timer.current = setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
@@ -1918,6 +1945,7 @@ Expected: FAIL, o rodapé atual tem uma linha só.
 
 ```jsx
 import Icon from './Icon';
+import { mailtoHref } from '../lib/contact';
 import { navItems, portfolioData } from '../data/portfolioData';
 
 export default function Footer() {
@@ -1949,7 +1977,7 @@ export default function Footer() {
           <h5>encontrar</h5>
           <a href={person.linkedin} target="_blank" rel="noreferrer"><Icon name="linkedin" brand /> LinkedIn</a>
           <a href={person.github} target="_blank" rel="noreferrer"><Icon name="github" brand /> GitHub</a>
-          <a href={`mailto:${person.email}`}><Icon name="mail" /> E-mail</a>
+          <a href={mailtoHref(person.email, person.shortName)}><Icon name="mail" /> E-mail</a>
           <a href={person.resumePath} download><Icon name="download" /> Currículo PDF</a>
         </div>
       </div>
