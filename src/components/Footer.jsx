@@ -1,4 +1,5 @@
 import Icon from './Icon';
+import { mailtoHref } from '../lib/contact';
 import { navItems, portfolioData } from '../data/portfolioData';
 
 export default function Footer() {
@@ -30,7 +31,7 @@ export default function Footer() {
           <h5>encontrar</h5>
           <a href={person.linkedin} target="_blank" rel="noreferrer"><Icon name="linkedin" brand /> LinkedIn</a>
           <a href={person.github} target="_blank" rel="noreferrer"><Icon name="github" brand /> GitHub</a>
-          <a href={`mailto:${person.email}`}><Icon name="mail" /> E-mail</a>
+          <a href={mailtoHref(person.email, person.shortName)}><Icon name="mail" /> E-mail</a>
           <a href={person.resumePath} download><Icon name="download" /> Currículo PDF</a>
         </div>
       </div>

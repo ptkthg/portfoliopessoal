@@ -37,4 +37,21 @@ describe('Contact', () => {
     expect(await navigator.clipboard.readText()).toBe('ptkamp1@gmail.com');
     expect(await screen.findByText('E-mail copiado')).toBeInTheDocument();
   });
+
+  it('não quebra nem mostra falso sucesso quando o clipboard falha', async () => {
+    const original = navigator.clipboard;
+    Object.defineProperty(navigator, 'clipboard', {
+      value: { writeText: () => Promise.reject(new Error('sem permissão')) },
+      configurable: true,
+    });
+    try {
+      render(<Contact />);
+      const botao = screen.getByRole('button', { name: 'Copiar e-mail' });
+      botao.click();
+      await Promise.resolve();
+      expect(screen.queryByText('E-mail copiado')).not.toBeInTheDocument();
+    } finally {
+      Object.defineProperty(navigator, 'clipboard', { value: original, configurable: true });
+    }
+  });
 });

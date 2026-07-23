@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Icon from './Icon';
 import { mailtoHref } from '../lib/contact';
 import { portfolioData } from '../data/portfolioData';
@@ -7,12 +7,22 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 export default function Contact() {
   const ref = useScrollReveal();
   const [copied, setCopied] = useState(false);
+  const timer = useRef();
   const { person } = portfolioData;
 
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  // Só marca "copiado" se a escrita deu certo. Sem clipboard (contexto inseguro
+  // ou navegador antigo) o rótulo não muda, evitando falso sucesso — e o e-mail
+  // continua visível no cartão ao lado.
   const copy = async () => {
-    await navigator.clipboard.writeText(person.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(person.email);
+      setCopied(true);
+      timer.current = setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
