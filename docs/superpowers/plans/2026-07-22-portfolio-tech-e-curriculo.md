@@ -1890,7 +1890,11 @@ describe('Footer', () => {
   beforeEach(() => render(<Footer />));
 
   it('identifica o profissional e a localização', () => {
-    expect(screen.getByText(/Patrick Santos/)).toBeInTheDocument();
+    // O nome aparece na marca e na barra inferior; a asserção mira a linha de
+    // identificação, que junta nome e cidade e é única.
+    expect(
+      screen.getByText(/Patrick Santos · Rio de Janeiro, RJ/),
+    ).toBeInTheDocument();
   });
 
   it('repete os links externos com rel seguro', () => {
