@@ -265,7 +265,7 @@ export const portfolioData = {
       displayUrl: 'iocenricher.vercel.app',
       liveUrl: 'https://iocenricher.vercel.app',
       githubUrl: 'https://github.com/ptkthg/iocenricher',
-      screenshot: null,
+      screenshot: '/assets/projects/ioc-enricher.png',
       detail: {
         summary:
           'Enriquecimento de indicadores de comprometimento em 11 fontes OSINT, com classificação de risco e recomendação operacional para triagem.',
@@ -312,7 +312,7 @@ export const portfolioData = {
       displayUrl: 'statecraftcyber.vercel.app',
       liveUrl: 'https://statecraftcyber.vercel.app',
       githubUrl: null,
-      screenshot: null,
+      screenshot: '/assets/projects/statecraft-cyber.png',
       detail: {
         summary:
           'Reunir acompanhamento de ameaças e vulnerabilidades em português, em uma única interface.',
@@ -354,7 +354,7 @@ export const portfolioData = {
       displayUrl: null,
       liveUrl: null,
       githubUrl: null,
-      screenshot: null,
+      screenshot: '/assets/projects/xdr-hunting-pack.png',
       detail: {
         summary: 'Padronizar consultas de caça a ameaças no Microsoft Defender XDR.',
         sections: [
