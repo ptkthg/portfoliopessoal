@@ -1776,12 +1776,13 @@ describe('Contact', () => {
   });
 
   it('copia o endereço para a área de transferência', async () => {
-    const writeText = vi.fn().mockResolvedValue();
-    Object.assign(navigator, { clipboard: { writeText } });
+    // userEvent.setup() instala o próprio stub de clipboard, então lemos de
+    // volta o que o componente escreveu em vez de espionar com um mock manual
+    // (que o próprio user-event sobreporia).
     const user = userEvent.setup();
     render(<Contact />);
     await user.click(screen.getByRole('button', { name: 'Copiar e-mail' }));
-    expect(writeText).toHaveBeenCalledWith('ptkamp1@gmail.com');
+    expect(await navigator.clipboard.readText()).toBe('ptkamp1@gmail.com');
     expect(await screen.findByText('E-mail copiado')).toBeInTheDocument();
   });
 });
