@@ -326,4 +326,7 @@
     .pp-meta{grid-template-columns:1fr}
     .bb-shot{aspect-ratio:4/3}
   }
+
+  .clink .ic-brand, .clink .ic { width: 19px; height: 19px; }
+  .clink-brand-in { color: #0A66C2; }
 }
