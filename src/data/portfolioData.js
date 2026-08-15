@@ -190,6 +190,23 @@ export const portfolioData = {
   // Para adicionar: copie um objeto e ajuste title, status, description, tags e URLs.
   projects: [
     {
+      filename: 'deception_loop.py',
+      title: 'Deception Loop',
+      version: 'v1.0.0',
+      status: 'OPERATIONAL',
+      statusColor: 'text-neon text-glow',
+      description:
+        'Plataforma de deception que transforma arquivos-isca em geradores automáticos de defesa. Ao detectar acesso não autorizado, extrai o IoC, gera regra YARA validada por compilação e script de bloqueio de firewall — mediana de 19ms entre a isca ser tocada e as regras em disco. Painel Streamlit para público não técnico e CLI para operação.',
+      logs: [
+        { prefix: '[BAIT]', value: 'honeyfile watcher active' },
+        { prefix: '[IOC] ', value: 'SHA256 -> YARA rule in 19ms' },
+        { prefix: '[TEST]', value: '178 tests - 100% pass' },
+      ],
+      tags: ['Python 3.13', 'Streamlit', 'YARA', 'Watchdog', 'Pytest', 'MITRE ATT&CK'],
+      liveUrl: null,
+      githubUrl: 'https://github.com/ptkthg/deception-loop',
+    },
+    {
       filename: 'iocenricher.exe',
       title: 'IOC Enricher',
       version: 'v1.0.0',
