@@ -190,6 +190,26 @@ export const portfolioData = {
   // Para adicionar: copie um objeto e ajuste title, status, description, tags e URLs.
   projects: [
     {
+      filename: 'deception_loop.py',
+      title: 'Deception Loop',
+      version: 'v1.0.0',
+      status: 'OPERATIONAL',
+      statusColor: 'text-neon text-glow',
+      description:
+        'Uma armadilha digital que detecta tentativas de invasão e cria escudos de proteção automaticamente, em menos de 2 segundos. Quando alguém mexe num arquivo-isca, o sistema identifica a ameaça pelo conteúdo e gera as defesas sozinho — assinatura de antivírus (YARA) e bloqueio de rede — sem esperar por um analista. Na prática, a mediana medida é de 19 ms.',
+      logs: [
+        { prefix: '[BAIT]', value: 'honeyfile watcher active' },
+        { prefix: '[IOC] ', value: 'SHA256 -> YARA rule in 19ms' },
+        { prefix: '[TEST]', value: '178 tests - 100% pass' },
+      ],
+      tags: ['Python 3.13', 'Streamlit', 'YARA', 'SOAR', 'Pytest', 'MITRE ATT&CK'],
+      // URL absoluta: o GIF vive no repositorio do projeto, nao neste.
+      media: 'https://raw.githubusercontent.com/ptkthg/deception-loop/main/media/demo_deception_loop.gif',
+      mediaCaption: 'Isca tocada → ameaça identificada → defesas geradas, em tempo real',
+      liveUrl: 'https://deception-loop.streamlit.app',
+      githubUrl: 'https://github.com/ptkthg/deception-loop',
+    },
+    {
       filename: 'iocenricher.exe',
       title: 'IOC Enricher',
       version: 'v1.0.0',

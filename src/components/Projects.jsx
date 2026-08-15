@@ -97,6 +97,26 @@ export default function Projects({ projects }) {
             {project.description}
           </p>
 
+          {/* Mídia opcional: demonstração animada do projeto em uso.
+              Só renderiza quando o projeto define `media`. */}
+          {project.media && (
+            <figure className="mb-5">
+              <img
+                src={project.media}
+                alt={`Demonstração do ${project.title} em funcionamento`}
+                loading="lazy"
+                className={`w-full border ${
+                  isOperational ? 'border-neon/25' : 'border-textprimary/15'
+                }`}
+              />
+              {project.mediaCaption && (
+                <figcaption className="text-textprimary/40 text-[11px] mt-2 text-center">
+                  {project.mediaCaption}
+                </figcaption>
+              )}
+            </figure>
+          )}
+
           <div className="flex flex-wrap gap-2 mb-5">
             {project.tags.map((tag) => (
               <span
