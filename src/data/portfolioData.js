@@ -202,7 +202,7 @@ export const portfolioData = {
         { prefix: '[IOC] ', value: 'SHA256 -> YARA rule in 19ms' },
         { prefix: '[TEST]', value: '178 tests - 100% pass' },
       ],
-      tags: ['Python 3.13', 'Streamlit', 'YARA', 'Watchdog', 'Pytest', 'MITRE ATT&CK'],
+      tags: ['Python 3.13', 'Streamlit', 'YARA', 'SOAR', 'Pytest', 'MITRE ATT&CK'],
       liveUrl: null,
       githubUrl: 'https://github.com/ptkthg/deception-loop',
     },
