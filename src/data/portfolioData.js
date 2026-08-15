@@ -196,11 +196,12 @@ export const portfolioData = {
       status: 'OPERATIONAL',
       statusColor: 'text-neon text-glow',
       description:
-        'Monitora arquivos-isca e converte cada acesso indevido em regra de defesa: calcula o hash do conteúdo e gera uma assinatura YARA validada e um script de bloqueio de firewall. Como nenhum usuário legítimo abre esses arquivos, qualquer interação já indica invasão, o que praticamente elimina o alarme falso. Feito para equipes sem analista de plantão.',
+        'Converte indicadores de comprometimento em regras de defesa prontas para uso. Aceita hashes de feeds de inteligência e também gera os próprios indicadores, monitorando arquivos-isca que nenhum usuário legítimo tem motivo para abrir. De cada indicador sai uma assinatura YARA validada e um script de bloqueio de firewall. Feito para equipes sem analista de plantão.',
       logs: [
         { prefix: '[BAIT]', value: 'honeyfile watcher active' },
-        { prefix: '[IOC] ', value: 'SHA256 -> YARA rule in 19ms' },
-        { prefix: '[TEST]', value: '189 tests - 100% pass' },
+        { prefix: '[FEED]', value: 'md5 / sha1 / sha256 intake' },
+        { prefix: '[RULE]', value: 'YARA + firewall in 19ms' },
+        { prefix: '[TEST]', value: '211 tests - 100% pass' },
       ],
       tags: ['Python 3.13', 'Streamlit', 'YARA', 'SOAR', 'Pytest', 'MITRE ATT&CK'],
       // URL absoluta: o GIF vive no repositorio do projeto, nao neste.
