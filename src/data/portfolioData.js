@@ -196,11 +196,11 @@ export const portfolioData = {
       status: 'OPERATIONAL',
       statusColor: 'text-neon text-glow',
       description:
-        'Uma armadilha digital que detecta tentativas de invasão e cria escudos de proteção automaticamente, em menos de 2 segundos. Quando alguém mexe num arquivo-isca, o sistema identifica a ameaça pelo conteúdo e gera as defesas sozinho — assinatura de antivírus (YARA) e bloqueio de rede — sem esperar por um analista. Na prática, a mediana medida é de 19 ms.',
+        'Monitora arquivos-isca e converte cada acesso indevido em regra de defesa: calcula o hash do conteúdo e gera uma assinatura YARA validada e um script de bloqueio de firewall. Como nenhum usuário legítimo abre esses arquivos, qualquer interação já indica invasão, o que praticamente elimina o alarme falso. Feito para equipes sem analista de plantão.',
       logs: [
         { prefix: '[BAIT]', value: 'honeyfile watcher active' },
         { prefix: '[IOC] ', value: 'SHA256 -> YARA rule in 19ms' },
-        { prefix: '[TEST]', value: '178 tests - 100% pass' },
+        { prefix: '[TEST]', value: '189 tests - 100% pass' },
       ],
       tags: ['Python 3.13', 'Streamlit', 'YARA', 'SOAR', 'Pytest', 'MITRE ATT&CK'],
       // URL absoluta: o GIF vive no repositorio do projeto, nao neste.
