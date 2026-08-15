@@ -196,13 +196,16 @@ export const portfolioData = {
       status: 'OPERATIONAL',
       statusColor: 'text-neon text-glow',
       description:
-        'Plataforma de deception que transforma arquivos-isca em geradores automáticos de defesa. Ao detectar acesso não autorizado, extrai o IoC, gera regra YARA validada por compilação e script de bloqueio de firewall — mediana de 19ms entre a isca ser tocada e as regras em disco. Painel Streamlit para público não técnico e CLI para operação.',
+        'Uma armadilha digital que detecta tentativas de invasão e cria escudos de proteção automaticamente, em menos de 2 segundos. Quando alguém mexe num arquivo-isca, o sistema identifica a ameaça pelo conteúdo e gera as defesas sozinho — assinatura de antivírus (YARA) e bloqueio de rede — sem esperar por um analista. Na prática, a mediana medida é de 19 ms.',
       logs: [
         { prefix: '[BAIT]', value: 'honeyfile watcher active' },
         { prefix: '[IOC] ', value: 'SHA256 -> YARA rule in 19ms' },
         { prefix: '[TEST]', value: '178 tests - 100% pass' },
       ],
       tags: ['Python 3.13', 'Streamlit', 'YARA', 'SOAR', 'Pytest', 'MITRE ATT&CK'],
+      // URL absoluta: o GIF vive no repositorio do projeto, nao neste.
+      media: 'https://raw.githubusercontent.com/ptkthg/deception-loop/main/media/demo_deception_loop.gif',
+      mediaCaption: 'Isca tocada → ameaça identificada → defesas geradas, em tempo real',
       liveUrl: 'https://deception-loop.streamlit.app',
       githubUrl: 'https://github.com/ptkthg/deception-loop',
     },
