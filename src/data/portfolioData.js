@@ -259,6 +259,23 @@ export const portfolioData = {
       liveUrl: null,
       githubUrl: null,
     },
+    {
+      filename: 'netshield_soc.lab',
+      title: 'NetShield SOC',
+      version: 'v1.0.0',
+      status: 'VALIDATED',
+      statusColor: 'text-neon text-glow',
+      description:
+        'Laboratório defensivo de perímetro com OPNsense NGFW, Wazuh SIEM e Suricata IDS. Engine de tuning em Python (apply_tuning.py) reduziu 100% do ruído de falsos positivos (40 -> 0) sem silenciar alertas de ataque, com supressão escopada validada no motor do Wazuh.',
+      logs: [
+        { prefix: '[SIEM]', value: 'Wazuh 4.14.7 · Syslog RFC3164' },
+        { prefix: '[NET] ', value: '4 zonas · OPNsense NGFW + Suricata' },
+        { prefix: '[TUNE]', value: 'Falsos positivos 40 -> 0 (100%)' },
+      ],
+      tags: ['Wazuh', 'OPNsense', 'Suricata', 'Python', 'Syslog RFC3164', 'MITRE ATT&CK'],
+      liveUrl: null,
+      githubUrl: 'https://github.com/ptkthg/perimeter-defend-lab',
+    },
   ],
   caseStudy: {
     title: 'Estudo de Caso',
