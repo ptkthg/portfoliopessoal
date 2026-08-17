@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import EvidenceGallery from './EvidenceGallery';
 
 export default function Projects({ projects }) {
   const ref = useScrollReveal();
@@ -115,6 +116,11 @@ export default function Projects({ projects }) {
                 </figcaption>
               )}
             </figure>
+          )}
+
+          {/* Evidências visuais: só renderiza quando o projeto define `evidence`. */}
+          {project.evidence && (
+            <EvidenceGallery evidence={project.evidence} accent={isOperational} />
           )}
 
           <div className="flex flex-wrap gap-2 mb-5">

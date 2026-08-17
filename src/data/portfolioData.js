@@ -275,6 +275,43 @@ export const portfolioData = {
       tags: ['Wazuh', 'OPNsense', 'Suricata', 'Python', 'Syslog RFC3164', 'MITRE ATT&CK'],
       liveUrl: null,
       githubUrl: 'https://github.com/ptkthg/perimeter-defend-lab',
+      // Evidências visuais em ordem cronológica de execução do laboratório.
+      // As imagens ficam em `public/evidences/` e são servidas na raiz do site.
+      evidence: {
+        label: 'evidências visuais',
+        intro:
+          'Quatro etapas do laboratório, na ordem em que foram executadas: da segmentação da rede até a métrica de tuning medida no motor do Wazuh.',
+        items: [
+          {
+            id: 'topology',
+            src: '/evidences/01_topology_architecture.png',
+            title: 'Diagrama da Topologia Perimetral',
+            description:
+              'Isolamento em 4 zonas de rede (WAN, LAN, DMZ, RED) no NGFW OPNsense garantindo inspeção completa de tráfego.',
+          },
+          {
+            id: 'ingestion',
+            src: '/evidences/02_syslog_ingestion_wazuh.png',
+            title: 'Centralização Syslog (UDP 514)',
+            description:
+              'Recebimento e parsing de eventos em tempo real do firewall e Suricata IDS no Wazuh SIEM 4.14.7 via RFC3164.',
+          },
+          {
+            id: 'attack',
+            src: '/evidences/03_attack_execution_kali.png',
+            title: 'Simulação de Ataques (Kali Linux)',
+            description:
+              'Disparo automatizado de scans de portas e brute-force SSH/Web a partir do segmento RED cruzando o perímetro.',
+          },
+          {
+            id: 'tuning',
+            src: '/evidences/04_tuning_metrics_result.png',
+            title: 'Resultado Real do Tuning de Alertas',
+            description:
+              'Motor do Wazuh registrando 100% de eliminação de falsos positivos (40 → 0) e preservação total de alertas críticos (15/15).',
+          },
+        ],
+      },
     },
   ],
   caseStudy: {
