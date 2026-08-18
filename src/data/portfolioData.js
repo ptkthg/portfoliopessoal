@@ -280,7 +280,7 @@ export const portfolioData = {
       evidence: {
         label: 'evidências visuais',
         intro:
-          'Quatro etapas do laboratório, na ordem em que foram executadas: da segmentação da rede até a métrica de tuning medida no motor do Wazuh.',
+          'Cinco etapas do laboratório, na ordem em que foram executadas: da segmentação da rede até o SIEM em operação, com a métrica de tuning medida no motor do Wazuh.',
         items: [
           {
             id: 'topology',
@@ -292,16 +292,16 @@ export const portfolioData = {
           {
             id: 'ingestion',
             src: '/evidences/02_syslog_ingestion_wazuh.png',
-            title: 'Centralização Syslog (UDP 514)',
+            title: 'Pipeline de Ingestão (Syslog UDP 514)',
             description:
-              'Recebimento e parsing de eventos em tempo real do firewall e Suricata IDS no Wazuh SIEM 4.14.7 via RFC3164.',
+              'Um log bruto de firewall percorre as quatro etapas até virar alerta pesquisável: RFC3164 na UDP 514, pré-decoder, decoder PCRE2 extraindo srcip, dstip e action, e gravação no alerts.json.',
           },
           {
             id: 'attack',
             src: '/evidences/03_attack_execution_kali.png',
-            title: 'Simulação de Ataques (Kali Linux)',
+            title: 'Cobertura de Ataque (MITRE ATT&CK)',
             description:
-              'Disparo automatizado de scans de portas e brute-force SSH/Web a partir do segmento RED cruzando o perímetro.',
+              'Cada técnica simulada a partir do segmento RED ligada ao vetor de teste, ao caminho na rede e à regra que dispara: brute force SSH e web, port scan e movimento lateral bloqueado no perímetro.',
           },
           {
             id: 'tuning',
@@ -309,6 +309,13 @@ export const portfolioData = {
             title: 'Resultado Real do Tuning de Alertas',
             description:
               'Motor do Wazuh registrando 100% de eliminação de falsos positivos (40 → 0) e preservação total de alertas críticos (15/15).',
+          },
+          {
+            id: 'dashboard',
+            src: '/evidences/05_wazuh_threat_hunting.jpg',
+            title: 'SIEM em Operação (Threat Hunting)',
+            description:
+              'Captura real do dashboard do Wazuh 4.14.7 rodando no laboratório: 1.258 alertas, 323 falhas de autenticação e o Top 10 MITRE ATT&CK liderado por Password Guessing, SSH e Brute Force.',
           },
         ],
       },
