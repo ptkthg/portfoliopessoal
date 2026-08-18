@@ -190,6 +190,33 @@ export const portfolioData = {
   // Para adicionar: copie um objeto e ajuste title, status, description, tags e URLs.
   projects: [
     {
+      filename: 'secidentity_ai.yaml',
+      title: 'SecIdentity AI',
+      version: 'v1.1.0',
+      status: 'OPERATIONAL',
+      statusColor: 'text-neon text-glow',
+      description:
+        'Governança de identidades onde a política de segurança não é documento: é configuração versionada que um motor interpreta, aplica e audita. Quatro agentes cobrem o ciclo do chamado do usuário à evidência assinada para o auditor — ServiceDesk resolve N1 sem tocar em privilégio, IAM avalia RBAC e segregação de funções, PAM concede acesso privilegiado temporário com custódia dupla e gravação de sessão, Governance emite a prova criptográfica. Num incidente P1 simulado, da abertura do chamado à liberação de root em produção: 9 minutos e 50 segundos, com trilha completa.',
+      logs: [
+        { prefix: '[CFG] ', value: '18 YAML - 4 agentes - 17 regras SoD' },
+        { prefix: '[SOD] ', value: 'conflito temporal JIT mitigado' },
+        { prefix: '[HR]  ', value: 'contrato Leaver fail-closed' },
+        { prefix: '[HASH]', value: 'SHA-256 + Merkle + RFC 3161' },
+        { prefix: '[TEST]', value: '3 cenários - 100% pass' },
+      ],
+      tags: [
+        'Python 3.9+',
+        'YAML',
+        'IAM / PAM',
+        'CyberArk',
+        'SOX ITGC',
+        'ISO 27001',
+        'LGPD',
+        'Multi-Agent',
+      ],
+      githubUrl: 'https://github.com/ptkthg/secidentity-ai',
+    },
+    {
       filename: 'deception_loop.py',
       title: 'Deception Loop',
       version: 'v1.0.0',
