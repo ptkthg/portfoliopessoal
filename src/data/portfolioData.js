@@ -214,6 +214,34 @@ export const portfolioData = {
         'LGPD',
         'Multi-Agent',
       ],
+      evidence: {
+        label: 'evidências de arquitetura & auditoria',
+        intro:
+          'Três recortes da plataforma, na ordem em que a decisão acontece: o pipeline que encadeia os quatro agentes, o conflito de segregação de funções que o modelo JIT tornava invisível, e o pacote criptográfico que transforma a decisão em prova para o auditor.',
+        items: [
+          {
+            id: 'pipeline',
+            src: '/evidences/secidentity_01_pipeline.svg',
+            title: 'Pipeline Multi-Agente — Fases 1 a 4',
+            description:
+              'ServiceDesk resolve N1 sem tocar em privilégio, IAM avalia RBAC e SoD, PAM concede acesso temporário com custódia dupla e gravação, Governance emite a evidência. O contrato Leaver alimenta as quatro fases com semântica fail-closed: indisponibilidade nunca libera acesso.',
+          },
+          {
+            id: 'sod-gap001',
+            src: '/evidences/secidentity_03_sod_gap001.svg',
+            title: 'GAP-001 — SoD temporal mitigada',
+            description:
+              'Matrizes de segregação de funções expressam conflitos permanentes e ficam cegas ao acesso Just-In-Time. Elevar o par a CRITICAL bloquearia resposta a P1. A terceira via: quatro estados de conflito e cinco mitigações verificáveis, sem escape hatch.',
+          },
+          {
+            id: 'merkle',
+            src: '/evidences/secidentity_02_merkle.svg',
+            title: 'Pacote de auditoria criptográfico',
+            description:
+              'Hash prova que nada mudou, assinatura prova quem gerou, carimbo prova quando — três provas distintas. A árvore de Merkle permite comprovar um artefato isolado ao auditor sem expor os demais, conciliando auditabilidade e minimização sob a LGPD.',
+          },
+        ],
+      },
       githubUrl: 'https://github.com/ptkthg/secidentity-ai',
     },
     {

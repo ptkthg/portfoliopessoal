@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Pacote de auditoria criptográfico com árvore de Merkle, assinatura e carimbo de tempo">
+  <defs>
+    <style>
+      .bg    { fill: #0a0a0f; }
+      .card  { fill: #111118; stroke: #00ff88; stroke-opacity: .28; stroke-width: 1.5; }
+      .cardm { fill: #111118; stroke: #e2e8f0; stroke-opacity: .18; stroke-width: 1.5; }
+      .mock  { fill: #111118; stroke: #e2e8f0; stroke-opacity: .18; stroke-width: 1.5; stroke-dasharray: 5 4; }
+      .t     { font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace; fill: #e2e8f0; }
+      .neon  { fill: #00ff88; }
+      .dim   { fill: #e2e8f0; fill-opacity: .55; }
+      .faint { fill: #e2e8f0; fill-opacity: .38; }
+      .h1    { font-size: 26px; font-weight: 700; letter-spacing: .5px; }
+      .h2    { font-size: 14px; font-weight: 700; letter-spacing: .6px; }
+      .lbl   { font-size: 11px; letter-spacing: 1.4px; }
+      .body  { font-size: 12px; }
+      .tiny  { font-size: 10.5px; }
+      .hash  { font-size: 10px; }
+      .link  { stroke: #00ff88; stroke-opacity: .45; stroke-width: 1.5; fill: none; }
+    </style>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#00ff88" fill-opacity=".6"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="675"/>
+
+  <text class="t neon lbl" x="48" y="52">SECIDENTITY_AI // PACOTE DE AUDITORIA</text>
+  <text class="t h1" x="48" y="86">Integridade, autoria e tempo são provas distintas</text>
+  <line x1="48" y1="104" x2="1152" y2="104" stroke="#00ff88" stroke-opacity=".2"/>
+
+  <!-- folhas -->
+  <text class="t dim lbl" x="48" y="140">ARTEFATOS — SERIALIZAÇÃO CANÔNICA</text>
+
+  <rect class="cardm" x="48" y="156" width="300" height="66" rx="3"/>
+  <text class="t body" x="66" y="180">evidence/phase3/payload.json</text>
+  <text class="t neon hash" x="66" y="202">sha256 01a0a309a1e03316...bf77586f</text>
+
+  <rect class="cardm" x="48" y="234" width="300" height="66" rx="3"/>
+  <text class="t body" x="66" y="258">evidence/phase1/payload.json</text>
+  <text class="t neon hash" x="66" y="280">sha256 468f2414764fbe62...a35cd13c</text>
+
+  <rect class="cardm" x="48" y="312" width="300" height="66" rx="3"/>
+  <text class="t body" x="66" y="336">evidence/phase2/payload.json</text>
+  <text class="t neon hash" x="66" y="358">sha256 af150e23e9e9ab5b...41ecbb30</text>
+
+  <!-- ligações nível 1 -->
+  <path class="link" d="M348 189 H412 V232 H448" marker-end="url(#a2)"/>
+  <path class="link" d="M348 267 H412 V232"/>
+  <path class="link" d="M348 345 H412 V332 H448" marker-end="url(#a2)"/>
+
+  <!-- nível intermediário -->
+  <rect class="card" x="448" y="206" width="230" height="52" rx="3"/>
+  <text class="t dim tiny" x="466" y="228">H(phase3 ‖ phase1)</text>
+  <text class="t neon hash" x="466" y="246">nó interno</text>
+
+  <rect class="card" x="448" y="306" width="230" height="52" rx="3"/>
+  <text class="t dim tiny" x="466" y="328">H(phase2 ‖ phase2)</text>
+  <text class="t faint tiny" x="466" y="346">nó ímpar duplicado</text>
+
+  <path class="link" d="M678 232 H730 V270 H770" marker-end="url(#a2)"/>
+  <path class="link" d="M678 332 H730 V270"/>
+
+  <!-- raiz -->
+  <rect class="card" x="770" y="234" width="382" height="72" rx="3"/>
+  <text class="t neon h2" x="788" y="260">MERKLE ROOT</text>
+  <text class="t body hash" x="788" y="282">13990fbe7feb6bf4e6fe65255bc9747d</text>
+  <text class="t body hash" x="788" y="297">40e3a2e179c05868647e32935da18539</text>
+
+  <!-- prova em camadas -->
+  <text class="t dim lbl" x="48" y="424">TRÊS PROVAS, TRÊS PERGUNTAS DIFERENTES</text>
+
+  <rect class="card" x="48" y="440" width="350" height="96" rx="3"/>
+  <text class="t neon h2" x="66" y="466">SHA-256 + MERKLE</text>
+  <text class="t dim tiny" x="66" y="488">Prova que o conteúdo não mudou.</text>
+  <text class="t neon tiny" x="66" y="508">CALCULADO DE VERDADE</text>
+  <text class="t faint tiny" x="66" y="525">verificador independente no repositório</text>
+
+  <rect class="mock" x="418" y="440" width="350" height="96" rx="3"/>
+  <text class="t h2" x="436" y="466">RSA-4096-PSS</text>
+  <text class="t dim tiny" x="436" y="488">Prova quem gerou o pacote.</text>
+  <text class="t faint tiny" x="436" y="508">REPRESENTAÇÃO ESTRUTURAL</text>
+  <text class="t faint tiny" x="436" y="525">exige chave não exportável em HSM</text>
+
+  <rect class="mock" x="788" y="440" width="364" height="96" rx="3"/>
+  <text class="t h2" x="806" y="466">RFC 3161</text>
+  <text class="t dim tiny" x="806" y="488">Prova quando foi gerado.</text>
+  <text class="t faint tiny" x="806" y="508">REPRESENTAÇÃO ESTRUTURAL</text>
+  <text class="t faint tiny" x="806" y="525">exige autoridade de tempo externa</text>
+
+  <!-- rodapé -->
+  <line x1="48" y1="574" x2="1152" y2="574" stroke="#00ff88" stroke-opacity=".2"/>
+  <text class="t dim tiny" x="48" y="600">Merkle permite provar UM artefato ao auditor sem expor os demais — os payloads com dado</text>
+  <text class="t dim tiny" x="48" y="618">pessoal ficam fora do escopo entregue. Auditabilidade e minimização sob LGPD deixam de</text>
+  <text class="t dim tiny" x="48" y="636">ser trade-off. Linha tracejada = mock declarado, nunca base64 plausível.</text>
+</svg>

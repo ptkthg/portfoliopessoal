@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Mitigação de segregação de funções temporária, resolução do GAP-001">
+  <defs>
+    <style>
+      .bg    { fill: #0a0a0f; }
+      .card  { fill: #111118; stroke: #00ff88; stroke-opacity: .28; stroke-width: 1.5; }
+      .cardm { fill: #111118; stroke: #e2e8f0; stroke-opacity: .18; stroke-width: 1.5; }
+      .bad   { fill: #111118; stroke: #e2e8f0; stroke-opacity: .14; stroke-width: 1.5; stroke-dasharray: 5 4; }
+      .t     { font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace; fill: #e2e8f0; }
+      .neon  { fill: #00ff88; }
+      .dim   { fill: #e2e8f0; fill-opacity: .55; }
+      .faint { fill: #e2e8f0; fill-opacity: .36; }
+      .h1    { font-size: 26px; font-weight: 700; letter-spacing: .5px; }
+      .h2    { font-size: 14px; font-weight: 700; letter-spacing: .6px; }
+      .lbl   { font-size: 11px; letter-spacing: 1.4px; }
+      .body  { font-size: 12px; }
+      .tiny  { font-size: 10.5px; }
+      .link  { stroke: #00ff88; stroke-opacity: .45; stroke-width: 1.5; fill: none; }
+      .linkd { stroke: #e2e8f0; stroke-opacity: .2; stroke-width: 1.4; fill: none; }
+    </style>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#00ff88" fill-opacity=".6"/>
+    </marker>
+    <marker id="a3d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e2e8f0" fill-opacity=".28"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="675"/>
+
+  <text class="t neon lbl" x="48" y="52">SECIDENTITY_AI // GAP-001 — SoD TEMPORAL</text>
+  <text class="t h1" x="48" y="86">O ponto cego da segregação de funções no modelo JIT</text>
+  <line x1="48" y1="104" x2="1152" y2="104" stroke="#00ff88" stroke-opacity=".2"/>
+
+  <!-- o problema -->
+  <text class="t dim lbl" x="48" y="136">O PROBLEMA</text>
+  <rect class="bad" x="48" y="152" width="530" height="112" rx="3"/>
+  <text class="t body" x="66" y="176">Dev com gh-eng-developers (PERMANENTE)</text>
+  <text class="t body" x="66" y="196">+ root em produção por 2h (TEMPORÁRIO)</text>
+  <line x1="66" y1="210" x2="560" y2="210" stroke="#e2e8f0" stroke-opacity=".12"/>
+  <text class="t faint tiny" x="66" y="230">v1.0.0 → nenhuma regra dispara. Falso negativo silencioso.</text>
+  <text class="t faint tiny" x="66" y="248">Causa raiz: break_glass_accounts_exempt: true</text>
+
+  <path class="linkd" d="M578 208 H636" marker-end="url(#a3d)"/>
+  <rect class="bad" x="636" y="152" width="516" height="112" rx="3"/>
+  <text class="t body" x="654" y="176">Correção óbvia: elevar o par a CRITICAL</text>
+  <line x1="654" y1="192" x2="1134" y2="192" stroke="#e2e8f0" stroke-opacity=".12"/>
+  <text class="t faint tiny" x="654" y="212">enforcement CRITICAL = REJEITADO, sem exceção</text>
+  <text class="t faint tiny" x="654" y="230">→ bloqueia resposta a incidente P1</text>
+  <text class="t faint tiny" x="654" y="248">Troca falso negativo por indisponibilidade garantida.</text>
+
+  <!-- a solução -->
+  <text class="t neon lbl" x="48" y="304">A TERCEIRA VIA — v1.1.0</text>
+
+  <rect class="card" x="48" y="320" width="340" height="104" rx="3"/>
+  <text class="t neon h2" x="66" y="346">jit_role_equivalents</text>
+  <text class="t dim tiny" x="66" y="368">Traduz Safe do CyberArk em papel estático:</text>
+  <text class="t body tiny" x="66" y="388">SAF_PRD_ORACLE_CRT</text>
+  <text class="t neon tiny" x="66" y="405">→ ROLE_PROD_DB_ADMIN  (TIER_1)</text>
+
+  <path class="link" d="M388 372 H436" marker-end="url(#a3)"/>
+
+  <rect class="card" x="436" y="320" width="340" height="104" rx="3"/>
+  <text class="t neon h2" x="454" y="346">4 estados de conflito</text>
+  <text class="t faint tiny" x="454" y="368">NO_CONFLICT</text>
+  <text class="t neon tiny" x="454" y="386">TEMPORARY_SOD_CONFLICT_MITIGATED</text>
+  <text class="t faint tiny" x="454" y="403">TEMPORARY_..._UNMITIGATED · PERMANENT</text>
+
+  <path class="link" d="M776 372 H824" marker-end="url(#a3)"/>
+
+  <rect class="card" x="824" y="320" width="328" height="104" rx="3"/>
+  <text class="t neon h2" x="842" y="346">Resultado no P1</text>
+  <text class="t dim tiny" x="842" y="368">SOD-ITG-004 detectado e registrado</text>
+  <text class="t neon tiny" x="842" y="388">blocks_p1_response: false</text>
+  <text class="t faint tiny" x="842" y="405">achado MEDIUM fecha na expiração</text>
+
+  <!-- mitigações -->
+  <text class="t dim lbl" x="48" y="464">CINCO MITIGAÇÕES OBRIGATÓRIAS — a ausência de uma regride o estado para REJEITADO</text>
+
+  <rect class="cardm" x="48" y="480" width="212" height="88" rx="3"/>
+  <text class="t neon tiny" x="64" y="502">MIT-001</text>
+  <text class="t body tiny" x="64" y="522">Custódia dupla</text>
+  <text class="t faint tiny" x="64" y="540">Gestor de Negócio +</text>
+  <text class="t faint tiny" x="64" y="556">Gestor de Segurança · 15min</text>
+
+  <rect class="cardm" x="272" y="480" width="212" height="88" rx="3"/>
+  <text class="t neon tiny" x="288" y="502">MIT-002</text>
+  <text class="t body tiny" x="288" y="522">Gravação PSM</text>
+  <text class="t faint tiny" x="288" y="540">audit_level MAX · vídeo,</text>
+  <text class="t faint tiny" x="288" y="556">keystroke, comandos SQL</text>
+
+  <rect class="cardm" x="496" y="480" width="212" height="88" rx="3"/>
+  <text class="t neon tiny" x="512" y="502">MIT-003</text>
+  <text class="t body tiny" x="512" y="522">Contrato Leaver</text>
+  <text class="t faint tiny" x="512" y="540">revalidado via API</text>
+  <text class="t faint tiny" x="512" y="556">cache não é aceito</text>
+
+  <rect class="cardm" x="720" y="480" width="212" height="88" rx="3"/>
+  <text class="t neon tiny" x="736" y="502">MIT-004</text>
+  <text class="t body tiny" x="736" y="522">Expiração</text>
+  <text class="t faint tiny" x="736" y="540">máx 4h · tolerância zero</text>
+  <text class="t faint tiny" x="736" y="556">rotação após uso</text>
+
+  <rect class="cardm" x="944" y="480" width="208" height="88" rx="3"/>
+  <text class="t neon tiny" x="960" y="502">MIT-005</text>
+  <text class="t body tiny" x="960" y="522">Incidente válido</text>
+  <text class="t faint tiny" x="960" y="540">P1/P2 ou GMUD</text>
+  <text class="t faint tiny" x="960" y="556">ticket não reutilizado</text>
+
+  <!-- rodapé -->
+  <line x1="48" y1="596" x2="1152" y2="596" stroke="#00ff88" stroke-opacity=".2"/>
+  <text class="t dim tiny" x="48" y="622">Sem escape hatch — a ausência é deliberada: bypass equivale a remover o controle,</text>
+  <text class="t dim tiny" x="48" y="640">porque todo incidente é urgente. Dois guards bloqueiam a carga da configuração se</text>
+  <text class="t dim tiny" x="48" y="658">alguém reverter a decisão: a regressão ficou tecnicamente impedida, não documentada.</text>
+</svg>

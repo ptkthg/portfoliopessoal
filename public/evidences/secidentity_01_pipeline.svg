@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Pipeline multi-agente das quatro fases da plataforma SecIdentity AI">
+  <defs>
+    <style>
+      .bg    { fill: #0a0a0f; }
+      .card  { fill: #111118; stroke: #00ff88; stroke-opacity: .28; stroke-width: 1.5; }
+      .cardm { fill: #111118; stroke: #e2e8f0; stroke-opacity: .18; stroke-width: 1.5; }
+      .t     { font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace; fill: #e2e8f0; }
+      .neon  { fill: #00ff88; }
+      .dim   { fill: #e2e8f0; fill-opacity: .55; }
+      .h1    { font-size: 26px; font-weight: 700; letter-spacing: .5px; }
+      .h2    { font-size: 15px; font-weight: 700; letter-spacing: .6px; }
+      .lbl   { font-size: 11px; letter-spacing: 1.4px; }
+      .body  { font-size: 12px; }
+      .tiny  { font-size: 10.5px; }
+      .flow  { stroke: #00ff88; stroke-opacity: .5; stroke-width: 1.6; fill: none; }
+      .feed  { stroke: #00ff88; stroke-opacity: .22; stroke-width: 1.2; fill: none; stroke-dasharray: 4 4; }
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#00ff88" fill-opacity=".65"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="675"/>
+
+  <text class="t neon lbl" x="48" y="52">SECIDENTITY_AI // PIPELINE MULTI-AGENTE</text>
+  <text class="t h1" x="48" y="86">Do chamado do usuário à evidência assinada</text>
+  <line x1="48" y1="104" x2="1152" y2="104" stroke="#00ff88" stroke-opacity=".2"/>
+
+  <!-- Entrada -->
+  <rect class="cardm" x="48" y="132" width="200" height="58" rx="3"/>
+  <text class="t dim tiny" x="66" y="157">USUÁRIO · CHATBOT</text>
+  <text class="t dim tiny" x="66" y="174">PORTAL ITSM · E-MAIL</text>
+  <path class="flow" d="M248 161 H296" marker-end="url(#a)"/>
+
+  <!-- FASE 3 -->
+  <rect class="card" x="296" y="126" width="252" height="70" rx="3"/>
+  <text class="t neon h2" x="314" y="152">FASE 3 — ServiceDesk</text>
+  <text class="t dim tiny" x="314" y="172">intenção · MFA · N1 zero-touch</text>
+  <text class="t dim tiny" x="314" y="187">nunca toca em privilégio</text>
+
+  <!-- ramificações -->
+  <path class="flow" d="M422 196 V236" marker-end="url(#a)"/>
+  <path class="flow" d="M548 161 H636 V236" marker-end="url(#a)"/>
+
+  <!-- zero-touch -->
+  <rect class="cardm" x="296" y="242" width="252" height="62" rx="3"/>
+  <text class="t dim tiny" x="314" y="266">ZERO-TOUCH · 4 RUNBOOKS</text>
+  <text class="t dim tiny" x="314" y="284">reset · unlock · MFA · status</text>
+
+  <!-- FASE 1 -->
+  <rect class="card" x="510" y="242" width="252" height="70" rx="3"/>
+  <text class="t neon h2" x="528" y="268">FASE 1 — IAM</text>
+  <text class="t dim tiny" x="528" y="288">baseline RBAC · 17 regras SoD</text>
+  <text class="t dim tiny" x="528" y="303">nunca manipula cofre</text>
+
+  <path class="flow" d="M636 312 V352" marker-end="url(#a)"/>
+  <text class="t dim tiny" x="650" y="337">conflito temporal → MIT-001..005</text>
+
+  <!-- FASE 2 -->
+  <rect class="card" x="510" y="358" width="252" height="76" rx="3"/>
+  <text class="t neon h2" x="528" y="384">FASE 2 — PAM</text>
+  <text class="t dim tiny" x="528" y="404">break-glass JIT · custódia dupla</text>
+  <text class="t dim tiny" x="528" y="419">gravação PSM · expira em 4h</text>
+
+  <path class="flow" d="M636 434 V474" marker-end="url(#a)"/>
+
+  <!-- FASE 4 -->
+  <rect class="card" x="510" y="480" width="252" height="76" rx="3"/>
+  <text class="t neon h2" x="528" y="506">FASE 4 — Governance</text>
+  <text class="t dim tiny" x="528" y="526">evidência · compliance contínuo</text>
+  <text class="t dim tiny" x="528" y="541">nunca audita o que opera</text>
+
+  <path class="flow" d="M762 518 H832" marker-end="url(#a)"/>
+  <rect class="cardm" x="838" y="480" width="314" height="76" rx="3"/>
+  <text class="t neon tiny" x="856" y="506">SHA-256 + MERKLE + RSA-4096 + RFC 3161</text>
+  <text class="t dim tiny" x="856" y="526">WORM · retenção 7 anos</text>
+  <text class="t dim tiny" x="856" y="541">16 controles normativos enquadrados</text>
+
+  <!-- Contrato Leaver -->
+  <rect class="card" x="838" y="126" width="314" height="150" rx="3"/>
+  <text class="t neon h2" x="856" y="152">CONTRATO LEAVER</text>
+  <text class="t dim tiny" x="856" y="174">Workday (autoridade) · SuccessFactors</text>
+  <text class="t dim tiny" x="856" y="194">1. event bus   &lt; 30s</text>
+  <text class="t dim tiny" x="856" y="211">2. cache       TTL 300s</text>
+  <text class="t dim tiny" x="856" y="228">3. API         autoridade final</text>
+  <line x1="856" y1="240" x2="1134" y2="240" stroke="#00ff88" stroke-opacity=".2"/>
+  <text class="t neon tiny" x="856" y="260">FAIL-CLOSED — UNKNOWN = LEAVER_PENDING</text>
+
+  <path class="feed" d="M900 276 V300 H420 V242"/>
+  <path class="feed" d="M930 276 V330 H770 V290 H762"/>
+  <path class="feed" d="M960 276 V396 H770 V396 H762"/>
+  <text class="t dim tiny" x="790" y="322">17 bindings</text>
+
+  <!-- rodapé -->
+  <line x1="48" y1="592" x2="1152" y2="592" stroke="#00ff88" stroke-opacity=".2"/>
+  <text class="t dim tiny" x="48" y="616">INCIDENTE P1 SIMULADO — abertura do chamado até concessão de root em produção:</text>
+  <text class="t neon body" x="48" y="638">9min50s · custódia dupla completa · gravação integral · trilha auditável</text>
+  <text class="t dim tiny" x="856" y="638">18 YAML · 4 agentes · 3/3 cenários</text>
+</svg>
