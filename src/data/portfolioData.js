@@ -196,13 +196,16 @@ export const portfolioData = {
       status: 'OPERATIONAL',
       statusColor: 'text-neon text-glow',
       description:
-        'Governança de identidades onde a política de segurança não é documento: é configuração versionada que um motor interpreta, aplica e audita. Quatro agentes cobrem o ciclo do chamado do usuário à evidência assinada para o auditor — ServiceDesk resolve N1 sem tocar em privilégio, IAM avalia RBAC e segregação de funções, PAM concede acesso privilegiado temporário com custódia dupla e gravação de sessão, Governance emite a prova criptográfica. Num incidente P1 simulado, da abertura do chamado à liberação de root em produção: 9 minutos e 50 segundos, com trilha completa.',
+        'Plataforma multi-agente para automação ITSM N1-N3, gestão de break-glass PAM no CyberArk, mitigação de SoD temporária em chamados P1 e auditoria SOX / ISO 27001 contínua. A política de segurança não é documento: é configuração versionada que um motor interpreta, aplica e audita. Num incidente P1 simulado, da abertura do chamado à liberação de root em produção: 9 minutos e 50 segundos, com custódia dupla, gravação de sessão e trilha completa.',
       logs: [
-        { prefix: '[CFG] ', value: '18 YAML - 4 agentes - 17 regras SoD' },
-        { prefix: '[SOD] ', value: 'conflito temporal JIT mitigado' },
-        { prefix: '[HR]  ', value: 'contrato Leaver fail-closed' },
-        { prefix: '[HASH]', value: 'SHA-256 + Merkle + RFC 3161' },
-        { prefix: '[TEST]', value: '3 cenários - 100% pass' },
+        { prefix: '[INIT]', value: '4 agentes carregados: ServiceDesk, IAM, PAM, Governance' },
+        { prefix: '[CFG] ', value: '18 regras YAML + contrato RH Leaver Sync (fail-closed)' },
+        { prefix: '[SOD] ', value: 'GAP-001 mitigado: custódia dupla + gravação PSM ativa' },
+        { prefix: '[S01] ', value: 'N1 auto-resolve  PASS  INC-2026-4471 fechado sem toque humano' },
+        { prefix: '[S02] ', value: 'P1 break-glass   PASS  SoD detectado, JIT liberado, pacote SOX' },
+        { prefix: '[S03] ', value: 'leaver blocked   PASS  desligamento bloqueia todas as fases' },
+        { prefix: '[TEST]', value: 'demo.py --all  3/3 cenários  exit code 0' },
+        { prefix: '[HASH]', value: 'SHA-256 + árvore de Merkle + RFC 3161 por execução' },
       ],
       tags: [
         'Python 3.9+',
