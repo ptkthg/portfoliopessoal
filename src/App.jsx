@@ -22,7 +22,7 @@ export default function App() {
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 400);
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -30,7 +30,17 @@ export default function App() {
     <div className="min-h-screen bg-terminal text-textprimary">
       <Header />
       <main>
-        <Hero name={portfolioData.person.firstName} areas={portfolioData.heroAreas} />
+        <Hero
+          name={portfolioData.person.firstName}
+          role={portfolioData.person.role}
+          tagline={portfolioData.heroTagline}
+          stats={portfolioData.heroStats}
+          areas={portfolioData.heroAreas}
+          resumePath={portfolioData.person.resumePath}
+          imagePath={portfolioData.person.profileImagePath}
+          imageAlt={portfolioData.person.profileImageAlt}
+          imagePosition={portfolioData.person.profileImagePosition}
+        />
         <About />
         <Areas areas={portfolioData.areas} />
         <Skills />
@@ -51,9 +61,9 @@ export default function App() {
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="Voltar ao topo"
-          className="fixed bottom-6 right-6 font-mono text-xs border border-neon/40 text-neon/70 px-3 py-2 bg-terminal hover:border-neon hover:text-neon transition-all duration-200"
+          className="tap fixed bottom-5 right-5 z-40 border border-neon/40 bg-terminal/95 font-mono text-xs text-neon/70 backdrop-blur-sm transition-all duration-200 hover:border-neon hover:text-neon"
         >
-          ↑ top
+          ↑
         </button>
       )}
     </div>

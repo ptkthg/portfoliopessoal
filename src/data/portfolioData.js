@@ -2,7 +2,8 @@ export const portfolioData = {
   person: {
     fullName: 'Patrick Santos',
     firstName: 'Patrick Santos',
-    role: 'Analista de Segurança da Informação · Blue Team & SOC',
+    role: 'Analista de Segurança da Informação Pleno',
+    focus: 'Blue Team · SecOps · IAM & PAM · Threat Intelligence · GRC',
     city: 'Rio de Janeiro, RJ',
     email: 'ptkamp1@gmail.com',
     linkedin: 'https://www.linkedin.com/in/ptkthg/',
@@ -12,119 +13,138 @@ export const portfolioData = {
     profileImagePath: '/assets/patrickseg.png',
     profileImageAlt: 'Patrick Santos',
     profileImagePosition: 'center 28%',
-    resumePath: '/assets/patrickcv0426.pdf',
+    resumePath: '/assets/patrick-santos-cv.pdf',
   },
-  // Hero minimalista: só nome + estas áreas de interesse.
-  heroAreas: ['Blue Team', 'GRC', 'IAM', 'Purple Team', 'Engenharia de Prompt', 'Automação com IA'],
+  // Hero: nome + áreas do objetivo do currículo.
+  heroAreas: ['Blue Team', 'SecOps', 'IAM & PAM', 'Threat Intelligence', 'GRC'],
+  // Uma frase de valor no hero — evita que ele fique só nome + lista.
+  heroTagline:
+    'Investigo incidentes, construo detecção e automatizo o que trava um SOC. Dois anos entre resposta N1 e N3, do alerta cru ao relatório que a diretoria lê.',
+  // Números de topo do hero — provas rápidas, todas vindas do currículo.
+  heroStats: [
+    { value: '1.2k+', label: 'alertas triados' },
+    { value: '90+', label: 'investigações' },
+    { value: '350+', label: 'IOCs tratados' },
+  ],
   // Texto de "o que busco" (seção de contato).
   whatISeek:
-    'Procuro uma vaga de analista de segurança ou SOC onde eu pegue incidentes de verdade e continue crescendo rumo a Pleno. Me interessa especialmente quem trabalha com Microsoft Security, nuvem ou automação. Se fizer sentido, me manda uma mensagem — respondo rápido.',
+    'Busco uma posição Pleno em SecOps, resposta a incidentes ou CTI, onde a investigação seja de verdade e a automação seja bem-vinda. Já operei de N1 a N3, montei detecção e escrevi o post-mortem depois. Me interessa quem trabalha com Microsoft Security, Splunk, nuvem ou SOAR. Se fizer sentido, me chama — respondo rápido.',
   aboutText: [
-    'Sou o Patrick, analista de segurança no Rio de Janeiro. Entrei na área pelo suporte, mexendo com Active Directory, usuários e acessos, e fui puxando pro lado que mais me prende: entender como um ataque acontece e como barrar ele antes de virar problema.',
-    'Hoje meu trabalho é vigiar o ambiente e agir quando algo foge do normal. Um alerta dispara e eu investigo: o que é, de onde veio, se é risco real ou só barulho. Quando é sério, ajudo a conter e registro tudo pra empresa entender o que houve e não repetir. Trabalho principalmente com o ecossistema Microsoft (Defender, Intune, Entra ID) e com Wazuh, Graylog e SIEM.',
-    'O que eu gosto mesmo é pegar um problema técnico e explicar de um jeito que a pessoa entende o risco, seja o time de segurança ou a diretoria. Estou abrindo duas frentes novas: segurança em nuvem e IA generativa, construindo pequenas ferramentas que poupam tempo de quem trabalha no SOC.',
+    'Sou Analista de Segurança da Informação no Rio de Janeiro, com dois anos de atuação em Blue Team, SecOps, IAM e GRC. Comecei administrando identidades e acessos no Active Directory e passei para a operação de segurança, primeiro em SOC N1 e N2, depois em resposta a incidentes N2/N3.',
+    'Atuo em resposta a incidentes e SecOps com foco em engenharia de detecção e investigação forense (DFIR). Faço monitoramento, triagem e correlação de eventos em Splunk, Microsoft Defender XDR, Google SecOps, Wazuh e Graylog, além da gestão de identidades e acessos privilegiados em Entra ID, Active Directory, BeyondTrust e CyberArk.',
+    'Escrevo regras de detecção em KQL, YARA e SIGMA mapeadas na matriz MITRE ATT&CK e desenvolvo automações em Python e PowerShell para playbooks de SOAR. Na frente de GRC, elaboro políticas, mapeio controles e reúno evidências para auditorias de ISO 27001, NIST e LGPD, com relatórios pós-incidente, SOPs e runbooks.',
+    'Atualmente estudo segurança em nuvem (Azure e AWS) e o uso de LLMs na análise de segurança, tema das ferramentas que desenvolvo e mantenho no GitHub.',
   ],
-  // Métricas e pilares do "Sobre" — centralizados aqui (antes hardcoded no componente).
+  // Métricas e pilares do "Sobre".
   aboutMetrics: [
     { value: '2+', label: 'Anos em Segurança' },
     { value: '3', label: 'Contextos corporativos' },
     { value: '5+', label: 'Projetos técnicos' },
-    { value: 'Jr+', label: 'Pronto para Pleno inicial' },
+    { value: 'Pleno', label: 'Nível de atuação' },
   ],
   aboutPillars: [
-    { index: '01', label: 'Detectar', desc: 'Crio hipóteses e investigo sinais em endpoint, identidade, e-mail e aplicação.' },
-    { index: '02', label: 'Investigar', desc: 'Correlaciono logs, alertas, IOC, IOA, KQL e contexto operacional.' },
-    { index: '03', label: 'Responder', desc: 'Apoio contenção, erradicação, registro de evidências e encaminhamento técnico.' },
-    { index: '04', label: 'Melhorar', desc: 'Transformo aprendizados em ajustes de regra, hardening, governança e documentação.' },
+    { index: '01', label: 'Detectar', desc: 'Engenharia de detecção em KQL, YARA e SIGMA, com mapeamento na matriz MITRE ATT&CK.' },
+    { index: '02', label: 'Investigar', desc: 'Correlação de eventos, logs, IOC e IOA em SIEM, com investigação forense digital (DFIR).' },
+    { index: '03', label: 'Responder', desc: 'Contenção, erradicação, coleta de evidências e relatório pós-incidente.' },
+    { index: '04', label: 'Melhorar', desc: 'Tuning de regras, hardening, automação de playbooks e atualização de políticas.' },
   ],
   areas: [
     {
-      title: 'Blue Team',
-      icon: 'shield',
-      description:
-        'Monitoramento, investigação e resposta inicial a eventos de segurança, com foco em proteção de ativos, evidências técnicas e redução da superfície de ataque.',
-    },
-    {
-      title: 'SOC',
+      title: 'SOC & Resposta a Incidentes',
       icon: 'radar',
       description:
-        'Monitoramento de SIEM, análise de logs, triagem de alertas, classificação inicial de incidentes, documentação e redução de falsos positivos.',
+        'Monitoramento N1 a N3, triagem e correlação de eventos em SIEM, contenção, erradicação e fechamento com post-mortem. Investigação forense digital (DFIR) quando o caso exige rastrear o que aconteceu.',
     },
     {
-      title: 'Threat Hunting',
+      title: 'Engenharia de Detecção',
       icon: 'target',
       description:
-        'Criação de hipóteses de caça, análise de comportamento suspeito, investigação baseada em IOC, IOA, KQL, MITRE ATT&CK, Wazuh, Graylog e padrões anômalos.',
+        'Escrita e tuning de regras em KQL, YARA e SIGMA, mapeadas na matriz MITRE ATT&CK. Revisão de detecções existentes para cortar falso positivo sem perder cobertura real.',
     },
     {
-      title: 'Gestão de Vulnerabilidades',
-      icon: 'bug',
+      title: 'Cyber Threat Intelligence',
+      icon: 'globe',
       description:
-        'Identificação, priorização e acompanhamento de correções com base em criticidade, exposição, ASM, ativos afetados, patches, evidências e esforço de implementação.',
+        'Triagem e enriquecimento de IOCs e IOAs, integração de feeds, mapeamento de campanhas e monitoramento de exposição de marca com Axur e Apura. Análise preliminar de payloads em sandbox.',
     },
     {
-      title: 'IAM e Governança de Acessos',
+      title: 'IAM & PAM',
       icon: 'key',
       description:
-        'Criação, manutenção e exclusão de usuários, revisão de permissões, trilhas de auditoria, menor privilégio, Active Directory e Microsoft Entra ID.',
+        'Governança de acessos, RBAC e menor privilégio em Microsoft Entra ID e Active Directory. Acesso privilegiado via BeyondTrust e CyberArk, Kerberos, NTLM e políticas de Acesso Condicional.',
     },
     {
-      title: 'Hardening e Controles',
+      title: 'Gestão de Vulnerabilidades (RBVM)',
+      icon: 'bug',
+      description:
+        'Priorização baseada em risco com Tenable Nessus e Qualys: criticidade, exposição real, ativo afetado e esforço de correção. Acompanhamento do patch até o fechamento.',
+    },
+    {
+      title: 'GRC & Conformidade',
+      icon: 'shield',
+      description:
+        'Políticas de segurança, gestão de risco, mapeamento de controles e coleta de evidência para auditoria interna e externa, alinhado a ISO 27001, NIST CSF e LGPD.',
+    },
+    {
+      title: 'Automação & SecOps',
       icon: 'server',
       description:
-        'Sustentação de controles de segurança, inventário, monitoramento de ativos, softwares não permitidos, políticas, GPO, Intune e hardening.',
+        'Playbooks de SOAR e scripts em Python, PowerShell e Bash para matar trabalho repetitivo. Integrações via API REST, n8n e webhooks, com LLMs aplicados à análise de segurança.',
     },
     {
       title: 'Web AppSec & Bug Bounty',
-      icon: 'globe',
-      side: 'offensive',
-      description:
-        'Caça a vulnerabilidades em aplicações web (XSS, IDOR, SSRF, SQLi) em programas de bug bounty na HackerOne, com foco em recon e validação manual.',
-    },
-    {
-      title: 'Pentest de Rede',
       icon: 'crosshair',
       side: 'offensive',
       description:
-        'Estudo e prática de testes de intrusão em rede: enumeração de serviços, exploração controlada e pós-exploração em ambientes de laboratório.',
+        'Caça a vulnerabilidades em aplicações web (XSS, IDOR, SSRF, SQLi) em programas de bug bounty na HackerOne, com foco em recon e validação manual. Estudo rumo ao Purple Team.',
     },
   ],
-  // Competências exibidas como tags + nível textual (sem percentual autoatribuído).
+  // Competências: espelham os blocos de "Conhecimentos" do currículo.
   skillGroups: [
     {
-      label: 'SOC & Detecção',
+      label: 'SOC, DFIR & Detecção',
       level: 'uso no trabalho',
-      skills: ['Microsoft Defender XDR', 'SIEM', 'Wazuh', 'Graylog', 'KQL', 'Triagem de alertas', 'Análise de logs', 'Redução de falsos positivos'],
+      skills: ['Monitoramento N1/N2/N3', 'Investigação forense (DFIR)', 'Correlação de eventos', 'Contenção e erradicação', 'Post-mortem', 'KQL', 'YARA', 'Regras SIGMA', 'MITRE ATT&CK'],
     },
     {
-      label: 'Resposta a Incidentes',
-      level: 'uso no dia a dia',
-      skills: ['Investigação', 'Cadeia de processos', 'Contenção inicial', 'Coleta de evidências', 'Documentação executiva'],
-    },
-    {
-      label: 'Vulnerabilidades & Hardening',
+      label: 'SIEM, EDR & Telemetria',
       level: 'uso no trabalho',
-      skills: ['Priorização por risco', 'ASM', 'Patch management', 'Secure Score', 'GPO', 'CIS Controls', 'NIST CSF'],
+      skills: ['Microsoft Defender XDR', 'Splunk', 'Google SecOps (Chronicle)', 'AlienVault', 'Wazuh', 'Graylog', 'Suricata IDS', 'Zeek', 'Análise de logs'],
     },
     {
-      label: 'IAM & Governança',
+      label: 'Threat Intelligence & Malware',
       level: 'uso no trabalho',
-      skills: ['Active Directory', 'Microsoft Entra ID', 'Ciclo de vida de usuário', 'Menor privilégio', 'Trilhas de auditoria'],
+      skills: ['Enriquecimento de IOC/IOA', 'Feeds de inteligência', 'Axur', 'Apura', 'ANY.RUN', 'Hybrid Analysis', 'Análise estática/dinâmica', 'Exposição de marca'],
     },
     {
-      label: 'Cloud & GRC',
-      level: 'estudando agora',
-      skills: ['Fundamentos de Azure Security', 'Microsoft Purview', 'Privacidade & conformidade', 'Análise de risco'],
+      label: 'IAM & PAM',
+      level: 'uso no trabalho',
+      skills: ['Microsoft Entra ID', 'Active Directory', 'BeyondTrust', 'CyberArk', 'RBAC', 'Menor privilégio', 'Kerberos', 'NTLM', 'Acesso Condicional'],
+    },
+    {
+      label: 'GRC & RBVM',
+      level: 'uso no trabalho',
+      skills: ['Tenable Nessus', 'Qualys', 'ISO/IEC 27001', 'NIST CSF', 'LGPD', 'OWASP Top 10', 'Gestão de risco', 'Auditoria interna', 'Mapeamento de controles'],
+    },
+    {
+      label: 'Infra, Redes & Nuvem',
+      level: 'uso no trabalho',
+      skills: ['Microsoft Intune', 'NGFW (OPNsense, Fortinet)', 'WAF', 'ASM', 'GPO', 'Azure', 'AWS', 'VPC', 'Hardening'],
+    },
+    {
+      label: 'Automação & SecOps',
+      level: 'uso no trabalho',
+      skills: ['Python', 'PowerShell', 'Bash', 'Playbooks de SOAR', 'API REST', 'n8n', 'Webhooks'],
     },
     {
       label: 'IA aplicada à segurança',
-      level: 'uso nos projetos',
-      skills: ['Enriquecimento de IOC com LLM', 'Briefings de ameaça (PT-BR)', 'Automação de triagem', 'Groq · Llama 3.3'],
+      level: 'uso nos projetos · estudo ativo',
+      skills: ['LLMs na análise', 'Engenharia de prompt', 'Enriquecimento de IOC com IA', 'RAG', 'Embeddings', 'APIs (Groq / OpenAI / Anthropic)'],
     },
     {
-      label: 'IA Generativa & Eng. de Prompt',
-      level: 'estudando agora · novo foco',
-      skills: ['IA generativa', 'Engenharia de prompt', 'LLMs', 'RAG', 'Embeddings', 'Automação com IA', 'APIs de IA (Groq / OpenAI / Anthropic)'],
+      label: 'Documentação técnica & executiva',
+      level: 'uso no trabalho',
+      skills: ['SOPs e runbooks', 'Relatório pós-incidente', 'Matriz de risco', 'Mapa de evidências', 'Apresentação executiva'],
     },
   ],
   // Habilidades interpessoais — frases concretas, não buzzwords.
@@ -135,59 +155,88 @@ export const portfolioData = {
     'Aprendo rápido e por conta própria',
     'Trabalho junto com outros times e com SOC terceirizado',
   ],
+  languages: [
+    { name: 'Português', level: 'Nativo' },
+    { name: 'Inglês', level: 'Intermediário' },
+    { name: 'Espanhol', level: 'Intermediário' },
+  ],
   // O que ainda estou desenvolvendo — honesto, sem prometer demais.
   developing: [
-    { area: 'Cloud Security (Azure)', note: 'saindo dos fundamentos pra prática' },
-    { area: 'GRC e privacidade', note: 'Purview, LGPD, análise de risco' },
-    { area: 'IA generativa e engenharia de prompt', note: 'meu foco novo de estudo' },
+    { area: 'Cloud Security (Azure / AWS)', note: 'saindo dos controles pra arquitetura' },
+    { area: 'Engenharia de detecção avançada', note: 'SIGMA em escala e detection-as-code' },
+    { area: 'IA generativa aplicada ao SOC', note: 'meu foco novo de estudo' },
     { area: 'Lado ofensivo / Purple Team', note: 'pentest e bug bounty em laboratório' },
-    { area: 'Certificações', note: 'em andamento (AZ-500 / SC-200 no radar)' },
+    { area: 'Certificações', note: 'em andamento (SC-200 / AZ-500 no radar)' },
   ],
   experiences: [
     {
-      company: 'Oceânica',
-      role: 'Assistente de Segurança da Informação Pleno',
-      period: 'out/2025 – abr/2026',
-      activities: [
-        'Monitoramento e investigação de alertas em endpoint, e-mail, identidade e aplicações, correlacionando sinais técnicos para apoiar resposta.',
-        'Uso de Microsoft Defender, Intune, Wazuh, Graylog e SIEM para triagem de alertas, análise de logs, classificação inicial e redução de falsos positivos.',
-        'Gestão de vulnerabilidades com priorização por severidade, exposição, ASM, ativos afetados, patches e viabilidade de correção.',
-        'Governança de acessos com criação/manutenção/exclusão de usuários, revisão de permissões, trilhas de auditoria e menor privilégio.',
-        'Sustentação de controles de inventário, monitoramento de ativos, softwares não permitidos, hardening, GPO, Intune e documentação de evidências.',
-        'Interface com SOC terceirizado para acompanhamento de alertas, encaminhamentos, validações e melhoria contínua da operação defensiva.',
+      company: 'Rio Quality',
+      role: 'Analista Júnior de Segurança da Informação',
+      period: 'jan/2024 – jun/2025',
+      focus: 'Identidade, monitoramento e conformidade',
+      metrics: [
+        { value: '500', label: 'usuários geridos' },
+        { value: '800', label: 'eventos/mês' },
+        { value: '-30%', label: 'tempo de investigação' },
+        { value: '300', label: 'ativos de TI' },
       ],
+      activities: [
+        'Administração de acessos e identidades no Active Directory e Azure AD para cerca de 500 usuários, aplicando Kerberos, NTLM e menor privilégio.',
+        'Implantação e sustentação de Wazuh e Graylog, com análise de cerca de 800 eventos mensais e redução de 30% no tempo de investigação.',
+        'Acompanhamento de 25 rotinas críticas de backup, com execução acima de 97%, e gestão do ciclo de vida de aproximadamente 300 ativos de TI.',
+        'Atendimento de cerca de 150 chamados mensais em Segurança e Infraestrutura, reduzindo em 20% os incidentes recorrentes.',
+        'Elaboração e aplicação de Políticas de Segurança da Informação (PSI) e conformidade com LGPD e ISO 27001, com campanhas de conscientização para cerca de 500 colaboradores.',
+      ],
+      stack: ['Active Directory', 'Azure AD', 'Wazuh', 'Graylog', 'LGPD', 'ISO 27001'],
     },
     {
       company: 'Vortex Security',
-      role: 'Analista de SOC N1',
+      role: 'Security Operations Center Analyst',
       period: 'jul/2025 – set/2025',
-      activities: [
-        'Monitoramento contínuo via SIEM com triagem de alertas, análise de logs e classificação inicial de incidentes.',
-        'Correlação de eventos, logs, IOC e IOA para apoiar investigação, tomada de decisão e escalonamento.',
-        'Ajuste de regras e refinamento de alertas para reduzir falsos positivos e melhorar eficiência operacional.',
-        'Registro de evidências, contexto do alerta e encaminhamentos para times responsáveis.',
+      focus: 'Triagem, investigação e threat intelligence',
+      metrics: [
+        { value: '1.200', label: 'alertas triados' },
+        { value: '95%', label: 'SLA cumprido' },
+        { value: '90+', label: 'investigações' },
+        { value: '-25%', label: 'falsos positivos' },
       ],
+      activities: [
+        'Triagem e análise de aproximadamente 1.200 alertas com 95% de cumprimento de SLA, usando Splunk, AlienVault e Google SecOps/Chronicle para correlação e investigação de logs.',
+        'Condução de mais de 90 investigações envolvendo phishing, força bruta, acessos suspeitos, malware e comportamento anômalo, em atendimento N1 e N2.',
+        'Atuação em Cyber Threat Intelligence com Axur e Apura, monitorando ameaças externas e enriquecendo mais de 150 IOCs.',
+        'Análise estática e dinâmica preliminar de scripts e payloads em sandbox (ANY.RUN, Hybrid Analysis), extraindo mais de 200 IOCs para bloqueio em perímetro e EDR.',
+        'Gestão de acessos privilegiados via BeyondTrust para 60 contas administrativas e revisão de 20 regras de detecção, reduzindo em 25% os falsos positivos.',
+        'Documentação de mais de 80 registros entre chamados, playbooks e runbooks.',
+      ],
+      stack: ['Splunk', 'Google SecOps', 'AlienVault', 'Axur', 'Apura', 'ANY.RUN', 'BeyondTrust'],
     },
     {
-      company: 'Rio Quality',
-      role: 'Analista de Segurança Jr',
-      period: 'jan/2024 – jun/2025',
-      activities: [
-        'Suporte N1/N2 com administração de identidades, grupos e acessos no Active Directory.',
-        'Criação, manutenção e exclusão de usuários, apoio em permissões e rotinas de controle de acesso.',
-        'Suporte a VPN, proxy, antivírus, ambiente Windows e troubleshooting de segurança operacional.',
-        'Apoio a políticas de segurança, manutenção de ativos críticos e organização de evidências.',
-        'Aplicação do princípio do menor privilégio em revisões de acesso e rotinas de controle.',
+      company: 'Oceânica',
+      role: 'Analista de Segurança da Informação Pleno',
+      period: 'out/2025 – mar/2026',
+      focus: 'DFIR, engenharia de detecção e GRC',
+      metrics: [
+        { value: 'N2/N3', label: 'nível de atuação' },
+        { value: '4', label: 'SIEMs operados' },
+        { value: 'SOAR', label: 'playbooks próprios' },
+        { value: '3', label: 'frameworks auditados' },
       ],
+      activities: [
+        'Resposta a incidentes e SecOps N2/N3, com foco em engenharia de detecção, investigação forense (DFIR) e sustentação de projetos de Segurança da Informação.',
+        'Análise contínua de Threat Intelligence com triagem de IOCs (IPs, domínios, URLs, hashes), mapeamento de campanhas e integração de feeds para enriquecimento preventivo de perímetro.',
+        'Monitoramento, triagem e correlação de eventos em SIEM (Splunk, Defender XDR, Google SecOps, Wazuh), com gestão de identidades e acessos privilegiados em Entra ID, Active Directory, BeyondTrust e CyberArk.',
+        'Gestão de Vulnerabilidades Baseada em Risco (RBVM) e desenvolvimento de automações em Python, PowerShell e KQL para playbooks de SOAR, cortando trabalho operacional via APIs e LLMs.',
+        'Frente de GRC: elaboração de políticas, gestão de riscos, implementação de controles e coleta de evidências para auditorias internas e externas (ISO 27001, NIST e LGPD).',
+        'Documentação técnica e executiva de nível sênior: relatórios pós-incidente, procedimentos operacionais (SOPs/runbooks) e recomendações estratégicas de remediação.',
+      ],
+      stack: ['Splunk', 'Defender XDR', 'CyberArk', 'Python', 'KQL', 'SOAR', 'ISO 27001'],
     },
   ],
   education: {
-    course: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
+    course: 'Tecnologia em Análise e Desenvolvimento de Sistemas',
     institution: 'Universidade Estácio de Sá, UNESA',
-    status: 'Cursando',
+    status: 'Conclusão prevista em 12/2026',
   },
-  // Projetos em destaque — FONTE ÚNICA consumida por Projects.jsx.
-  // Para adicionar: copie um objeto e ajuste title, status, description, tags e URLs.
   projects: [
     {
       filename: 'secidentity_ai.yaml',

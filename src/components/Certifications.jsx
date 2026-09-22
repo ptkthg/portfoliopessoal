@@ -15,27 +15,28 @@ export default function Certifications({ certifications }) {
   if (!certifications?.length) return null;
 
   return (
-    <section id="certificacoes" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
-      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase">// certificações</p>
-      <h2 className="font-mono text-3xl font-bold text-textprimary mb-10">Credenciais</h2>
+    <section id="certificacoes" ref={ref} className="fade-in-section section max-w-4xl">
+      <p className="eyebrow text-glow">// certificações</p>
+      <h2 className="section-title mb-8">Credenciais</h2>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
         {certifications.map((cert) => (
-          <div
-            key={cert.name}
-            className="border border-neon/15 bg-surface p-4 hover:border-neon/40 transition-colors duration-200"
-          >
-            <div className="font-mono text-neon text-lg font-bold mb-1">{cert.name}</div>
-            <p className="text-textprimary/70 text-xs leading-snug mb-3">{cert.full}</p>
-            <p
-              className={`font-mono text-xs font-semibold ${
-                ISSUER_COLORS[cert.issuer] ?? 'text-textprimary/50'
-              }`}
-            >
-              {cert.issuer}
-            </p>
-            <p className="font-mono text-textprimary/55 text-xs mt-0.5">{cert.year}</p>
-          </div>
+          <article key={cert.name} className="card card-hover p-4">
+            <div className="mb-1 font-mono text-lg font-bold text-neon">{cert.name}</div>
+            <p className="mb-3 text-xs leading-snug text-textprimary/70">{cert.full}</p>
+            <div className="flex items-baseline justify-between gap-2">
+              <p
+                className={`font-mono text-xs font-semibold ${
+                  ISSUER_COLORS[cert.issuer] ?? 'text-textprimary/50'
+                }`}
+              >
+                {cert.issuer}
+              </p>
+              {cert.year && (
+                <p className="font-mono text-xs text-textprimary/45">{cert.year}</p>
+              )}
+            </div>
+          </article>
         ))}
       </div>
     </section>

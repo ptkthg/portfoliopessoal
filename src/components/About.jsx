@@ -3,50 +3,84 @@ import { portfolioData } from '../data/portfolioData';
 
 export default function About() {
   const ref = useScrollReveal();
-  const { aboutText, aboutMetrics: METRICS, aboutPillars: PILLARS } = portfolioData;
+  const {
+    aboutText,
+    aboutMetrics: METRICS,
+    aboutPillars: PILLARS,
+    languages,
+    education,
+  } = portfolioData;
 
   return (
-    <section id="sobre" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
-      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// sobre</p>
-      <h2 className="font-mono text-3xl font-bold text-white mb-8">Quem sou</h2>
+    <section id="sobre" ref={ref} className="fade-in-section section max-w-4xl">
+      <p className="eyebrow text-glow">// sobre</p>
+      <h2 className="section-title mb-8">Quem sou</h2>
 
-      <div className="space-y-4 mb-10 border-l-2 border-neon/30 pl-5">
+      <div className="mb-10 space-y-4 border-l-2 border-neon/30 pl-4 sm:pl-5">
         {aboutText.map((paragraph, i) => (
           <p
             key={i}
-            className={`text-base leading-relaxed ${i === 0 ? 'text-white/90' : 'text-textprimary/80'}`}
+            className={`text-sm leading-relaxed sm:text-base ${
+              i === 0 ? 'text-white/90' : 'text-textprimary/80'
+            }`}
           >
             {paragraph}
           </p>
         ))}
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+      {/* Métricas de carreira */}
+      <div className="mb-12 grid grid-cols-2 gap-px border border-neon/15 bg-neon/15 md:grid-cols-4">
         {METRICS.map((m) => (
-          <div
-            key={m.label}
-            className="border border-neon/20 bg-surface p-4 text-center hover:border-neon/50 transition-colors duration-200"
-          >
-            <div className="font-mono text-neon text-3xl font-bold">{m.value}</div>
-            <div className="text-textprimary/70 text-xs mt-1.5 uppercase tracking-wider leading-snug">
+          <div key={m.label} className="bg-surface p-4 text-center">
+            <div className="font-mono text-2xl font-bold text-neon sm:text-3xl">{m.value}</div>
+            <div className="mt-1.5 text-[11px] uppercase leading-snug tracking-wider text-textprimary/65">
               {m.label}
             </div>
           </div>
         ))}
       </div>
 
-      <p className="font-mono text-neon text-xs mb-4 tracking-widest uppercase">// ciclo defensivo</p>
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+      {/* Ciclo defensivo */}
+      <p className="eyebrow mb-4 text-neon/60">// ciclo defensivo</p>
+      <div className="mb-12 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
         {PILLARS.map((p) => (
-          <div
-            key={p.label}
-            className="border border-neon/15 bg-surface p-4 hover:border-neon/40 transition-colors duration-200"
-          >
-            <div className="font-mono text-neon/40 text-xs mb-1">{p.index}</div>
-            <div className="font-mono text-neon text-sm font-bold mb-2">{p.label}</div>
-            <p className="text-textprimary/60 text-xs leading-snug">{p.desc}</p>
+          <div key={p.label} className="card card-hover p-4">
+            <div className="mb-1 font-mono text-xs text-neon/40">{p.index}</div>
+            <div className="mb-2 font-mono text-sm font-bold text-neon">{p.label}</div>
+            <p className="text-xs leading-snug text-textprimary/60">{p.desc}</p>
           </div>
         ))}
+      </div>
+
+      {/* Formação e idiomas */}
+      <div className="grid gap-3 sm:grid-cols-2">
+        {education && (
+          <div className="card p-4">
+            <p className="mb-2 font-mono text-[11px] uppercase tracking-widest text-neon/60">
+              // formação
+            </p>
+            <p className="text-sm font-semibold leading-snug text-white">{education.course}</p>
+            <p className="mt-1 text-xs text-textprimary/60">{education.institution}</p>
+            <p className="mt-1 font-mono text-xs text-neon/70">{education.status}</p>
+          </div>
+        )}
+
+        {languages?.length > 0 && (
+          <div className="card p-4">
+            <p className="mb-2 font-mono text-[11px] uppercase tracking-widest text-neon/60">
+              // idiomas
+            </p>
+            <ul className="space-y-1.5">
+              {languages.map((lang) => (
+                <li key={lang.name} className="flex items-baseline justify-between gap-3">
+                  <span className="text-sm text-textprimary/85">{lang.name}</span>
+                  <span className="font-mono text-xs text-neon/70">{lang.level}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   );

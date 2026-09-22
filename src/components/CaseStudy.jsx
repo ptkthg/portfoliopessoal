@@ -16,27 +16,33 @@ export default function CaseStudy({ caseStudy }) {
   if (!caseStudy) return null;
 
   return (
-    <section id="estudo-caso" ref={ref} className="fade-in-section py-20 px-6 max-w-4xl mx-auto">
-      <p className="font-mono text-neon text-xs mb-2 tracking-widest uppercase text-glow">// estudo de caso</p>
-      <h2 className="font-mono text-3xl font-bold text-white mb-3">{caseStudy.subtitle}</h2>
-      <p className="text-textprimary/70 text-sm mb-8 max-w-2xl">
+    <section id="estudo-caso" ref={ref} className="fade-in-section section max-w-4xl">
+      <p className="eyebrow text-glow">// estudo de caso</p>
+      <h2 className="section-title mb-3">{caseStudy.subtitle}</h2>
+      <p className="section-lead mb-8">
         Um caso real, do alerta inicial até achar a causa e corrigir.
       </p>
 
-      <div className="border border-neon/25 bg-surface divide-y divide-neon/10">
-        {blockLabels.map((item) => (
-          <div key={item.key} className="grid sm:grid-cols-[150px_1fr] gap-1 sm:gap-4 p-5">
-            <h3 className="font-mono text-neon text-xs uppercase tracking-widest pt-0.5">{item.label}</h3>
-            <p className="text-textprimary/80 text-sm leading-relaxed">{caseStudy[item.key]}</p>
-          </div>
+      <ol className="card divide-y divide-neon/10 border-neon/25">
+        {blockLabels.map((item, i) => (
+          <li
+            key={item.key}
+            className="grid gap-1.5 p-4 sm:grid-cols-[130px_1fr] sm:gap-4 sm:p-5"
+          >
+            <h3 className="flex items-baseline gap-2 font-mono text-xs uppercase tracking-widest text-neon sm:pt-0.5">
+              <span className="text-neon/35">{String(i + 1).padStart(2, '0')}</span>
+              {item.label}
+            </h3>
+            <p className="text-sm leading-relaxed text-textprimary/80">{caseStudy[item.key]}</p>
+          </li>
         ))}
-      </div>
+      </ol>
 
-      <div className="flex flex-wrap gap-2 mt-5">
+      <div className="mt-5 flex flex-wrap gap-2">
         {caseStudy.tags.map((tag) => (
           <span
             key={tag}
-            className="font-mono text-xs border border-neon/20 text-textprimary/70 px-2.5 py-1"
+            className="border border-neon/20 px-2 py-1 font-mono text-[11px] leading-none text-textprimary/70"
           >
             {tag}
           </span>
