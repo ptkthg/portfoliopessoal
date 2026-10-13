@@ -34,7 +34,7 @@ function Header({ active }) {
       {navItems.map(({ id, label }) => <a key={id} href={'#' + id} aria-current={active === id ? 'location' : undefined} onClick={() => setOpen(false)}>{label}</a>)}
       <a className="resume-mobile" href={data.person.resumePath} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>Currículo ↗</a>
     </nav>
-    <a className="resume-link" href={data.person.resumePath} target="_blank" rel="noreferrer">Currículo <ArrowUpRight size={13} aria-hidden="true" /></a>
+    <a className="resume-link" href={data.person.resumePath} target="_blank" rel="noreferrer">Currículo <ArrowUpRight size={16} aria-hidden="true" /></a>
     <button ref={toggleRef} className="menu-toggle" type="button" aria-label={open ? 'Fechar menu' : 'Abrir menu'} aria-controls="main-navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
   </div></header>;
 }

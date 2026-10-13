@@ -9,7 +9,15 @@
   color-scheme: dark;
 
   /* Altura do header fixo — usada pelo scroll-margin das âncoras. */
-  --header-h: 3.5rem;
+  --header-h: 82px;
+}
+
+@media (max-width: 1180px) {
+  :root { --header-h: 72px; }
+}
+
+@media (max-width: 680px) {
+  :root { --header-h: 64px; }
 }
 
 html {
