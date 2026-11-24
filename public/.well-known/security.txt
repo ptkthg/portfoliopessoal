@@ -1,0 +1,5 @@
+# Política de reporte de vulnerabilidades deste site (RFC 9116).
+Contact: mailto:ptkamp1@gmail.com
+Expires: 2027-11-24T00:00:00.000Z
+Preferred-Languages: pt, en
+Canonical: https://portfolioptk.vercel.app/.well-known/security.txt
