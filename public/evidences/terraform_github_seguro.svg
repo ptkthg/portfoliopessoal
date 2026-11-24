@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Diagrama do projeto terraform-github-seguro: o mapa de repositórios passa pelo módulo repositorio-seguro, que cria cinco recursos de proteção; o CI valida o código sem receber token">
+  <defs>
+    <style>
+      .mono { font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace; }
+      .sans { font-family: 'Space Grotesk', 'Segoe UI', Arial, sans-serif; }
+      .box  { fill: #090d15; stroke: #293140; stroke-width: 1.5; }
+      .hot  { fill: #0b1226; stroke: #1554ff; stroke-width: 1.5; }
+      .line { stroke: #4b7cff; stroke-width: 1.5; fill: none; }
+      .w    { fill: #e8eaf0; }
+      .m    { fill: #a3adbf; }
+      .b    { fill: #4b7cff; }
+    </style>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#4b7cff"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="#050608"/>
+  <path d="M0 112 H1200 M0 476 H1200" stroke="#141b27" stroke-width="1"/>
+
+  <text x="60" y="58" class="mono b" font-size="14" letter-spacing="1.5">TERRAFORM-GITHUB-SEGURO</text>
+  <text x="60" y="92" class="sans w" font-size="26" font-weight="600">Repositório criado já protegido</text>
+
+  <!-- entrada -->
+  <text x="60" y="152" class="mono m" font-size="12" letter-spacing="1.2">ENTRADA</text>
+  <rect x="60" y="168" width="250" height="250" class="box"/>
+  <text x="80" y="200" class="mono b" font-size="14">terraform.tfvars</text>
+  <text class="mono w" font-size="15">
+    <tspan x="80" y="245">repositorios = {</tspan>
+    <tspan x="80" y="275">  laboratorio = {…}</tspan>
+    <tspan x="80" y="305">  site        = {…}</tspan>
+    <tspan x="80" y="335">}</tspan>
+  </text>
+  <text x="80" y="392" class="mono m" font-size="12">token só via GITHUB_TOKEN</text>
+
+  <path d="M310 293 H362" class="line" marker-end="url(#seta)"/>
+
+  <!-- módulo -->
+  <text x="370" y="152" class="mono m" font-size="12" letter-spacing="1.2">MÓDULO</text>
+  <rect x="370" y="168" width="290" height="250" class="hot"/>
+  <text x="392" y="210" class="sans w" font-size="22" font-weight="600">repositorio-seguro</text>
+  <text x="392" y="246" class="mono m" font-size="13">for_each por repositório</text>
+  <text class="mono w" font-size="13">
+    <tspan x="392" y="296">validações de entrada:</tspan>
+    <tspan x="392" y="322" class="m">· nome e tópicos (regex)</tspan>
+    <tspan x="392" y="346" class="m">· visibilidade public|private</tspan>
+    <tspan x="392" y="370" class="m">· aprovações de 0 a 6</tspan>
+  </text>
+
+  <path d="M660 293 H690 M690 174 V412" class="line"/>
+  <path d="M690 174 H722" class="line" marker-end="url(#seta)"/>
+  <path d="M690 233 H722" class="line" marker-end="url(#seta)"/>
+  <path d="M690 293 H722" class="line" marker-end="url(#seta)"/>
+  <path d="M690 353 H722" class="line" marker-end="url(#seta)"/>
+  <path d="M690 412 H722" class="line" marker-end="url(#seta)"/>
+
+  <!-- recursos -->
+  <text x="730" y="134" class="mono m" font-size="12" letter-spacing="1.2">RECURSOS CRIADOS</text>
+  <g class="mono">
+    <rect x="730" y="148" width="410" height="52" class="box"/>
+    <text x="748" y="170" class="w" font-size="14">github_repository</text>
+    <text x="748" y="190" class="m" font-size="12">secret scanning · push protection · archive_on_destroy</text>
+
+    <rect x="730" y="207" width="410" height="52" class="box"/>
+    <text x="748" y="229" class="w" font-size="14">github_repository_ruleset</text>
+    <text x="748" y="249" class="m" font-size="12">sem force push · sem exclusão · PR obrigatório</text>
+
+    <rect x="730" y="267" width="410" height="52" class="box"/>
+    <text x="748" y="289" class="w" font-size="14">vulnerability_alerts</text>
+    <text x="748" y="309" class="m" font-size="12">alertas de dependências vulneráveis</text>
+
+    <rect x="730" y="327" width="410" height="52" class="box"/>
+    <text x="748" y="349" class="w" font-size="14">dependabot_security_updates</text>
+    <text x="748" y="369" class="m" font-size="12">PRs automáticos de correção</text>
+
+    <rect x="730" y="386" width="410" height="52" class="box"/>
+    <text x="748" y="408" class="w" font-size="14">SECURITY.md</text>
+    <text x="748" y="428" class="m" font-size="12">canal privado para reportar vulnerabilidades</text>
+  </g>
+
+  <!-- CI -->
+  <text x="60" y="516" class="mono m" font-size="12" letter-spacing="1.2">CI · GITHUB ACTIONS · PERMISSIONS: CONTENTS READ · ACTIONS FIXADAS POR SHA</text>
+  <g class="mono" font-size="14">
+    <rect x="60" y="536" width="140" height="48" class="box"/><text x="130" y="565" class="w" text-anchor="middle">fmt</text>
+    <path d="M200 560 H232" class="line" marker-end="url(#seta)"/>
+    <rect x="240" y="536" width="140" height="48" class="box"/><text x="310" y="565" class="w" text-anchor="middle">validate</text>
+    <path d="M380 560 H412" class="line" marker-end="url(#seta)"/>
+    <rect x="420" y="536" width="140" height="48" class="hot"/><text x="490" y="565" class="w" text-anchor="middle">test 10/10</text>
+    <path d="M560 560 H592" class="line" marker-end="url(#seta)"/>
+    <rect x="600" y="536" width="140" height="48" class="box"/><text x="670" y="565" class="w" text-anchor="middle">tflint</text>
+    <path d="M740 560 H772" class="line" marker-end="url(#seta)"/>
+    <rect x="780" y="536" width="140" height="48" class="box"/><text x="850" y="565" class="w" text-anchor="middle">checkov</text>
+  </g>
+  <rect x="944" y="536" width="150" height="48" fill="none" stroke="#4b7cff" stroke-dasharray="4 4"/>
+  <text x="1019" y="557" class="mono b" font-size="12" text-anchor="middle">token nunca</text>
+  <text x="1019" y="574" class="mono b" font-size="12" text-anchor="middle">entra no CI</text>
+
+  <text x="60" y="636" class="mono m" font-size="12">testes com mock_provider: rodam sem token e sem rede</text>
+</svg>

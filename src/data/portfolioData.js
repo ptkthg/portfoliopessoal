@@ -22,7 +22,7 @@ export const portfolioData = {
     'Investigo incidentes, construo detecção e automatizo o que trava um SOC. Dois anos entre resposta N1 e N3, do alerta cru ao relatório que a diretoria lê.',
   // Números de topo do hero — provas rápidas, todas vindas do currículo.
   heroStats: [
-    { value: '1.2k+', label: 'alertas triados' },
+    { value: '1,2 mil+', label: 'alertas triados' },
     { value: '90+', label: 'investigações' },
     { value: '350+', label: 'IOCs tratados' },
   ],
@@ -301,6 +301,7 @@ export const portfolioData = {
         ],
       },
       githubUrl: 'https://github.com/ptkthg/secidentity-ai',
+      proof: { tests: 'demo.py --all: 3/3 cenários' },
     },
     {
       filename: 'repositorio_seguro.tf',
@@ -319,6 +320,7 @@ export const portfolioData = {
       tags: ['Terraform', 'GitHub', 'DevSecOps', 'Checkov', 'TFLint', 'GitHub Actions'],
       liveUrl: null,
       githubUrl: 'https://github.com/ptkthg/terraform-github-seguro',
+      proof: { ci: 'https://github.com/ptkthg/terraform-github-seguro/actions', tests: '10 testes (terraform test)' },
     },
     {
       filename: 'deception_loop.py',
@@ -337,9 +339,10 @@ export const portfolioData = {
       tags: ['Python 3.13', 'Streamlit', 'YARA', 'SOAR', 'Pytest', 'MITRE ATT&CK'],
       // URL absoluta: o GIF vive no repositorio do projeto, nao neste.
       media: 'https://raw.githubusercontent.com/ptkthg/deception-loop/main/media/demo_deception_loop.gif',
-      mediaCaption: 'Isca tocada → ameaça identificada → defesas geradas, em tempo real',
+      mediaCaption: 'Isca tocada, ameaça identificada e defesas geradas, em tempo real',
       liveUrl: 'https://deception-loop.streamlit.app',
       githubUrl: 'https://github.com/ptkthg/deception-loop',
+      proof: { tests: '211 testes (pytest)' },
     },
     {
       filename: 'iocenricher.exe',
@@ -406,6 +409,7 @@ export const portfolioData = {
       tags: ['Wazuh', 'OPNsense', 'Suricata', 'Python', 'Syslog RFC3164', 'MITRE ATT&CK'],
       liveUrl: null,
       githubUrl: 'https://github.com/ptkthg/perimeter-defend-lab',
+      proof: { evidence: 'capturas do Wazuh e do tuning no repositório' },
       // Evidências visuais em ordem cronológica de execução do laboratório.
       // As imagens ficam em `public/evidences/` e são servidas na raiz do site.
       evidence: {
@@ -439,7 +443,7 @@ export const portfolioData = {
             src: '/evidences/04_tuning_metrics_result.png',
             title: 'Resultado Real do Tuning de Alertas',
             description:
-              'Motor do Wazuh registrando 100% de eliminação de falsos positivos (40 → 0) e preservação total de alertas críticos (15/15).',
+              'Motor do Wazuh registrando 100% de eliminação de falsos positivos (de 40 para 0) e preservação total de alertas críticos (15/15).',
           },
           {
             id: 'dashboard',
@@ -452,31 +456,33 @@ export const portfolioData = {
       },
     },
   ],
+  // Próximos passos públicos: mostram a trajetória da transição para security engineering.
+  roadmap: [
+    { status: 'PRÓXIMO', title: 'XDR Hunting Pack público', detail: 'Consultas KQL publicadas como detection as code, com testes e CI.' },
+    { status: 'PLANEJADO', title: 'Baseline de segurança AWS', detail: 'CloudTrail, alerta de uso da conta root e orçamento, tudo em Terraform.' },
+    { status: 'PLANEJADO', title: 'Projetos em inglês', detail: 'READMEs em inglês para vagas internacionais e remotas.' },
+  ],
   caseStudy: {
     title: 'Estudo de Caso',
     subtitle: 'Resposta a incidente com Microsoft Defender',
-    context: 'Monitoramento de alerta em endpoint do setor financeiro com Microsoft Defender.',
-    detection: 'Execução suspeita de PowerShell com comportamento associado a reconhecimento de ambiente.',
-    response:
-      'Isolamento do dispositivo, investigação em SIEM, validação em Active Directory e cruzamento com telemetria do endpoint.',
-    rootCause:
-      'E-mail de phishing que passou pelo filtro inicial, mas teve a execução bloqueada pelo Defender.',
-    correction:
-      'Revisão de privilégios locais, aplicação do princípio do menor privilégio e sugestão de ajuste via GPO para política de execução de scripts.',
-    result: 'Incidente contido, causa raiz tratada e melhoria aplicada no controle preventivo.',
-    lessonsLearned:
-      'Detecção sem resposta rápida é incompleta. Blue Team eficiente precisa correlacionar sinais, conter o impacto e corrigir a causa raiz.',
-    tags: [
-      'Microsoft Defender',
-      'SIEM',
-      'Active Directory',
-      'PowerShell',
-      'Harmony Email',
-      'GPO',
-      'Menor Privilégio',
-      'Resposta a Incidentes',
-      'Blue Team',
+    context:
+      'Alerta do Microsoft Defender num endpoint de uma empresa do setor financeiro. Cada afirmação abaixo traz o tipo: o que foi observado, o que é inferência e o que ficou sem visibilidade.',
+    steps: [
+      { phase: 'Detecção', tag: 'EVIDÊNCIA', text: 'O Defender alertou uma execução suspeita de PowerShell no endpoint.' },
+      { phase: 'Contenção', tag: 'EVIDÊNCIA', text: 'O dispositivo foi isolado antes do aprofundamento da investigação.' },
+      { phase: 'Investigação', tag: 'EVIDÊNCIA', text: 'Correlação no SIEM, validação da conta no Active Directory e cruzamento com a telemetria do endpoint.' },
+      { phase: 'Interpretação', tag: 'HIPÓTESE', text: 'Confiança média: o comportamento indica reconhecimento do ambiente (Discovery). Confirmaria: a lista dos comandos executados. Refutaria: comandos de uso administrativo legítimo.' },
+      { phase: 'Causa raiz', tag: 'EVIDÊNCIA', text: 'E-mail de phishing que passou pelo filtro inicial; a execução foi bloqueada pelo Defender.' },
+      { phase: 'Correção', text: 'Revisão dos privilégios locais com aplicação de menor privilégio e proposta de ajuste via GPO na política de execução de scripts.' },
+      { phase: 'Resultado', text: 'Incidente contido, causa raiz tratada e controle preventivo reforçado.' },
     ],
+    attack: [
+      { id: 'T1566', name: 'Phishing', note: 'subtécnica em aberto: anexo ou link não registrado' },
+      { id: 'T1059.001', name: 'PowerShell' },
+      { id: 'TA0007', name: 'Discovery', note: 'hipótese' },
+    ],
+    limitation:
+      'Horários, identificadores e dados do cliente foram omitidos por confidencialidade. A sequência acima é a ordem dos fatos, não uma timeline com horários.',
   },
   methodology: [
     { step: 'Reconhecimento', desc: 'Mapeamento da superfície de ataque, OSINT, enumeração de subdomínios e descoberta de ativos.' },
