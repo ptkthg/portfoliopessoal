@@ -89,13 +89,13 @@ function Photo({ src, alt, caption, className = '' }) {
 
 function Hero() {
   return <section className="hero section-shell" id="hero"><div className="hero-image" aria-hidden="true" /><div className="hero-grid" aria-hidden="true" /><div className="page-width hero-inner">
-    <div className="hero-copy"><Label n={0}>PORTFÓLIO / 2026</Label><p className="hero-kicker">SEGURANÇA DA INFORMAÇÃO &amp; RELAÇÕES INTERNACIONAIS</p><h1>PATRICK<br />SANTOS<span>.</span></h1><p className="hero-description">Analista de Segurança da Informação com atuação em operações defensivas, identidade e resposta a incidentes. Conecto análise técnica, risco e contexto estratégico.</p><div className="hero-actions"><Action href="#projetos">Ver projetos</Action><Action href="#contato" outline>Contato</Action></div></div>
+    <div className="hero-copy"><Label n={0}>PORTFÓLIO / 2026</Label><p className="hero-kicker">SECURITY ENGINEERING · DFIR &amp; IAM</p><h1>PATRICK<br />SANTOS<span>.</span></h1><p className="hero-description">Analista de Segurança da Informação com base em resposta a incidentes e gestão de identidades. Hoje escrevo controles de segurança como código, com testes e revisão no CI.</p><div className="hero-actions"><Action href="#projetos">Ver projetos</Action><Action href="#contato" outline>Contato</Action></div></div>
     <p className="hero-side-note">RIO DE JANEIRO, BRASIL / DISPONÍVEL PARA OPORTUNIDADES</p>
   </div><span className="cross cross-one" aria-hidden="true">+</span><span className="cross cross-two" aria-hidden="true">+</span><a className="scroll-cue" href="#sobre">PRÓXIMA SEÇÃO →</a></section>;
 }
 
 function About() {
-  return <section className="section-shell about-section" id="sobre"><div className="page-width about-layout"><div className="about-copy"><Heading n={1} label="SOBRE" intro="Tecnologia, contexto e decisão no mesmo campo de visão.">SOBRE<br />MIM</Heading><div className="prose"><p>Sou Patrick Santos, analista de Segurança da Informação no Rio de Janeiro. Minha trajetória começou na administração de identidades e infraestrutura e avançou para operações de segurança, investigação e resposta a incidentes.</p><p>Trabalho com sinais técnicos e suas consequências reais: da triagem em SIEM ao controle de acesso, da detecção ao relatório que orienta uma decisão. O interesse por relações internacionais amplia meu olhar para ameaças, risco e o ambiente em que a tecnologia opera.</p><p>Desenvolvo ferramentas próprias para reduzir trabalho repetitivo em segurança. Atualmente aprofundo meus estudos em segurança de nuvem e aplicações de IA para análise defensiva.</p></div></div><Photo src={asset + 'editorial-analysis.jpg'} alt="Analista observa mapas e documentos em uma sala de trabalho" caption="ANÁLISE / CONTEXTO / DEFESA" className="about-photo" /><div className="academic-line"><span>FORMAÇÃO</span><p>{data.education.course}<br /><small>{data.education.institution} · {data.education.status}</small></p></div></div></section>;
+  return <section className="section-shell about-section" id="sobre"><div className="page-width about-layout"><div className="about-copy"><Heading n={1} label="SOBRE" intro="Tecnologia, contexto e decisão no mesmo campo de visão.">SOBRE<br />MIM</Heading><div className="prose"><p>Sou Patrick Santos, analista de Segurança da Informação no Rio de Janeiro. Minha trajetória começou na administração de identidades e infraestrutura e avançou para operações de segurança, investigação e resposta a incidentes.</p><p>Trabalho com sinais técnicos e suas consequências reais: da triagem em SIEM ao controle de acesso, da detecção ao relatório que orienta uma decisão. O interesse por relações internacionais amplia meu olhar para ameaças, risco e o ambiente em que a tecnologia opera.</p><p>Desenvolvo ferramentas próprias para reduzir trabalho repetitivo em segurança. Agora levo essa experiência para security engineering, construindo os controles que eu gostaria de ter encontrado durante as investigações. O primeiro projeto público nessa linha é um módulo Terraform que cria repositórios do GitHub já protegidos. Também estudo segurança de nuvem e IA aplicada à análise defensiva.</p></div></div><Photo src={asset + 'editorial-analysis.jpg'} alt="Analista observa mapas e documentos em uma sala de trabalho" caption="ANÁLISE / CONTEXTO / DEFESA" className="about-photo" /><div className="academic-line"><span>FORMAÇÃO</span><p>{data.education.course}<br /><small>{data.education.institution} · {data.education.status}</small></p></div></div></section>;
 }
 
 const areas = [
@@ -103,6 +103,7 @@ const areas = [
   ['IAM & Governança', 'Gestão de identidades, acessos privilegiados, menor privilégio, controles e evidências para auditoria.', '02 / CONTROLE'],
   ['Infraestrutura & Cloud', 'Visibilidade de redes e ativos, hardening, SIEM e estudo aplicado de segurança em Azure e AWS.', '03 / AMBIENTE'],
   ['Automação', 'Scripts, integrações e ferramentas que tornam a análise mais consistente e o fluxo operacional mais ágil.', '04 / SISTEMAS'],
+  ['Security Engineering', 'Segurança escrita como código: infraestrutura e pipelines versionados, detecções com teste e exceções registradas com justificativa.', '05 / ENGENHARIA'],
 ];
 
 function Areas() {
@@ -110,6 +111,7 @@ function Areas() {
 }
 
 const categories = [
+  { name: 'Security Engineering', groups: [9] },
   { name: 'Segurança', groups: [0, 1, 2] },
   { name: 'IAM / PAM', groups: [3] },
   { name: 'Cloud e Infraestrutura', groups: [5] },

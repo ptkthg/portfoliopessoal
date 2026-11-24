@@ -146,6 +146,12 @@ export const portfolioData = {
       level: 'uso no trabalho',
       skills: ['SOPs e runbooks', 'Relatório pós-incidente', 'Matriz de risco', 'Mapa de evidências', 'Apresentação executiva'],
     },
+    {
+      // Índice 9, usado pela aba Security Engineering em Portfolio.jsx. Fica no fim para não deslocar os outros índices.
+      label: 'Security Engineering',
+      level: 'uso nos projetos · estudo ativo',
+      skills: ['Terraform (IaC)', 'GitHub Actions com menor privilégio', 'Actions fixadas por SHA', 'Checkov', 'TFLint', 'Policy as code', 'Secret scanning e push protection', 'Dependabot', 'Rulesets de branch', 'Detection as code (Sigma, KQL, YARA)'],
+    },
   ],
   // Habilidades interpessoais — frases concretas, não buzzwords.
   softSkills: [
@@ -245,7 +251,7 @@ export const portfolioData = {
       status: 'OPERATIONAL',
       statusColor: 'text-neon text-glow',
       description:
-        'Plataforma multi-agente para automação ITSM N1-N3, gestão de break-glass PAM no CyberArk, mitigação de SoD temporária em chamados P1 e auditoria SOX / ISO 27001 contínua. A política de segurança não é documento: é configuração versionada que um motor interpreta, aplica e audita. Num incidente P1 simulado, da abertura do chamado à liberação de root em produção: 9 minutos e 50 segundos, com custódia dupla, gravação de sessão e trilha completa.',
+        'Plataforma multi-agente para atendimento ITSM de N1 a N3, break-glass no CyberArk com mitigação de SoD temporária em chamados P1 e auditoria SOX e ISO 27001 contínua. As regras de segurança ficam em YAML versionado, que um motor interpreta, aplica e audita. Num incidente P1 simulado, da abertura do chamado à liberação de root em produção, foram 9 minutos e 50 segundos, com custódia dupla, gravação de sessão e trilha completa.',
       logs: [
         { prefix: '[INIT]', value: '4 agentes carregados: ServiceDesk, IAM, PAM, Governance' },
         { prefix: '[CFG] ', value: '18 regras YAML + contrato RH Leaver Sync (fail-closed)' },
@@ -303,7 +309,7 @@ export const portfolioData = {
       status: 'OPERATIONAL',
       statusColor: 'text-neon text-glow',
       description:
-        'Módulo Terraform que cria repositórios do GitHub já protegidos: secret scanning e push protection, ruleset que bloqueia force push e exclusão da branch principal, pull request obrigatório, alertas e correções do Dependabot e política de reporte de vulnerabilidades. Um terraform destroy arquiva o repositório em vez de apagar, pela mesma lógica da evidência imutável em DFIR. Cada configuração vem documentada com o risco que reduz, e o CI valida tudo com testes, lint e análise estática, sem receber nenhuma credencial.',
+        'Repositório criado na mão costuma nascer desprotegido: sem secret scanning, com force push liberado na branch principal e sem canal para reportar vulnerabilidades. Este módulo Terraform cria cada repositório já configurado, com push protection, ruleset, pull request obrigatório e Dependabot, e documenta o risco que cada decisão reduz. Um terraform destroy arquiva o repositório em vez de apagar, pela mesma lógica da evidência imutável em DFIR. O CI roda 10 testes com mock_provider, TFLint e Checkov sem receber nenhuma credencial, e a única exceção de política está justificada no próprio código.',
       logs: [
         { prefix: '[TEST]', value: 'terraform test  10/10 pass  (mock_provider, sem token)' },
         { prefix: '[LINT]', value: 'tflint preset recommended  0 issues' },
@@ -321,7 +327,7 @@ export const portfolioData = {
       status: 'OPERATIONAL',
       statusColor: 'text-neon text-glow',
       description:
-        'Converte indicadores de comprometimento em regras de defesa prontas para uso. Aceita hashes de feeds de inteligência e também gera os próprios indicadores, monitorando arquivos-isca que nenhum usuário legítimo tem motivo para abrir. De cada indicador sai uma assinatura YARA validada e um script de bloqueio de firewall. Feito para equipes sem analista de plantão.',
+        'Equipes sem analista de plantão recebem indicadores de comprometimento e não têm quem transforme cada um em bloqueio. O Deception Loop faz essa conversão: aceita hashes de feeds de inteligência e também gera indicadores próprios, monitorando arquivos-isca que nenhum usuário legítimo tem motivo para abrir. De cada indicador sai uma assinatura YARA validada e um script de bloqueio de firewall, cobertos por 211 testes automatizados.',
       logs: [
         { prefix: '[BAIT]', value: 'honeyfile watcher active' },
         { prefix: '[FEED]', value: 'md5 / sha1 / sha256 intake' },
@@ -391,7 +397,7 @@ export const portfolioData = {
       status: 'VALIDATED',
       statusColor: 'text-neon text-glow',
       description:
-        'Laboratório defensivo de perímetro com OPNsense NGFW, Wazuh SIEM e Suricata IDS. Engine de tuning em Python (apply_tuning.py) reduziu 100% do ruído de falsos positivos (40 -> 0) sem silenciar alertas de ataque, com supressão escopada validada no motor do Wazuh.',
+        'Num laboratório de perímetro com OPNsense NGFW, Wazuh SIEM e Suricata IDS, o problema era o ruído: 40 falsos positivos misturados aos alertas que importavam. Um motor de tuning em Python (apply_tuning.py) aplicou supressões escopadas, validadas no próprio Wazuh, e levou os falsos positivos de 40 para 0 sem silenciar nenhum alerta de ataque.',
       logs: [
         { prefix: '[SIEM]', value: 'Wazuh 4.14.7 · Syslog RFC3164' },
         { prefix: '[NET] ', value: '4 zonas · OPNsense NGFW + Suricata' },

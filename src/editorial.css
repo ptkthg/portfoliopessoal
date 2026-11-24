@@ -346,3 +346,6 @@ body.horizontal-mode{height:100svh;overflow:hidden}
 @media(max-width:400px){.hero h1{font-size:clamp(65px,18.5vw,76px)}.hero-actions .action{padding-inline:12px}.project-meta{flex-wrap:wrap;gap:5px}}
 @media(max-width:1023px) and (max-height:600px){.scene .hero-inner{padding-top:105px}.hero-image{inset:0 0 15% 0}}
 @media(prefers-reduced-motion:reduce){.horizontal-track,.scene,.project-visual img{transition:none!important;animation:none!important}}
+
+/* Competências: "COMPETÊNCIAS" é uma palavra só e, no layout de duas colunas, invadia o painel de abas. */
+@media (min-width:961px){.skills-section.section-shell .section-heading h2{font-size:clamp(40px,4vw,64px)}}
