@@ -133,11 +133,13 @@ const projectCaptures = {
   Statecraft: '/assets/project-statecraft.jpg',
   'Terraform GitHub Seguro': '/evidences/terraform_github_seguro.svg',
   'XDR Hunting Pack': '/evidences/xdr_hunting_pack.svg',
+  'KQL Detection as Code': '/evidences/kql_detection_as_code.svg',
 };
 // Diagramas não são capturas de tela: o texto alternativo descreve o que o desenho mostra.
 const projectDiagramAlts = {
   'Terraform GitHub Seguro': 'Diagrama: o mapa de repositórios passa pelo módulo repositorio-seguro, que cria cinco recursos de proteção, enquanto o CI valida o código sem token',
   'XDR Hunting Pack': 'Diagrama: quatro consultas KQL de threat hunting organizadas por tática do MITRE ATT&CK',
+  'KQL Detection as Code': 'Diagrama: detecção em YAML, fixtures sintéticos e schema oficial viram um datatable executado no emulador Kusto; o positivo precisa disparar, o negativo não, e o CI gera a documentação',
 };
 
 function ProjectProof({ proof }) {
@@ -158,7 +160,8 @@ const projectSummaries = {
   'Deception Loop': 'Converte IOCs e eventos de arquivos-isca em regras YARA e bloqueios de firewall.',
   'IOC Enricher': 'Enriquece indicadores com OSINT e IA para apoiar a triagem defensiva.',
   Statecraft: 'Reúne vulnerabilidades, briefings e busca de IOCs em uma plataforma de CTI.',
-  'XDR Hunting Pack': 'Consultas KQL para threat hunting no Microsoft Defender XDR.',
+  'XDR Hunting Pack': 'Consultas KQL de threat hunting usadas na operação da Oceânica (código interno).',
+  'KQL Detection as Code': 'Detecções KQL versionadas como código e testadas num motor Kusto real a cada push.',
   'NetShield SOC': 'Laboratório de perímetro com NGFW, IDS e SIEM para validar detecção e tuning.',
 };
 

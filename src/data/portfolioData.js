@@ -323,6 +323,25 @@ export const portfolioData = {
       proof: { ci: 'https://github.com/ptkthg/terraform-github-seguro/actions', tests: '10 testes (terraform test)' },
     },
     {
+      filename: 'kql_detection_as_code.yaml',
+      title: 'KQL Detection as Code',
+      version: 'v0.1.0',
+      status: 'OPERATIONAL',
+      statusColor: 'text-neon text-glow',
+      description:
+        'Detecção testada só em produção descobre o erro tarde: coluna que não existe, falso positivo óbvio, regra que nunca dispara. Aqui cada detecção KQL do Microsoft Defender XDR é tratada como código: YAML com mapeamento MITRE ATT&CK, um teste positivo e um negativo parecido benigno, e execução real no emulador oficial do Kusto, com o schema completo das tabelas tirado da documentação da Microsoft. Uma coluna fora do schema quebra o teste. As 8 detecções foram escritas do zero, com dados de teste sintéticos, e o CI roda 69 testes a cada push.',
+      logs: [
+        { prefix: '[TEST]', value: 'pytest  69 passed  (emulador Kusto no CI)' },
+        { prefix: '[RULE]', value: '8 detecções  11 técnicas ATT&CK' },
+        { prefix: '[SCHM]', value: 'DeviceProcessEvents 69 col  EntraIdSignInEvents 52 col' },
+        { prefix: '[CI]  ', value: 'contents: read  imagem fixada por digest' },
+      ],
+      tags: ['KQL', 'Detection Engineering', 'Defender XDR', 'Kusto', 'Python', 'MITRE ATT&CK'],
+      liveUrl: null,
+      githubUrl: 'https://github.com/ptkthg/kql-detection-as-code',
+      proof: { ci: 'https://github.com/ptkthg/kql-detection-as-code/actions', tests: '69 testes no emulador Kusto' },
+    },
+    {
       filename: 'deception_loop.py',
       title: 'Deception Loop',
       version: 'v1.0.0',
@@ -384,7 +403,7 @@ export const portfolioData = {
       status: 'INTERNAL',
       statusColor: 'text-yellow-400/90',
       description:
-        'Coleção de queries KQL para threat hunting no Microsoft Defender XDR, com lógica reaplicável a SIEM/Wazuh/Graylog. Cobre password spray, LOLBins, PowerShell suspeito e Outlook criando processos anômalos.',
+        'Consultas KQL de threat hunting que escrevi e usei na operação da Oceânica, no Microsoft Defender XDR, com lógica reaplicável a SIEM, Wazuh e Graylog. Cobriam password spray, LOLBins, PowerShell suspeito e Outlook criando processos anômalos. O código é interno da empresa e não tem repositório público; a versão aberta, escrita do zero e testada, é o KQL Detection as Code.',
       logs: [
         { prefix: '[ENV]  ', value: 'Microsoft Defender XDR' },
         { prefix: '[MAP]  ', value: 'MITRE ATT&CK aligned' },
@@ -458,8 +477,8 @@ export const portfolioData = {
   ],
   // Próximos passos públicos: mostram a trajetória da transição para security engineering.
   roadmap: [
-    { status: 'PRÓXIMO', title: 'XDR Hunting Pack público', detail: 'Consultas KQL publicadas como detection as code, com testes e CI.' },
-    { status: 'PLANEJADO', title: 'Baseline de segurança AWS', detail: 'CloudTrail, alerta de uso da conta root e orçamento, tudo em Terraform.' },
+    { status: 'PRÓXIMO', title: 'Baseline de segurança AWS', detail: 'CloudTrail, alerta de uso da conta root e orçamento, tudo em Terraform.' },
+    { status: 'PLANEJADO', title: 'CI nos projetos existentes', detail: 'Testes automáticos no GitHub Actions para Deception Loop e SecIdentity AI.' },
     { status: 'PLANEJADO', title: 'Projetos em inglês', detail: 'READMEs em inglês para vagas internacionais e remotas.' },
   ],
   caseStudy: {

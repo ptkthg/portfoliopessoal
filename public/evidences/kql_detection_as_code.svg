@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Diagrama do projeto kql-detection-as-code: detecção em YAML, fixtures sintéticos e schema oficial viram um datatable completo, executado no emulador Kusto; o positivo precisa disparar e o negativo não; o CI gera o README e a camada do ATT&amp;CK Navigator">
+  <defs>
+    <style>
+      .mono { font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace; }
+      .sans { font-family: 'Space Grotesk', 'Segoe UI', Arial, sans-serif; }
+      .box  { fill: #090d15; stroke: #293140; stroke-width: 1.5; }
+      .hot  { fill: #0b1226; stroke: #1554ff; stroke-width: 1.5; }
+      .line { stroke: #4b7cff; stroke-width: 1.5; fill: none; }
+      .w    { fill: #e8eaf0; }
+      .m    { fill: #a3adbf; }
+      .b    { fill: #4b7cff; }
+      .ok   { fill: #6fd39b; }
+      .no   { fill: #ff8f8f; }
+    </style>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#4b7cff"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="#050608"/>
+  <path d="M0 112 H1200 M0 476 H1200" stroke="#141b27" stroke-width="1"/>
+
+  <text x="60" y="58" class="mono b" font-size="14" letter-spacing="1.5">KQL-DETECTION-AS-CODE</text>
+  <text x="60" y="92" class="sans w" font-size="26" font-weight="600">Cada detecção roda num motor Kusto real antes de ir para produção</text>
+
+  <!-- entradas -->
+  <text x="60" y="146" class="mono m" font-size="12" letter-spacing="1.2">ENTRADAS</text>
+  <g class="mono">
+    <rect x="60" y="160" width="290" height="80" class="box"/>
+    <text x="80" y="190" class="w" font-size="15">KDAC-00N.yaml</text>
+    <text x="80" y="214" class="m" font-size="12">KQL + ATT&amp;CK + falsos positivos</text>
+
+    <rect x="60" y="252" width="290" height="80" class="box"/>
+    <text x="80" y="282" class="w" font-size="15">fixtures sintéticos</text>
+    <text x="80" y="306" class="m" font-size="12">um positivo e um parecido benigno</text>
+
+    <rect x="60" y="344" width="290" height="80" class="box"/>
+    <text x="80" y="374" class="w" font-size="15">schema oficial</text>
+    <text x="80" y="398" class="m" font-size="12">Microsoft Learn: 69 e 52 colunas</text>
+  </g>
+
+  <path d="M350 200 H390 V292 M350 292 H390 M350 384 H390 V292 H424" class="line" marker-end="url(#seta)"/>
+
+  <!-- datatable -->
+  <rect x="432" y="232" width="250" height="120" class="hot"/>
+  <text x="452" y="268" class="mono b" font-size="12" letter-spacing="1">let Tabela =</text>
+  <text x="452" y="298" class="sans w" font-size="21" font-weight="600">datatable completo</text>
+  <text x="452" y="326" class="mono m" font-size="12">coluna fora do schema = erro</text>
+
+  <path d="M682 292 H722" class="line" marker-end="url(#seta)"/>
+
+  <!-- emulador -->
+  <rect x="730" y="232" width="190" height="120" class="box"/>
+  <text x="750" y="268" class="mono m" font-size="12" letter-spacing="1">MOTOR</text>
+  <text x="750" y="298" class="sans w" font-size="21" font-weight="600">emulador</text>
+  <text x="750" y="324" class="sans w" font-size="21" font-weight="600">Kusto</text>
+
+  <path d="M920 262 H950 V214 H972 M920 322 H950 V370 H972" class="line"/>
+  <path d="M960 214 H972" class="line" marker-end="url(#seta)"/>
+  <path d="M960 370 H972" class="line" marker-end="url(#seta)"/>
+
+  <!-- resultados -->
+  <g class="mono">
+    <rect x="980" y="180" width="160" height="68" class="box"/>
+    <text x="1000" y="208" class="ok" font-size="13">positivo</text>
+    <text x="1000" y="232" class="w" font-size="15">≥ 1 linha</text>
+
+    <rect x="980" y="336" width="160" height="68" class="box"/>
+    <text x="1000" y="364" class="no" font-size="13">negativo</text>
+    <text x="1000" y="388" class="w" font-size="15">= 0 linhas</text>
+  </g>
+
+  <!-- CI -->
+  <text x="60" y="516" class="mono m" font-size="12" letter-spacing="1.2">CI · GITHUB ACTIONS · EMULADOR COMO SERVIÇO · IMAGEM FIXADA POR DIGEST</text>
+  <g class="mono" font-size="14">
+    <rect x="60" y="536" width="170" height="48" class="box"/><text x="145" y="565" class="w" text-anchor="middle">validar</text>
+    <path d="M230 560 H262" class="line" marker-end="url(#seta)"/>
+    <rect x="270" y="536" width="190" height="48" class="hot"/><text x="365" y="565" class="w" text-anchor="middle">testar · 69/69</text>
+    <path d="M460 560 H492" class="line" marker-end="url(#seta)"/>
+    <rect x="500" y="536" width="190" height="48" class="box"/><text x="595" y="565" class="w" text-anchor="middle">README gerado</text>
+    <path d="M690 560 H722" class="line" marker-end="url(#seta)"/>
+    <rect x="730" y="536" width="230" height="48" class="box"/><text x="845" y="565" class="w" text-anchor="middle">camada ATT&amp;CK Navigator</text>
+  </g>
+
+  <text x="60" y="636" class="mono m" font-size="12">8 detecções escritas do zero · 11 técnicas ATT&amp;CK · dados de teste 100% sintéticos</text>
+</svg>
