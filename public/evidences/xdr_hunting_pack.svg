@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Diagrama do XDR Hunting Pack: quatro consultas KQL de threat hunting no Microsoft Defender XDR, organizadas por tática do MITRE ATT&amp;CK">
+  <defs>
+    <style>
+      .mono { font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace; }
+      .sans { font-family: 'Space Grotesk', 'Segoe UI', Arial, sans-serif; }
+      .box  { fill: #090d15; stroke: #293140; stroke-width: 1.5; }
+      .w    { fill: #e8eaf0; }
+      .m    { fill: #a3adbf; }
+      .b    { fill: #4b7cff; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="675" fill="#050608"/>
+  <path d="M0 112 H1200" stroke="#141b27" stroke-width="1"/>
+
+  <text x="60" y="58" class="mono b" font-size="14" letter-spacing="1.5">HUNTING_PACK.KQL</text>
+  <text x="60" y="92" class="sans w" font-size="26" font-weight="600">Threat hunting no Microsoft Defender XDR</text>
+
+  <!-- 2 x 2 consultas -->
+  <g class="mono">
+    <rect x="60" y="150" width="525" height="190" class="box"/>
+    <rect x="60" y="150" width="4" height="190" fill="#1554ff"/>
+    <text x="88" y="186" class="b" font-size="12" letter-spacing="1.2">CREDENTIAL ACCESS · TA0006</text>
+    <text x="88" y="232" class="sans w" font-size="26" font-weight="600">Password spray</text>
+    <text x="88" y="300" class="w" font-size="15">T1110.003</text>
+    <text x="88" y="322" class="m" font-size="12">Brute Force: Password Spraying</text>
+
+    <rect x="615" y="150" width="525" height="190" class="box"/>
+    <rect x="615" y="150" width="4" height="190" fill="#1554ff"/>
+    <text x="643" y="186" class="b" font-size="12" letter-spacing="1.2">DEFENSE EVASION · TA0005</text>
+    <text x="643" y="232" class="sans w" font-size="26" font-weight="600">LOLBins</text>
+    <text x="643" y="300" class="w" font-size="15">T1218</text>
+    <text x="643" y="322" class="m" font-size="12">System Binary Proxy Execution</text>
+
+    <rect x="60" y="370" width="525" height="190" class="box"/>
+    <rect x="60" y="370" width="4" height="190" fill="#1554ff"/>
+    <text x="88" y="406" class="b" font-size="12" letter-spacing="1.2">EXECUTION · TA0002</text>
+    <text x="88" y="452" class="sans w" font-size="26" font-weight="600">PowerShell suspeito</text>
+    <text x="88" y="520" class="w" font-size="15">T1059.001</text>
+    <text x="88" y="542" class="m" font-size="12">Command and Scripting Interpreter: PowerShell</text>
+
+    <rect x="615" y="370" width="525" height="190" class="box"/>
+    <rect x="615" y="370" width="4" height="190" fill="#1554ff"/>
+    <text x="643" y="406" class="b" font-size="12" letter-spacing="1.2">EXECUTION · TA0002</text>
+    <text x="643" y="452" class="sans w" font-size="26" font-weight="600">Outlook criando processos</text>
+    <text x="643" y="520" class="w" font-size="15">T1204.002</text>
+    <text x="643" y="542" class="m" font-size="12">User Execution: Malicious File</text>
+  </g>
+
+  <text x="60" y="612" class="mono m" font-size="12" letter-spacing="1">MAPEAMENTO MITRE ATT&amp;CK · LÓGICA REAPLICÁVEL A WAZUH E GRAYLOG</text>
+</svg>
