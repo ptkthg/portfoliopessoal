@@ -297,6 +297,24 @@ export const portfolioData = {
       githubUrl: 'https://github.com/ptkthg/secidentity-ai',
     },
     {
+      filename: 'repositorio_seguro.tf',
+      title: 'Terraform GitHub Seguro',
+      version: 'v0.1.0',
+      status: 'OPERATIONAL',
+      statusColor: 'text-neon text-glow',
+      description:
+        'Módulo Terraform que cria repositórios do GitHub já protegidos: secret scanning e push protection, ruleset que bloqueia force push e exclusão da branch principal, pull request obrigatório, alertas e correções do Dependabot e política de reporte de vulnerabilidades. Um terraform destroy arquiva o repositório em vez de apagar, pela mesma lógica da evidência imutável em DFIR. Cada configuração vem documentada com o risco que reduz, e o CI valida tudo com testes, lint e análise estática, sem receber nenhuma credencial.',
+      logs: [
+        { prefix: '[TEST]', value: 'terraform test  10/10 pass  (mock_provider, sem token)' },
+        { prefix: '[LINT]', value: 'tflint preset recommended  0 issues' },
+        { prefix: '[SAST]', value: 'checkov  0 failed  1 exceção justificada no código' },
+        { prefix: '[CI]  ', value: 'GitHub Actions  contents: read  actions fixadas por SHA' },
+      ],
+      tags: ['Terraform', 'GitHub', 'DevSecOps', 'Checkov', 'TFLint', 'GitHub Actions'],
+      liveUrl: null,
+      githubUrl: 'https://github.com/ptkthg/terraform-github-seguro',
+    },
+    {
       filename: 'deception_loop.py',
       title: 'Deception Loop',
       version: 'v1.0.0',

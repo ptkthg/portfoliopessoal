@@ -1,10 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowUpRight, Mail, Menu, X } from 'lucide-react';
 import { navItems, portfolioData as data } from './data/portfolioData';
 import './editorial.css';
 
 const num = (n) => String(n).padStart(2, '0');
 const asset = '/assets/';
+const desktopNav = [
+  { id: 'hero', label: 'Início' }, { id: 'sobre', label: 'Sobre' },
+  { id: 'areas', label: 'Atuação' }, { id: 'projetos', label: 'Projetos' },
+  { id: 'trajetoria', label: 'Trajetória' }, { id: 'contato', label: 'Contato' },
+];
+const verticalQuery = '(max-width: 1023px)';
 
 function Label({ n, children }) {
   return <p className="section-label"><span>{num(n)}</span><i />{children}</p>;
@@ -20,19 +27,56 @@ function Action({ href, children, outline = false, external = false }) {
 
 function Header({ active }) {
   const [open, setOpen] = useState(false);
+  const [subOpen, setSubOpen] = useState(false);
   const menuRef = useRef(null);
   const toggleRef = useRef(null);
   useEffect(() => {
-    if (open) menuRef.current?.querySelector('a')?.focus();
-    const close = (event) => { if (event.key === 'Escape' && open) { setOpen(false); toggleRef.current?.focus(); } };
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    menuRef.current?.querySelector('a')?.focus();
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [open]);
+  useEffect(() => {
+    const close = (event) => { if (event.key === 'Escape') { if (open) { setOpen(false); toggleRef.current?.focus(); } setSubOpen(false); } };
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
   }, [open]);
+  useEffect(() => {
+    if (!open) return;
+    const trap = (event) => {
+      if (event.key !== 'Tab') return;
+      const first = menuRef.current?.querySelector('a');
+      const last = toggleRef.current;
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    window.addEventListener('keydown', trap);
+    return () => window.removeEventListener('keydown', trap);
+  }, [open]);
+  useEffect(() => {
+    const media = window.matchMedia(verticalQuery);
+    const closeOnDesktop = () => { if (!media.matches) setOpen(false); };
+    media.addEventListener('change', closeOnDesktop);
+    return () => media.removeEventListener('change', closeOnDesktop);
+  }, []);
+  useEffect(() => { setOpen(false); setSubOpen(false); }, [active]);
+  const closeMenus = () => { setOpen(false); setSubOpen(false); };
   return <header className="site-header"><div className="header-inner">
-    <a className="wordmark" href="#hero" onClick={() => setOpen(false)}><span aria-hidden="true">┆</span> PATRICK SANTOS</a>
-    <nav ref={menuRef} className={open ? 'nav-links is-open' : 'nav-links'} id="main-navigation" aria-label="Navegação principal">
-      {navItems.map(({ id, label }) => <a key={id} href={'#' + id} aria-current={active === id ? 'location' : undefined} onClick={() => setOpen(false)}>{label}</a>)}
-      <a className="resume-mobile" href={data.person.resumePath} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>Currículo ↗</a>
+    <a className="wordmark" href="#hero" onClick={closeMenus}><span aria-hidden="true">┆</span> PATRICK SANTOS</a>
+    <nav className="desktop-nav" aria-label="Navegação principal">
+      {desktopNav.map(({ id, label }) => id === 'areas' ? <div className="nav-group" key={id}>
+        <a href="#areas" aria-current={['areas', 'skills', 'pontos-fortes'].includes(active) ? 'location' : undefined} onClick={() => setSubOpen(false)}>{label}</a>
+        <button type="button" aria-label="Mostrar subseções de Atuação" aria-expanded={subOpen} aria-controls="areas-submenu" onClick={() => setSubOpen(!subOpen)}>⌄</button>
+        <div id="areas-submenu" className={subOpen ? 'nav-submenu is-open' : 'nav-submenu'}>
+          <a href="#skills" aria-current={active === 'skills' ? 'location' : undefined} onClick={closeMenus}>Competências</a>
+          <a href="#pontos-fortes" aria-current={active === 'pontos-fortes' ? 'location' : undefined} onClick={closeMenus}>Pontos fortes</a>
+        </div>
+      </div> : <a key={id} href={'#' + id} aria-current={active === id ? 'location' : undefined} onClick={closeMenus}>{label}</a>)}
+    </nav>
+    <nav ref={menuRef} className={open ? 'nav-links is-open' : 'nav-links'} id="main-navigation" aria-label="Navegação móvel">
+      {navItems.map(({ id, label }) => <a key={id} href={'#' + id} aria-current={active === id ? 'location' : undefined} onClick={closeMenus}>{label}</a>)}
+      <a className="resume-mobile" href={data.person.resumePath} target="_blank" rel="noreferrer" onClick={closeMenus}>Currículo ↗</a>
     </nav>
     <a className="resume-link" href={data.person.resumePath} target="_blank" rel="noreferrer">Currículo <ArrowUpRight size={16} aria-hidden="true" /></a>
     <button ref={toggleRef} className="menu-toggle" type="button" aria-label={open ? 'Fechar menu' : 'Abrir menu'} aria-controls="main-navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
@@ -40,7 +84,7 @@ function Header({ active }) {
 }
 
 function Photo({ src, alt, caption, className = '' }) {
-  return <figure className={'editorial-photo ' + className}><img src={src} alt={alt} loading="lazy" /><span aria-hidden="true" /><figcaption>{caption}</figcaption></figure>;
+  return <figure className={'editorial-photo ' + className}><img src={src} alt={alt} loading="lazy" decoding="async" /><span aria-hidden="true" /><figcaption>{caption}</figcaption></figure>;
 }
 
 function Hero() {
@@ -51,7 +95,7 @@ function Hero() {
 }
 
 function About() {
-  return <section className="section-shell about-section" id="sobre"><div className="page-width about-layout"><div className="about-copy"><Heading n={1} label="SOBRE" intro="Tecnologia, contexto e decisão no mesmo campo de visão.">SOBRE<br />MIM</Heading><div className="prose"><p>Sou Patrick Santos, analista de Segurança da Informação no Rio de Janeiro. Minha trajetória começou na administração de identidades e infraestrutura e avançou para operações de segurança, investigação e resposta a incidentes.</p><p>Trabalho com sinais técnicos e suas consequências reais: da triagem em SIEM ao controle de acesso, da detecção ao relatório que orienta uma decisão. O interesse por relações internacionais amplia meu olhar para ameaças, risco e o ambiente em que a tecnologia opera.</p><p>Desenvolvo ferramentas próprias para reduzir trabalho repetitivo em segurança. Atualmente aprofundo meus estudos em segurança de nuvem e aplicações de IA para análise defensiva.</p></div><div className="academic-line"><span>FORMAÇÃO</span><p>{data.education.course}<br /><small>{data.education.institution} · {data.education.status}</small></p></div></div><Photo src={asset + 'editorial-analysis.jpg'} alt="Analista observa mapas e documentos em uma sala de trabalho" caption="ANÁLISE / CONTEXTO / DEFESA" className="about-photo" /></div></section>;
+  return <section className="section-shell about-section" id="sobre"><div className="page-width about-layout"><div className="about-copy"><Heading n={1} label="SOBRE" intro="Tecnologia, contexto e decisão no mesmo campo de visão.">SOBRE<br />MIM</Heading><div className="prose"><p>Sou Patrick Santos, analista de Segurança da Informação no Rio de Janeiro. Minha trajetória começou na administração de identidades e infraestrutura e avançou para operações de segurança, investigação e resposta a incidentes.</p><p>Trabalho com sinais técnicos e suas consequências reais: da triagem em SIEM ao controle de acesso, da detecção ao relatório que orienta uma decisão. O interesse por relações internacionais amplia meu olhar para ameaças, risco e o ambiente em que a tecnologia opera.</p><p>Desenvolvo ferramentas próprias para reduzir trabalho repetitivo em segurança. Atualmente aprofundo meus estudos em segurança de nuvem e aplicações de IA para análise defensiva.</p></div></div><Photo src={asset + 'editorial-analysis.jpg'} alt="Analista observa mapas e documentos em uma sala de trabalho" caption="ANÁLISE / CONTEXTO / DEFESA" className="about-photo" /><div className="academic-line"><span>FORMAÇÃO</span><p>{data.education.course}<br /><small>{data.education.institution} · {data.education.status}</small></p></div></div></section>;
 }
 
 const areas = [
@@ -75,7 +119,7 @@ const categories = [
 
 function Skills() {
   const [selected, setSelected] = useState(0);
-  return <section className="section-shell skills-section" id="skills"><div className="page-width skills-layout"><div><Heading n={3} label="COMPETÊNCIAS" intro="Ferramentas e conhecimentos que uso no trabalho e nos projetos.">COMPETÊNCIAS</Heading><p className="micro-copy skill-hint">SELECIONE UMA ÁREA PARA EXPLORAR ↘</p></div><div className="skill-console"><div className="console-top"><span>PS / SKILL_INDEX</span><span>● DISPONÍVEL</span></div><div className="skill-tabs" role="tablist" aria-label="Categorias de competências">{categories.map((cat, index) => <button key={cat.name} type="button" role="tab" id={'skill-tab-' + index} aria-controls="skill-panel" aria-selected={index === selected} tabIndex={index === selected ? 0 : -1} onClick={() => setSelected(index)} onKeyDown={(event) => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); const next = (index + (event.key === 'ArrowRight' ? 1 : -1) + categories.length) % categories.length; setSelected(next); document.getElementById('skill-tab-' + next)?.focus(); } }}>{cat.name}</button>)}</div><div className="skill-panel" role="tabpanel" id="skill-panel" aria-labelledby={'skill-tab-' + selected}><p className="console-command">&gt; LISTAR / {categories[selected].name.toUpperCase()}</p>{categories[selected].groups.map((groupIndex) => { const group = data.skillGroups[groupIndex]; return <div className="skill-group" key={group.label}><h3>{group.label}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul></div>; })}</div><div className="console-bottom">// CONHECIMENTO APLICADO EM OPERAÇÕES E PROJETOS</div></div></div></section>;
+  return <section className="section-shell skills-section" id="skills"><div className="page-width skills-layout"><div><Heading n={3} label="COMPETÊNCIAS" intro="Ferramentas e conhecimentos que uso no trabalho e nos projetos.">COMPETÊNCIAS</Heading><p className="micro-copy skill-hint">SELECIONE UMA ÁREA PARA EXPLORAR ↘</p></div><div className="skill-console"><div className="console-top"><span>PS / SKILL_INDEX</span><span>● DISPONÍVEL</span></div><div className="skill-tabs" role="tablist" aria-label="Categorias de competências">{categories.map((cat, index) => <button key={cat.name} type="button" role="tab" id={'skill-tab-' + index} aria-controls="skill-panel" aria-selected={index === selected} tabIndex={index === selected ? 0 : -1} onClick={() => setSelected(index)} onKeyDown={(event) => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); const next = (index + (event.key === 'ArrowRight' ? 1 : -1) + categories.length) % categories.length; setSelected(next); document.getElementById('skill-tab-' + next)?.focus(); } }}>{cat.name}</button>)}</div><div className="skill-panel" role="tabpanel" id="skill-panel" aria-labelledby={'skill-tab-' + selected}><p className="console-command">&gt; LISTAR / {categories[selected].name.toUpperCase()}</p>{categories[selected].groups.map((groupIndex, offset) => { const group = data.skillGroups[groupIndex]; return <details className="skill-group" key={selected + group.label} open={offset === 0 ? true : undefined}><summary><strong>{group.label}</strong><small>{group.level}</small></summary><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul></details>; })}</div><div className="console-bottom">// CONHECIMENTO APLICADO EM OPERAÇÕES E PROJETOS</div></div></div></section>;
 }
 
 function Strengths() {
@@ -86,8 +130,18 @@ function ProjectVisual({ project }) {
   const evidence = project.evidence?.items?.find((item) => /dashboard|pipeline/.test(item.id)) || project.evidence?.items?.[0];
   const captures = { 'IOC Enricher': '/assets/project-ioc.png', Statecraft: '/assets/project-statecraft.jpg' };
   const image = captures[project.title] || project.media || evidence?.src;
-  return <div className={'project-visual ' + (image ? '' : 'project-visual-type')}>{image ? <img src={image} alt={evidence?.title || 'Captura da interface do projeto ' + project.title} loading="lazy" /> : <div className="project-file"><span>// ARQUIVO DE PROJETO</span><strong>{project.filename}</strong><small>{project.logs?.[0]?.prefix} {project.logs?.[0]?.value}</small></div>}<span aria-hidden="true" /></div>;
+  return <div className={'project-visual ' + (image ? '' : 'project-visual-type')}>{image ? <img src={image} alt={evidence?.title || 'Captura da interface do projeto ' + project.title} loading="lazy" decoding="async" /> : <div className="project-file"><span>// ARQUIVO DE PROJETO</span><strong>{project.filename}</strong><small>{project.logs?.[0]?.prefix} {project.logs?.[0]?.value}</small></div>}<span aria-hidden="true" /></div>;
 }
+
+const projectSummaries = {
+  'SecIdentity AI': 'Automatiza atendimento ITSM e controle de acessos privilegiados com trilha auditável.',
+  'Terraform GitHub Seguro': 'Cria repositórios do GitHub já protegidos, com cada decisão de segurança testada e documentada.',
+  'Deception Loop': 'Converte IOCs e eventos de arquivos-isca em regras YARA e bloqueios de firewall.',
+  'IOC Enricher': 'Enriquece indicadores com OSINT e IA para apoiar a triagem defensiva.',
+  Statecraft: 'Reúne vulnerabilidades, briefings e busca de IOCs em uma plataforma de CTI.',
+  'XDR Hunting Pack': 'Consultas KQL para threat hunting no Microsoft Defender XDR.',
+  'NetShield SOC': 'Laboratório de perímetro com NGFW, IDS e SIEM para validar detecção e tuning.',
+};
 
 function ProjectDetails({ project, onClose }) {
   const closeRef = useRef(null);
@@ -114,15 +168,15 @@ function ProjectDetails({ project, onClose }) {
 
 function Projects() {
   const [selected, setSelected] = useState(null);
-  return <section className="section-shell projects-section" id="projetos"><div className="page-width"><div className="projects-intro"><Heading n={5} label="PROJETOS" intro="Ferramentas, laboratórios e estudos construídos para problemas concretos de segurança.">PROJETOS</Heading><span>ARQUIVO / {num(data.projects.length)} ENTRADAS</span></div><div className="project-grid">{data.projects.map((project, index) => <article className="project-item" key={project.title}><ProjectVisual project={project} /><div className="project-meta"><span>{num(index + 1)} / {project.status === 'INTERNAL' ? 'INTERNO' : project.liveUrl ? 'DEMONSTRAÇÃO' : 'REPOSITÓRIO'}</span><span>{project.version || '—'}</span></div><h3>{project.title === 'Statecraft' ? 'Statecraft Cyber' : project.title}</h3><p className="project-description">{project.description}</p><ul className="project-tags">{project.tags.slice(0, 5).map((tag) => <li key={tag}>{tag}</li>)}</ul><div className="project-links"><button type="button" onClick={() => setSelected(project)}>Ver detalhes ↗</button>{project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer">Demo ↗</a>}{project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer">Código ↗</a>}</div></article>)}</div><div className="case-link"><span>ESTUDO DE CASO / RESPOSTA A INCIDENTE</span><details><summary>{data.caseStudy.subtitle}<span>+</span></summary><div className="case-content">{[['Contexto', 'context'], ['Detecção', 'detection'], ['Resposta', 'response'], ['Causa raiz', 'rootCause'], ['Correção', 'correction'], ['Resultado', 'result']].map(([label, key]) => <p key={key}><strong>{label}</strong>{data.caseStudy[key]}</p>)}</div></details></div></div>{selected && <ProjectDetails project={selected} onClose={() => setSelected(null)} />}</section>;
+  return <><section className="section-shell projects-section" id="projetos"><div className="page-width"><div className="projects-intro"><Heading n={5} label="PROJETOS" intro="Ferramentas, laboratórios e estudos construídos para problemas concretos de segurança.">PROJETOS</Heading><span>ARQUIVO / {num(data.projects.length)} ENTRADAS</span></div><div className="project-grid">{data.projects.map((project, index) => <article className="project-item" key={project.title}><ProjectVisual project={project} /><h3>{project.title === 'Statecraft' ? 'Statecraft Cyber' : project.title}</h3><p className="project-description">{projectSummaries[project.title]}</p><div className="project-meta"><span>{num(index + 1)} / {project.status === 'INTERNAL' ? 'INTERNO' : project.liveUrl ? 'DEMONSTRAÇÃO' : 'REPOSITÓRIO'}</span><span>{project.version || '—'}</span></div><p className="project-stack-label">STACK PRINCIPAL</p><ul className="project-tags">{project.tags.slice(0, 4).map((tag) => <li key={tag}>{tag}</li>)}</ul><div className="project-links"><button type="button" onClick={() => setSelected(project)}>Ver detalhes ↗</button>{project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer">Demonstração ↗</a>}{project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer">Código ↗</a>}</div></article>)}</div><div className="case-link"><span>ESTUDO DE CASO / RESPOSTA A INCIDENTE</span><details><summary>{data.caseStudy.subtitle}<span>+</span></summary><div className="case-content">{[['Contexto', 'context'], ['Detecção', 'detection'], ['Resposta', 'response'], ['Causa raiz', 'rootCause'], ['Correção', 'correction'], ['Resultado', 'result']].map(([label, key]) => <p key={key}><strong>{label}</strong>{data.caseStudy[key]}</p>)}</div></details></div></div></section>{selected && createPortal(<ProjectDetails project={selected} onClose={() => setSelected(null)} />, document.body)}</>;
 }
 
 function Timeline() {
-  return <section className="section-shell timeline-section" id="trajetoria"><div className="page-width timeline-layout"><div><Heading n={6} label="TRAJETÓRIA" intro="Do suporte e da identidade à investigação e à resposta em segurança.">TRAJETÓRIA</Heading><div className="education-note"><span>FORMAÇÃO ACADÊMICA</span><p>{data.education.course}</p><small>{data.education.institution} · {data.education.status}</small></div></div><div className="timeline-list">{[...data.experiences].reverse().map((exp, index) => <article key={exp.company}><span className="timeline-dot" aria-hidden="true" /><span className="timeline-index">{num(index + 1)} / {exp.period}</span><h3>{exp.company}</h3><p className="timeline-role">{exp.role}</p><p>{exp.focus}. {exp.activities[0]}</p><ul>{exp.stack.slice(0, 4).map((skill) => <li key={skill}>{skill}</li>)}</ul></article>)}</div></div><div className="page-width credentials-line"><span>CREDENCIAIS</span>{data.certifications.map((cert) => <p key={cert.name}>{cert.name} / {cert.full} · {cert.issuer}</p>)}</div></section>;
+  return <section className="section-shell timeline-section" id="trajetoria"><div className="page-width timeline-layout"><div><Heading n={6} label="TRAJETÓRIA" intro="Do suporte e da identidade à investigação e à resposta em segurança.">TRAJETÓRIA</Heading><div className="education-note"><span>FORMAÇÃO ACADÊMICA</span><p>{data.education.course}</p><small>{data.education.institution} · {data.education.status}</small></div></div><div className="timeline-list">{[...data.experiences].reverse().map((exp, index) => <article key={exp.company}><span className="timeline-dot" aria-hidden="true" /><span className="timeline-index">{num(index + 1)} / {exp.period}</span><h3>{exp.company}</h3><p className="timeline-role">{exp.role}</p><p className="timeline-focus">{exp.focus}</p><ul className="timeline-activities">{exp.activities.slice(0, 2).map((activity) => <li key={activity}>{activity}</li>)}</ul><ul className="timeline-stack">{exp.stack.slice(0, 4).map((skill) => <li key={skill}>{skill}</li>)}</ul></article>)}</div></div><div className="page-width credentials-line"><h3>Certificações e credenciais</h3><div>{data.certifications.map((cert) => <p key={cert.name}><strong>{cert.name}</strong> / {cert.full} · {cert.issuer}</p>)}</div></div></section>;
 }
 
 function Contact() {
-  return <section className="section-shell contact-section" id="contato"><div className="page-width contact-layout"><div><Heading n={7} label="CONTATO" intro="Aberto a oportunidades em segurança da informação e a conversas sobre projetos e colaboração.">VAMOS<br />CONVERSAR?</Heading><p className="contact-location">RIO DE JANEIRO, RJ / BRASIL</p></div><div className="contact-links"><a href={'mailto:' + data.person.email}><Mail aria-hidden="true" /><span><small>E-MAIL</small>{data.person.email}</span><ArrowUpRight aria-hidden="true" /></a><a href={data.person.linkedin} target="_blank" rel="noreferrer"><span className="brand-icon" aria-hidden="true">in</span><span><small>LINKEDIN</small>linkedin.com/in/ptkthg</span><ArrowUpRight aria-hidden="true" /></a><a href={data.person.github} target="_blank" rel="noreferrer"><span className="brand-icon" aria-hidden="true">gh</span><span><small>GITHUB</small>github.com/ptkthg</span><ArrowUpRight aria-hidden="true" /></a></div></div><footer className="site-footer page-width"><span>© {new Date().getFullYear()} PATRICK SANTOS</span><a href="#hero">← VOLTAR AO INÍCIO</a></footer></section>;
+  return <section className="section-shell contact-section" id="contato"><div className="page-width contact-layout"><div><Heading n={7} label="CONTATO" intro="Aberto a oportunidades em segurança da informação e a conversas sobre projetos e colaboração.">VAMOS<br />CONVERSAR?</Heading><p className="contact-location">RIO DE JANEIRO, RJ / BRASIL</p></div><div className="contact-links"><a href={'mailto:' + data.person.email}><Mail aria-hidden="true" /><span><small>E-MAIL</small>{data.person.email}</span><ArrowUpRight aria-hidden="true" /></a><a href={data.person.linkedin} target="_blank" rel="noreferrer"><span className="brand-icon" aria-hidden="true">in</span><span><small>LINKEDIN</small>linkedin.com/in/ptkthg</span><ArrowUpRight aria-hidden="true" /></a><a href={data.person.github} target="_blank" rel="noreferrer"><span className="brand-icon" aria-hidden="true">gh</span><span><small>GITHUB</small>github.com/ptkthg</span><ArrowUpRight aria-hidden="true" /></a><a href={data.person.resumePath} target="_blank" rel="noreferrer"><span className="brand-icon" aria-hidden="true">CV</span><span><small>CURRÍCULO</small>Visualizar PDF</span><ArrowUpRight aria-hidden="true" /></a></div></div><footer className="site-footer page-width"><span>© {new Date().getFullYear()} PATRICK SANTOS</span><a href="#hero">← VOLTAR AO INÍCIO</a></footer></section>;
 }
 
 function createFragmentLayer(scene, direction) {
@@ -171,6 +225,7 @@ function createFragmentLayer(scene, direction) {
 export default function Portfolio() {
   const initialSection = () => Math.max(0, navItems.findIndex(({ id }) => '#' + id === window.location.hash));
   const [activeIndex, setActiveIndex] = useState(initialSection);
+  const [isVertical, setIsVertical] = useState(() => window.matchMedia(verticalQuery).matches);
   const [transitioning, setTransitioning] = useState(false);
   const viewportRef = useRef(null);
   const trackRef = useRef(null);
@@ -181,6 +236,13 @@ export default function Portfolio() {
 
   const navigate = useCallback((index, updateHash = true) => {
     if (index < 0 || index >= navItems.length) return;
+    if (isVertical) {
+      document.getElementById(navItems[index].id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+      if (updateHash) window.history.pushState(null, '', '#' + navItems[index].id);
+      activeRef.current = index;
+      setActiveIndex(index);
+      return;
+    }
     if (index === activeRef.current) {
       viewportRef.current?.querySelector('.scene.is-active')?.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -201,23 +263,56 @@ export default function Portfolio() {
         fragmentLayerRef.current?.remove();
         fragmentLayerRef.current = null;
         setTransitioning(false);
-      }, 950);
+      }, 650);
     } else {
       setTransitioning(false);
     }
     activeRef.current = index;
     setActiveIndex(index);
     if (updateHash) window.history.pushState(null, '', '#' + navItems[index].id);
+  }, [isVertical]);
+
+  useEffect(() => {
+    const media = window.matchMedia(verticalQuery);
+    const update = () => setIsVertical(media.matches);
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
   }, []);
 
   useEffect(() => {
-    document.body.classList.add('horizontal-mode');
+    document.body.classList.toggle('horizontal-mode', !isVertical);
+    if (isVertical) {
+      window.clearTimeout(transitionTimer.current);
+      fragmentLayerRef.current?.remove();
+      fragmentLayerRef.current = null;
+      setTransitioning(false);
+      if (window.location.hash) requestAnimationFrame(() => document.getElementById(window.location.hash.slice(1))?.scrollIntoView());
+    }
     return () => { document.body.classList.remove('horizontal-mode'); window.clearTimeout(transitionTimer.current); fragmentLayerRef.current?.remove(); };
-  }, []);
+  }, [isVertical]);
 
   useEffect(() => {
-    [...trackRef.current.children].forEach((scene, index) => { scene.inert = index !== activeIndex; });
-  }, [activeIndex]);
+    [...trackRef.current.children].forEach((scene, index) => { scene.inert = !isVertical && index !== activeIndex; });
+  }, [activeIndex, isVertical]);
+
+  useEffect(() => {
+    if (!isVertical) return;
+    let frame;
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const sections = [...trackRef.current.querySelectorAll('.section-shell[id]')];
+        const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 72;
+        let index = 0;
+        sections.forEach((section, candidate) => { if (section.getBoundingClientRect().top <= offset + 100) index = candidate; });
+        if (index !== activeRef.current) { activeRef.current = index; setActiveIndex(index); }
+      });
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+    return () => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update); cancelAnimationFrame(frame); };
+  }, [isVertical]);
 
   useEffect(() => {
     const onClick = (event) => {
@@ -225,17 +320,20 @@ export default function Portfolio() {
       if (!link) return;
       const index = navItems.findIndex(({ id }) => link.getAttribute('href') === '#' + id);
       if (index < 0) return;
+      if (isVertical) return;
       event.preventDefault();
       navigate(index);
     };
     const onHistory = () => navigate(Math.max(0, navItems.findIndex(({ id }) => '#' + id === window.location.hash)), false);
     document.addEventListener('click', onClick);
     window.addEventListener('popstate', onHistory);
-    return () => { document.removeEventListener('click', onClick); window.removeEventListener('popstate', onHistory); };
-  }, [navigate]);
+    window.addEventListener('hashchange', onHistory);
+    return () => { document.removeEventListener('click', onClick); window.removeEventListener('popstate', onHistory); window.removeEventListener('hashchange', onHistory); };
+  }, [navigate, isVertical]);
 
   useEffect(() => {
     const onKeyDown = (event) => {
+      if (isVertical) return;
       if (event.altKey || event.ctrlKey || event.metaKey || (event.target instanceof Element && event.target.closest('input, textarea, select, [role="tablist"], [role="dialog"]'))) return;
       if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
         event.preventDefault();
@@ -244,11 +342,13 @@ export default function Portfolio() {
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [navigate]);
+  }, [navigate, isVertical]);
 
   useEffect(() => {
+    if (isVertical) return;
     let locked = false;
     let unlockTimer;
+    let wheelSum = 0;
     const onWheel = (event) => {
       if (event.ctrlKey || (event.target instanceof Element && event.target.closest('.skill-tabs, .detail-dialog, .nav-links'))) return;
       const scene = viewportRef.current?.querySelector('.scene.is-active');
@@ -258,25 +358,28 @@ export default function Portfolio() {
       if (Math.abs(delta) < 8) return;
       const limit = scene.scrollHeight - scene.clientHeight;
       const canScrollInside = !horizontal && limit > 2 && (delta > 0 ? scene.scrollTop < limit - 2 : scene.scrollTop > 2);
-      if (canScrollInside) return;
-      event.preventDefault();
+      if (canScrollInside) { wheelSum = 0; return; }
       if (locked) return;
+      wheelSum = Math.sign(wheelSum) === Math.sign(delta) ? wheelSum + delta : delta;
+      if (Math.abs(wheelSum) < 80) return;
+      wheelSum = 0;
       const next = activeRef.current + Math.sign(delta);
       if (next < 0 || next >= navItems.length) return;
+      event.preventDefault();
       locked = true;
       navigate(next);
-      unlockTimer = window.setTimeout(() => { locked = false; }, 800);
+      unlockTimer = window.setTimeout(() => { locked = false; }, 700);
     };
     const viewport = viewportRef.current;
     viewport.addEventListener('wheel', onWheel, { passive: false });
     return () => { viewport.removeEventListener('wheel', onWheel); window.clearTimeout(unlockTimer); };
-  }, [navigate]);
+  }, [navigate, isVertical]);
 
   const sections = [<Hero />, <About />, <Areas />, <Skills />, <Strengths />, <Projects />, <Timeline />, <Contact />];
   return <><a className="skip-link" href="#hero">Pular para o conteúdo</a><Header active={activeItem.id} />
     <div className="portfolio-viewport" ref={viewportRef} data-active-section={activeItem.id}>
-      <main className="horizontal-track" ref={trackRef} style={{ transform: `translate3d(-${activeIndex * 100}vw, 0, 0)` }}>
-        {sections.map((section, index) => <div className={index === activeIndex ? `scene is-active${transitioning ? ' is-forming' : ''}` : 'scene'} key={navItems[index].id} aria-hidden={index !== activeIndex}>{section}</div>)}
+      <main className="horizontal-track" ref={trackRef} style={isVertical ? undefined : { transform: `translate3d(-${activeIndex * 100}vw, 0, 0)` }}>
+        {sections.map((section, index) => <div className={index === activeIndex ? `scene is-active${transitioning ? ' is-forming' : ''}` : 'scene'} key={navItems[index].id} aria-hidden={!isVertical && index !== activeIndex}>{section}</div>)}
       </main>
       <div className={transitioning ? 'scene-transition is-active' : 'scene-transition'} aria-hidden="true"><span>RECOMPONDO / {num(activeIndex + 1)}</span><i /></div>
       <div className="scene-nav" aria-label="Navegação entre seções">
