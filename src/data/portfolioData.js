@@ -245,6 +245,25 @@ export const portfolioData = {
   },
   projects: [
     {
+      filename: 'perito.case',
+      title: 'Perito',
+      version: 'v0.1.0',
+      status: 'OPERATIONAL',
+      statusColor: 'text-neon text-glow',
+      description:
+        'Num incidente real, as pistas ficam espalhadas em ferramentas diferentes, cada uma com seu formato e fuso, e a conclusão precisa resistir a auditoria. O Perito normaliza evidências de 7 fontes (Defender XDR, Sentinel, Entra ID, Splunk, Elastic e Wazuh) numa timeline única em UTC, com cadeia de custódia por SHA-256 e técnicas do MITRE ATT&CK sugeridas para o analista confirmar. Cada afirmação aponta para a linha exata do log original e é marcada como evidência, hipótese ou limitação. Tem CLI em Python só com biblioteca padrão, console React para o analista e skills para conduzir a investigação com Claude Code e Codex, que se revisam. A demonstração pública traz um caso fictício com tour guiado até o relatório executivo.',
+      logs: [
+        { prefix: '[TEST]', value: 'pytest 178 passed  vitest 79 passed' },
+        { prefix: '[SRC] ', value: '7 fontes normalizadas  timeline UTC única' },
+        { prefix: '[CUST]', value: 'cadeia de custódia SHA-256  raw_ref arquivo:linha' },
+        { prefix: '[DEMO]', value: 'caso sintético  tour de 7 passos  relatório executivo' },
+      ],
+      tags: ['Python', 'React 19', 'TypeScript', 'DFIR', 'MITRE ATT&CK', 'Claude Code'],
+      liveUrl: 'https://perito-demo-lovat.vercel.app',
+      githubUrl: 'https://github.com/ptkthg/perito',
+      proof: { ci: 'https://github.com/ptkthg/perito/actions', tests: '178 testes Python e 79 da interface' },
+    },
+    {
       filename: 'secidentity_ai.yaml',
       title: 'SecIdentity AI',
       version: 'v1.1.0',
