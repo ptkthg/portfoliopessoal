@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, ChevronDown, Mail, Menu, X } from 'lucide-react';
 import { navItems, portfolioData as data } from './data/portfolioData';
+import { resolveHash } from './projectNavigation';
 import './editorial.css';
 
 const num = (n) => String(n).padStart(2, '0');
@@ -28,6 +29,7 @@ function Action({ href, children, outline = false, external = false }) {
 function Header({ active }) {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
   const menuRef = useRef(null);
   const toggleRef = useRef(null);
   useEffect(() => {
@@ -38,7 +40,7 @@ function Header({ active }) {
     return () => { document.body.style.overflow = previousOverflow; };
   }, [open]);
   useEffect(() => {
-    const close = (event) => { if (event.key === 'Escape') { if (open) { setOpen(false); toggleRef.current?.focus(); } setSubOpen(false); } };
+    const close = (event) => { if (event.key === 'Escape') { if (open) { setOpen(false); toggleRef.current?.focus(); } setSubOpen(false); setProjectsOpen(false); } };
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
   }, [open]);
@@ -60,22 +62,28 @@ function Header({ active }) {
     media.addEventListener('change', closeOnDesktop);
     return () => media.removeEventListener('change', closeOnDesktop);
   }, []);
-  useEffect(() => { setOpen(false); setSubOpen(false); }, [active]);
-  const closeMenus = () => { setOpen(false); setSubOpen(false); };
+  useEffect(() => { setOpen(false); setSubOpen(false); setProjectsOpen(false); }, [active]);
+  const closeMenus = () => { setOpen(false); setSubOpen(false); setProjectsOpen(false); };
   return <header className="site-header"><div className="header-inner">
     <a className="wordmark" href="#hero" onClick={closeMenus}><span className="wordmark-mark" aria-hidden="true" />PATRICK SANTOS</a>
     <nav className="desktop-nav" aria-label="Navegação principal">
       {desktopNav.map(({ id, label }) => id === 'areas' ? <div className="nav-group" key={id}>
         <a href="#areas" aria-current={['areas', 'skills', 'pontos-fortes'].includes(active) ? 'location' : undefined} onClick={() => setSubOpen(false)}>{label}</a>
-        <button type="button" aria-label="Mostrar subseções de Atuação" aria-expanded={subOpen} aria-controls="areas-submenu" onClick={() => setSubOpen(!subOpen)}><ChevronDown size={16} aria-hidden="true" /></button>
+        <button type="button" aria-label="Mostrar subseções de Atuação" aria-expanded={subOpen} aria-controls="areas-submenu" onClick={() => { setSubOpen(!subOpen); setProjectsOpen(false); }}><ChevronDown size={16} aria-hidden="true" /></button>
         <div id="areas-submenu" className={subOpen ? 'nav-submenu is-open' : 'nav-submenu'}>
           <a href="#skills" aria-current={active === 'skills' ? 'location' : undefined} onClick={closeMenus}>Competências</a>
           <a href="#pontos-fortes" aria-current={active === 'pontos-fortes' ? 'location' : undefined} onClick={closeMenus}>Pontos fortes</a>
         </div>
+      </div> : id === 'projetos' ? <div className="nav-group" key={id}>
+        <a href="#projetos" aria-current={active === 'projetos' ? 'location' : undefined} onClick={closeMenus}>{label}</a>
+        <button type="button" aria-label="Mostrar áreas de Projetos" aria-expanded={projectsOpen} aria-controls="projects-submenu" onClick={() => { setProjectsOpen(!projectsOpen); setSubOpen(false); }}><ChevronDown size={16} aria-hidden="true" /></button>
+        <div id="projects-submenu" className={projectsOpen ? 'nav-submenu is-open' : 'nav-submenu'}>
+          {data.projectGroups.map((group) => <a key={group.id} href={'#' + group.id} onClick={closeMenus}>{group.title}</a>)}
+        </div>
       </div> : <a key={id} href={'#' + id} aria-current={active === id ? 'location' : undefined} onClick={closeMenus}>{label}</a>)}
     </nav>
     <nav ref={menuRef} className={open ? 'nav-links is-open' : 'nav-links'} id="main-navigation" aria-label="Navegação móvel">
-      {navItems.map(({ id, label }) => <a key={id} href={'#' + id} aria-current={active === id ? 'location' : undefined} onClick={closeMenus}>{label}</a>)}
+      {navItems.map(({ id, label }) => <Fragment key={id}><a href={'#' + id} aria-current={active === id ? 'location' : undefined} onClick={closeMenus}>{label}</a>{id === 'projetos' && data.projectGroups.map((group) => <a className="project-nav-child" key={group.id} href={'#' + group.id} onClick={closeMenus}>{group.title}</a>)}</Fragment>)}
       <a className="resume-mobile" href={data.person.resumePath} target="_blank" rel="noreferrer" onClick={closeMenus}>Currículo <ArrowUpRight size={16} aria-hidden="true" /></a>
     </nav>
     <a className="resume-link" href={data.person.resumePath} target="_blank" rel="noreferrer">Currículo <ArrowUpRight size={16} aria-hidden="true" /></a>
@@ -210,7 +218,14 @@ function CaseStudy() {
 
 function Projects() {
   const [selected, setSelected] = useState(null);
-  return <><section className="section-shell projects-section" id="projetos"><div className="page-width"><div className="projects-intro"><Heading n={5} label="PROJETOS" intro="Ferramentas, laboratórios e estudos construídos para problemas concretos de segurança.">PROJETOS</Heading><span>ARQUIVO / {num(data.projects.length)} ENTRADAS</span></div><div className="project-grid">{data.projects.map((project, index) => <article className="project-item" key={project.title}><ProjectVisual project={project} /><h3>{project.title === 'Statecraft' ? 'Statecraft Cyber' : project.title}</h3><p className="project-description">{projectSummaries[project.title]}</p><div className="project-meta"><span>{num(index + 1)} / {project.status === 'INTERNAL' ? 'INTERNO' : project.liveUrl ? 'DEMONSTRAÇÃO' : 'REPOSITÓRIO'}</span><span>{project.version || '—'}</span></div><p className="project-stack-label">STACK PRINCIPAL</p><ul className="project-tags">{project.tags.slice(0, 4).map((tag) => <li key={tag}>{tag}</li>)}</ul><ProjectProof proof={project.proof} /><div className="project-links"><button type="button" onClick={() => setSelected(project)}>Ver detalhes <ArrowUpRight size={14} aria-hidden="true" /></button>{project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer">Demonstração <ArrowUpRight size={14} aria-hidden="true" /></a>}{project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer">Código <ArrowUpRight size={14} aria-hidden="true" /></a>}</div></article>)}</div><Roadmap /><CaseStudy /></div></section>{selected && createPortal(<ProjectDetails project={selected} onClose={() => setSelected(null)} />, document.body)}</>;
+  return <><section className="section-shell projects-section" id="projetos"><div className="page-width"><div className="projects-intro"><Heading n={5} label="PROJETOS" intro="Ferramentas, laboratórios e estudos construídos para problemas concretos de segurança.">PROJETOS</Heading><span>ARQUIVO / {num(data.projects.length)} ENTRADAS</span></div>
+    <nav className="project-index" aria-label="Áreas dos projetos">{data.projectGroups.map((group, index) => <a key={group.id} href={'#' + group.id}><span>{num(index + 1)}</span><strong>{group.shortTitle}</strong><small>{data.projects.filter((project) => project.group === group.id).length} projetos</small></a>)}</nav>
+    {data.projectGroups.map((group, groupIndex) => {
+      const projects = data.projects.filter((project) => project.group === group.id);
+      return <section className="project-group" id={group.id} aria-labelledby={group.id + '-title'} key={group.id}>
+        <header className="project-group-heading"><p>{num(groupIndex + 1)} / {projects.length} PROJETOS</p><h3 id={group.id + '-title'}>{group.title}</h3><p>{group.context}</p></header>
+        <div className="project-grid">{projects.map((project) => <article className="project-item" key={project.title}><ProjectVisual project={project} /><h4>{project.title === 'Statecraft' ? 'Statecraft Cyber' : project.title}</h4><p className="project-description">{projectSummaries[project.title]}</p><div className="project-meta"><span>{num(data.projects.indexOf(project) + 1)} / {project.status === 'INTERNAL' ? 'INTERNO' : project.liveUrl ? 'DEMONSTRAÇÃO' : 'REPOSITÓRIO'}</span><span>{project.version || '—'}</span></div><p className="project-stack-label">STACK PRINCIPAL</p><ul className="project-tags">{project.tags.slice(0, 4).map((tag) => <li key={tag}>{tag}</li>)}</ul><ProjectProof proof={project.proof} /><div className="project-links"><button type="button" onClick={() => setSelected(project)}>Ver detalhes <ArrowUpRight size={14} aria-hidden="true" /></button>{project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer">Demonstração <ArrowUpRight size={14} aria-hidden="true" /></a>}{project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer">Código <ArrowUpRight size={14} aria-hidden="true" /></a>}</div></article>)}</div></section>;
+    })}<Roadmap /><CaseStudy /></div></section>{selected && createPortal(<ProjectDetails project={selected} onClose={() => setSelected(null)} />, document.body)}</>;
 }
 
 function Timeline() {
@@ -265,7 +280,7 @@ function createFragmentLayer(scene, direction) {
 }
 
 export default function Portfolio() {
-  const initialSection = () => Math.max(0, navItems.findIndex(({ id }) => '#' + id === window.location.hash));
+  const initialSection = () => resolveHash(window.location.hash)?.sceneIndex ?? 0;
   const [activeIndex, setActiveIndex] = useState(initialSection);
   const [isVertical, setIsVertical] = useState(() => window.matchMedia(verticalQuery).matches);
   const [transitioning, setTransitioning] = useState(false);
@@ -274,22 +289,36 @@ export default function Portfolio() {
   const activeRef = useRef(activeIndex);
   const transitionTimer = useRef(null);
   const fragmentLayerRef = useRef(null);
+  const scrollFrameRef = useRef(null);
   const activeItem = navItems[activeIndex];
 
-  const navigate = useCallback((index, updateHash = true) => {
+  const navigate = useCallback((index, updateHash = true, targetId = navItems[index]?.id, instant = false) => {
     if (index < 0 || index >= navItems.length) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const behavior = instant || reducedMotion ? 'instant' : 'smooth';
+    if (updateHash) window.history.pushState(null, '', '#' + targetId);
+    cancelAnimationFrame(scrollFrameRef.current);
+    // Aguarda o React ativar a cena antes de medir o destino da âncora.
+    scrollFrameRef.current = requestAnimationFrame(() => {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      if (isVertical) {
+        target.scrollIntoView({ behavior });
+      } else {
+        const scene = viewportRef.current?.querySelector('.scene.is-active');
+        if (!scene?.contains(target)) return;
+        const top = targetId === navItems[index].id ? 0 : target.getBoundingClientRect().top - scene.getBoundingClientRect().top + scene.scrollTop - 28;
+        scene.scrollTo({ top, behavior });
+      }
+    });
     if (isVertical) {
-      document.getElementById(navItems[index].id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-      if (updateHash) window.history.pushState(null, '', '#' + navItems[index].id);
       activeRef.current = index;
       setActiveIndex(index);
       return;
     }
     if (index === activeRef.current) {
-      viewportRef.current?.querySelector('.scene.is-active')?.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.clearTimeout(transitionTimer.current);
     fragmentLayerRef.current?.remove();
     fragmentLayerRef.current = null;
@@ -311,7 +340,6 @@ export default function Portfolio() {
     }
     activeRef.current = index;
     setActiveIndex(index);
-    if (updateHash) window.history.pushState(null, '', '#' + navItems[index].id);
   }, [isVertical]);
 
   useEffect(() => {
@@ -328,10 +356,15 @@ export default function Portfolio() {
       fragmentLayerRef.current?.remove();
       fragmentLayerRef.current = null;
       setTransitioning(false);
-      if (window.location.hash) requestAnimationFrame(() => document.getElementById(window.location.hash.slice(1))?.scrollIntoView());
     }
     return () => { document.body.classList.remove('horizontal-mode'); window.clearTimeout(transitionTimer.current); fragmentLayerRef.current?.remove(); };
   }, [isVertical]);
+
+  useEffect(() => {
+    const destination = resolveHash(window.location.hash);
+    if (destination) navigate(destination.sceneIndex, false, destination.targetId, true);
+    return () => cancelAnimationFrame(scrollFrameRef.current);
+  }, [isVertical, navigate]);
 
   useEffect(() => {
     [...trackRef.current.children].forEach((scene, index) => { scene.inert = !isVertical && index !== activeIndex; });
@@ -360,13 +393,15 @@ export default function Portfolio() {
     const onClick = (event) => {
       const link = event.target instanceof Element ? event.target.closest('a[href^="#"]') : null;
       if (!link) return;
-      const index = navItems.findIndex(({ id }) => link.getAttribute('href') === '#' + id);
-      if (index < 0) return;
-      if (isVertical) return;
+      const destination = resolveHash(link.getAttribute('href'));
+      if (!destination) return;
       event.preventDefault();
-      navigate(index);
+      navigate(destination.sceneIndex, true, destination.targetId);
     };
-    const onHistory = () => navigate(Math.max(0, navItems.findIndex(({ id }) => '#' + id === window.location.hash)), false);
+    const onHistory = () => {
+      const destination = resolveHash(window.location.hash);
+      if (destination) navigate(destination.sceneIndex, false, destination.targetId);
+    };
     document.addEventListener('click', onClick);
     window.addEventListener('popstate', onHistory);
     window.addEventListener('hashchange', onHistory);
