@@ -424,15 +424,15 @@ export const portfolioData = {
       status: 'OPERATIONAL',
       statusColor: 'text-neon text-glow',
       description:
-        'Plataforma de threat intelligence em PT-BR: CVEs recentes com CVSS e EPSS, briefings gerados por IA e IOC Search com fontes OSINT para apoiar priorização e contexto defensivo.',
+        'Plataforma de threat intelligence em PT-BR: CVEs recentes com CVSS, EPSS e CISA KEV, notícias, briefings gerados por IA e busca de IOCs. A coleta roda num PostgreSQL local e publica um snapshot verificado a cada hora.',
       logs: [
         { prefix: '[FEEDS]', value: '19 RSS sources + NVD API' },
-        { prefix: '[AI]   ', value: 'Groq Llama 3.3 70B · PT-BR' },
+        { prefix: '[AI]   ', value: 'Groq gpt-oss-120b · PT-BR' },
         { prefix: '[KEV]  ', value: 'CISA KEV + EPSS enrichment' },
       ],
-      tags: ['Next.js 15', 'TypeScript', 'Tailwind', 'PostgreSQL', 'Prisma', 'Groq AI'],
+      tags: ['Next.js 16', 'TypeScript', 'PostgreSQL', 'Prisma', 'Groq AI'],
       liveUrl: 'https://statecraftcyber.vercel.app',
-      githubUrl: null,
+      githubUrl: 'https://github.com/ptkthg/statecraftcyber',
     },
     {
       filename: 'hunting_pack.kql',
