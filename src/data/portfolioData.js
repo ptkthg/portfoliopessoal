@@ -264,6 +264,25 @@ export const portfolioData = {
       proof: { ci: 'https://github.com/ptkthg/perito/actions', tests: '178 testes Python e 79 da interface' },
     },
     {
+      filename: 'hookshade.eml',
+      title: 'Hookshade',
+      version: 'v0.1.0',
+      status: 'OPERATIONAL',
+      statusColor: 'text-neon text-glow',
+      description:
+        'Na triagem de phishing, o analista precisa saber por que um e-mail foi marcado, não só a nota. O Hookshade recebe um .eml ou texto bruto, extrai IOCs, lê SPF, DKIM e DMARC dos headers, detecta links com URL exibida diferente da real e soma um índice de risco em que cada ponto aponta para a evidência e para a regra que disparou. As regras são declarativas, editáveis e validadas contra ReDoS, e o pipeline não faz chamadas externas, não abre URLs nem executa anexos. A aplicação é full stack (FastAPI, Next.js e PostgreSQL) com sessão em cookie HttpOnly __Host-, CSRF assinado, RBAC, cifra e redação de dados pessoais e CSP com nonce. A demonstração pública entra sem senha num perfil somente leitura com e-mails fictícios.',
+      logs: [
+        { prefix: '[TEST]', value: 'pytest 252 passed  vitest 18 passed  e2e playwright' },
+        { prefix: '[SCORE]', value: 'índice explicável  evidência + regra por ponto' },
+        { prefix: '[SEC] ', value: 'cookie __Host-  CSRF  RBAC  CSP nonce  anti-ReDoS' },
+        { prefix: '[DEMO]', value: 'perfil somente leitura  4 análises fictícias' },
+      ],
+      tags: ['Python', 'FastAPI', 'Next.js', 'PostgreSQL', 'Phishing', 'AppSec'],
+      liveUrl: 'https://hookshade.vercel.app',
+      githubUrl: 'https://github.com/ptkthg/hookshade',
+      proof: { ci: 'https://github.com/ptkthg/hookshade/actions', tests: '252 testes Python, 18 da interface e 1 E2E' },
+    },
+    {
       filename: 'secidentity_ai.yaml',
       title: 'SecIdentity AI',
       version: 'v1.1.0',

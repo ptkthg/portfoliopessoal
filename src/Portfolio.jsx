@@ -131,6 +131,7 @@ function Strengths() {
 const projectCaptures = {
   'IOC Enricher': '/assets/project-ioc.png',
   Perito: '/assets/project-perito.png',
+  Hookshade: '/assets/project-hookshade.png',
   Statecraft: '/assets/project-statecraft.jpg',
   'Terraform GitHub Seguro': '/evidences/terraform_github_seguro.svg',
   'XDR Hunting Pack': '/evidences/xdr_hunting_pack.svg',
@@ -141,6 +142,7 @@ const projectDiagramAlts = {
   'Terraform GitHub Seguro': 'Diagrama: o mapa de repositórios passa pelo módulo repositorio-seguro, que cria cinco recursos de proteção, enquanto o CI valida o código sem token',
   'XDR Hunting Pack': 'Diagrama: quatro consultas KQL de threat hunting organizadas por tática do MITRE ATT&CK',
   Perito: 'Console do Perito na visão geral de um caso fictício: resumo do incidente com cada frase marcada como comprovada, suposição ou sem dados',
+  Hookshade: 'Resultado de uma análise fictícia no Hookshade: índice 65 de 100, severidade alta, e a lista de achados com a evidência de cada um, como a URL exibida diferente da real e o DMARC fail',
   'KQL Detection as Code': 'Diagrama: detecção em YAML, fixtures sintéticos e schema oficial viram um datatable executado no emulador Kusto; o positivo precisa disparar, o negativo não, e o CI gera a documentação',
 };
 
@@ -158,6 +160,7 @@ function ProjectVisual({ project }) {
 
 const projectSummaries = {
   Perito: 'Junta evidências de 7 ferramentas numa timeline única, com custódia SHA-256 e ATT&CK, até o relatório executivo.',
+  Hookshade: 'Triagem de phishing que explica o índice de risco com a evidência e a regra por trás de cada ponto.',
   'SecIdentity AI': 'Automatiza atendimento ITSM e controle de acessos privilegiados com trilha auditável.',
   'Terraform GitHub Seguro': 'Cria repositórios do GitHub já protegidos, com cada decisão de segurança testada e documentada.',
   'Deception Loop': 'Converte IOCs e eventos de arquivos-isca em regras YARA e bloqueios de firewall.',
