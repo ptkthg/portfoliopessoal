@@ -10,3 +10,8 @@ export function resolveHash(hash) {
   }
   return null;
 }
+
+// Destaques aparecem primeiro; os grupos por área mostram só os projetos que não estão em destaque.
+export function projectsFor(group) {
+  return portfolioData.projects.filter((project) => (group.featured ? project.featured : project.group === group.id && !project.featured));
+}
