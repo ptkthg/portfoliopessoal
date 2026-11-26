@@ -6,11 +6,12 @@ export const portfolioData = {
     resumePath: '/assets/patrick-santos-cv.pdf',
   },
   // Números do hero: todos verificáveis pelos links de CI dos projetos.
-  // 607 = Perito (178 + 79) + Hookshade (252 + 18 + 1) + KQL Detection as Code (69) + Terraform GitHub Seguro (10).
+  // 8: cada detecção do KQL Detection as Code tem um caso de ataque e um caso benigno parecido.
+  // 7: fontes de evidência que o Perito normaliza. 4: Perito, Hookshade, KQL e Terraform.
   heroStats: [
-    { value: '4', label: 'repositórios com CI público' },
-    { value: '600+', label: 'testes automatizados' },
-    { value: '8', label: 'detecções KQL testadas' },
+    { value: '8', label: 'detecções KQL testadas contra falso positivo' },
+    { value: '7', label: 'fontes de evidência numa timeline com custódia' },
+    { value: '4', label: 'projetos com CI público' },
   ],
   about: [
     'Tenho pouco mais de dois anos em Segurança da Informação. Na Rio Quality, administrei as identidades de cerca de 500 usuários no Active Directory e implantei Wazuh e Graylog. No SOC da Vortex Security, triei cerca de 1.200 alertas e conduzi mais de 90 investigações. Na Oceânica, atuei em resposta a incidentes N2/N3, com investigação forense, engenharia de detecção, acessos privilegiados e evidências para auditorias ISO 27001.',

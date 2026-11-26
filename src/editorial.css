@@ -345,9 +345,9 @@ body.horizontal-mode{height:100svh;overflow:hidden}
 
 /* Números do hero */
 .hero-stats{display:flex;flex-wrap:wrap;gap:12px 34px;margin:0 0 30px;padding:0}
-.hero-stats div{display:flex;flex-direction:column-reverse;gap:4px;padding-left:12px;border-left:1px solid var(--blue)}
+.hero-stats div{display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:4px;padding-left:12px;border-left:1px solid var(--blue)}
 .hero-stats dd{margin:0;font:600 clamp(20px,1.7vw,26px)/1 'Space Grotesk',sans-serif;color:#fff}
-.hero-stats dt{font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#9fb0cc;text-transform:uppercase}
+.hero-stats dt{max-width:26ch;font:500 10px/1.45 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#9fb0cc;text-transform:uppercase;text-wrap:balance}
 
 /* Prova verificável por projeto */
 .project-proof{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 16px;font:500 11px 'IBM Plex Mono',monospace;color:#9cacc7}
