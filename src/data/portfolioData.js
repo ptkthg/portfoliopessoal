@@ -436,28 +436,6 @@ export const portfolioData = {
     limitation:
       'Horários, identificadores e dados do cliente foram omitidos por confidencialidade. A sequência acima é a ordem dos fatos, não uma timeline com horários.',
   },
-  differentials: [
-    {
-      title: 'Investigo com autonomia',
-      description:
-        'Conduzo a triagem sozinho, valido a evidência e só escalo o que realmente precisa de outra mão.',
-    },
-    {
-      title: 'Penso em risco, não em lista de tarefas',
-      description:
-        'Priorizo o que corrigir pelo impacto e pela exposição, não pela ordem que apareceu.',
-    },
-    {
-      title: 'Conecto os pontos',
-      description:
-        'Junto suporte, SOC, Defender, IAM e hardening. Já vi o problema dos dois lados.',
-    },
-    {
-      title: 'Escrevo pra ser entendido',
-      description:
-        'Transformo um achado técnico em relatório que a gestão lê e age.',
-    },
-  ],
   certifications: [
     {
       name: 'MNA',
@@ -479,7 +457,6 @@ export const navItems = [
   { label: 'Sobre', id: 'sobre' },
   { label: 'O que faço', id: 'areas' },
   { label: 'Competências', id: 'skills' },
-  { label: 'Pontos fortes', id: 'pontos-fortes' },
   { label: 'Projetos', id: 'projetos' },
   { label: 'Trajetória', id: 'trajetoria' },
   { label: 'Contato', id: 'contato' },
