@@ -131,13 +131,11 @@ const projectCaptures = {
   Hookshade: '/assets/project-hookshade.png',
   Statecraft: '/assets/project-statecraft.jpg',
   'Terraform GitHub Seguro': '/evidences/terraform_github_seguro.svg',
-  'XDR Hunting Pack': '/evidences/xdr_hunting_pack.svg',
   'KQL Detection as Code': '/evidences/kql_detection_as_code.svg',
 };
 // Diagramas não são capturas de tela: o texto alternativo descreve o que o desenho mostra.
 const projectDiagramAlts = {
   'Terraform GitHub Seguro': 'Diagrama: o mapa de repositórios passa pelo módulo repositorio-seguro, que cria cinco recursos de proteção, enquanto o CI valida o código sem token',
-  'XDR Hunting Pack': 'Diagrama: quatro consultas KQL de threat hunting organizadas por tática do MITRE ATT&CK',
   Perito: 'Console do Perito na visão geral de um caso fictício: resumo do incidente com cada frase marcada como comprovada, suposição ou sem dados',
   Hookshade: 'Resultado de uma análise fictícia no Hookshade: índice 65 de 100, severidade alta, e a lista de achados com a evidência de cada um, como a URL exibida diferente da real e o DMARC fail',
   'KQL Detection as Code': 'Diagrama: detecção em YAML, fixtures sintéticos e schema oficial viram um datatable executado no emulador Kusto; o positivo precisa disparar, o negativo não, e o CI gera a documentação',
@@ -163,7 +161,6 @@ const projectSummaries = {
   'Deception Loop': 'Converte IOCs e eventos de arquivos-isca em regras YARA e bloqueios de firewall.',
   'IOC Enricher': 'Enriquece indicadores com OSINT e IA para apoiar a triagem defensiva.',
   Statecraft: 'Reúne vulnerabilidades, briefings e busca de IOCs em uma plataforma de CTI.',
-  'XDR Hunting Pack': 'Consultas KQL de threat hunting usadas na operação da Oceânica (código interno).',
   'KQL Detection as Code': 'Detecções KQL versionadas como código e testadas num motor Kusto real a cada push.',
   'NetShield SOC': 'Laboratório de perímetro com NGFW, IDS e SIEM para validar detecção e tuning.',
 };
@@ -215,7 +212,7 @@ function Projects() {
       const projects = projectsFor(group);
       return <section className="project-group" id={group.id} aria-labelledby={group.id + '-title'} key={group.id}>
         <header className="project-group-heading"><p>{num(groupIndex + 1)} / {projects.length} {projects.length === 1 ? 'PROJETO' : 'PROJETOS'}</p><h3 id={group.id + '-title'}>{group.title}</h3><p>{group.context}</p></header>
-        <div className="project-grid">{projects.map((project) => <article className="project-item" key={project.title}><ProjectVisual project={project} /><h4>{project.title === 'Statecraft' ? 'Statecraft Cyber' : project.title}</h4><p className="project-description">{projectSummaries[project.title]}</p><div className="project-meta"><span>{num(orderedProjects.indexOf(project) + 1)} / {project.internal ? 'INTERNO' : project.liveUrl ? 'DEMONSTRAÇÃO' : 'REPOSITÓRIO'}</span><span>{project.version || '—'}</span></div><p className="project-stack-label">STACK PRINCIPAL</p><ul className="project-tags">{project.tags.slice(0, 4).map((tag) => <li key={tag}>{tag}</li>)}</ul><ProjectProof proof={project.proof} /><div className="project-links"><button type="button" onClick={() => setSelected(project)}>Ver detalhes <ArrowUpRight size={14} aria-hidden="true" /></button>{project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer">Demonstração <ArrowUpRight size={14} aria-hidden="true" /></a>}{project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer">Código <ArrowUpRight size={14} aria-hidden="true" /></a>}</div></article>)}</div></section>;
+        <div className="project-grid">{projects.map((project) => <article className="project-item" key={project.title}><ProjectVisual project={project} /><h4>{project.title === 'Statecraft' ? 'Statecraft Cyber' : project.title}</h4><p className="project-description">{projectSummaries[project.title]}</p><div className="project-meta"><span>{num(orderedProjects.indexOf(project) + 1)} / {project.liveUrl ? 'DEMONSTRAÇÃO' : 'REPOSITÓRIO'}</span><span>{project.version || '—'}</span></div><p className="project-stack-label">STACK PRINCIPAL</p><ul className="project-tags">{project.tags.slice(0, 4).map((tag) => <li key={tag}>{tag}</li>)}</ul><ProjectProof proof={project.proof} /><div className="project-links"><button type="button" onClick={() => setSelected(project)}>Ver detalhes <ArrowUpRight size={14} aria-hidden="true" /></button>{project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer">Demonstração <ArrowUpRight size={14} aria-hidden="true" /></a>}{project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noreferrer">Código <ArrowUpRight size={14} aria-hidden="true" /></a>}</div></article>)}</div></section>;
     })}<Roadmap /><CaseStudy /></div></section>{selected && createPortal(<ProjectDetails project={selected} onClose={() => setSelected(null)} />, document.body)}</>;
 }
 

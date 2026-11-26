@@ -271,21 +271,6 @@ export const portfolioData = {
       proof: { ci: 'https://github.com/ptkthg/kql-detection-as-code/actions', tests: '69 testes no emulador Kusto' },
     },
     {
-      title: 'XDR Hunting Pack',
-      group: 'projetos-deteccao',
-      version: null,
-      internal: true,
-      description:
-        'Consultas KQL de threat hunting que escrevi e usei na operação da Oceânica, no Microsoft Defender XDR, com lógica reaplicável a SIEM, Wazuh e Graylog. Cobriam password spray, LOLBins, PowerShell suspeito e Outlook criando processos anômalos. O código é interno da empresa e não tem repositório público; a versão aberta, escrita do zero e testada, é o KQL Detection as Code.',
-      logs: [
-        { prefix: '[ENV]  ', value: 'Microsoft Defender XDR' },
-        { prefix: '[MAP]  ', value: 'MITRE ATT&CK aligned' },
-      ],
-      tags: ['KQL', 'Defender XDR', 'Wazuh', 'Graylog', 'MITRE ATT&CK', 'Threat Hunting'],
-      liveUrl: null,
-      githubUrl: null,
-    },
-    {
       title: 'Deception Loop',
       group: 'projetos-deteccao',
       version: 'v1.0.0',
